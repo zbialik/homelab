@@ -1,0 +1,22 @@
+all:
+  hosts:
+    rpi01:
+      ansible_host: 192.168.0.179
+      ip: 192.168.0.179
+      access_ip: 192.168.0.179
+  children:
+    kube_control_plane:
+      hosts:
+        rpi01:
+    kube_node:
+      hosts:
+        rpi01:
+    etcd:
+      hosts:
+        rpi01:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}
