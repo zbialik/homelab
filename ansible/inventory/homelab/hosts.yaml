@@ -1,9 +1,9 @@
 all:
   hosts:
     rpi01:
-      ansible_host: 192.168.0.178
-      ip: 192.168.0.178
-      access_ip: 192.168.0.178
+      ansible_host: 192.168.0.181
+      ip: 192.168.0.181
+      access_ip: 192.168.0.181
   children:
     kube_control_plane:
       hosts:

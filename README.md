@@ -31,7 +31,7 @@ pip install -r ansible/kubespray/requirements.txt
 ```
 git submodule update
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik --ask-pass --ask-become-pass
 ```
 
 ## Access Kubernetes Cluster
@@ -47,5 +47,5 @@ Only perform the following when you want to completely rebuild the kubernetes cl
 ```
 git submodule update
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik --ask-pass --ask-become-pass
 ```
