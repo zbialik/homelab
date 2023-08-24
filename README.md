@@ -35,11 +35,26 @@ ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root
 ```
 
 
-## Access Kubernetes Cluster
+## Adding Nodes
+
+First, copy over ssh key to raspberry pi
 
 ```
-TBD
+ssh-copy-id -i ~/.ssh/id_rsa IP_ADDRESS
 ```
+
+Then, update the inventory for the new node.
+
+Finally, execute:
+
+```
+cd ansible/kubespray
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml
+```
+
+## Access Kubernetes Cluster
+
+For now, I just log into the control-plane node and snag the `/etc/kubernetes/admin.conf` file 
 
 # Disaster Recovery
 
