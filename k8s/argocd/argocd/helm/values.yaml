@@ -1,0 +1,21 @@
+configs:
+  repositories:
+    zbialik-homelab-repo:
+      url: https://github.com/zbialik/homelab.git
+      name: zbialik-homelab
+      type: git
+  secret:
+    argocdServerAdminPassword: $2a$10$ExAxdGasn4wdoHSD3i3cMOtc6Gz2XN7RfnzvjoBHnJvqa7Q7Uv7Vy
+
+server:
+  extraArgs:
+    - "--insecure"
+  ingress:
+    enabled: true
+    # annotations:
+    #   kubernetes.io/ingress.class: nginx
+    #   nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    #   nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    #   nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    hosts:
+      - argo-cd.zb-macbook.local

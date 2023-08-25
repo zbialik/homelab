@@ -31,15 +31,12 @@ pip install -r ansible/kubespray/requirements.txt
 ```
 git submodule update
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik --ask-pass --ask-become-pass
 ```
-
 
 ## Access Kubernetes Cluster
 
-```
-TBD
-```
+For now, I just log into the control-plane node and snag the `/etc/kubernetes/admin.conf` file 
 
 # Disaster Recovery
 
@@ -50,5 +47,5 @@ Only perform the following when you want to completely rebuild the kubernetes cl
 ```
 git submodule update
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik --ask-pass --ask-become-pass
 ```
