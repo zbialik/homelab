@@ -10,7 +10,3 @@ configs:
 server:
   extraArgs:
     - "--insecure"
-  ingress:
-    enabled: true
-    hosts:
-      - argo-cd.zb-macbook.local
