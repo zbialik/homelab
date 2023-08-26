@@ -1,5 +1,7 @@
 kind: Kustomization
 namespace: argocd
+commonLabels:
+  app: argocd
 
 resources:
 - namespace.yaml

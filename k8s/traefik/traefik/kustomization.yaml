@@ -1,4 +1,6 @@
 kind: Kustomization
+commonLabels:
+  app: traefik
 
 resources:
 - generated.yaml

@@ -1,4 +1,6 @@
 kind: Kustomization
+commonLabels:
+  app: cilium
 
 resources:
 - generated.yaml
