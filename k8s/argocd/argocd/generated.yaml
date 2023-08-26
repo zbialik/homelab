@@ -7,13 +7,13 @@ metadata:
   name: argocd-application-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-applicationset/serviceaccount.yaml
 apiVersion: v1
@@ -23,13 +23,13 @@ metadata:
   name: argocd-applicationset-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: applicationset-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-notifications/serviceaccount.yaml
 apiVersion: v1
@@ -39,13 +39,13 @@ metadata:
   name: argocd-notifications-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-repo-server/serviceaccount.yaml
 apiVersion: v1
@@ -55,13 +55,13 @@ metadata:
   name: argocd-repo-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-server/serviceaccount.yaml
 apiVersion: v1
@@ -71,13 +71,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/dex/serviceaccount.yaml
 apiVersion: v1
@@ -87,13 +87,13 @@ metadata:
   name: argocd-dex-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: dex-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-configs/argocd-notifications-secret.yaml
 apiVersion: v1
@@ -102,13 +102,13 @@ metadata:
   name: argocd-notifications-secret
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 type: Opaque
 stringData:
 ---
@@ -119,18 +119,18 @@ metadata:
   name: argocd-secret
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-secret
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 type: Opaque
 # Setting a blank data again will wipe admin password/key/cert
 data:
-  admin.password: JDJhJDEwJEV4QXhkR2FzbjR3ZG9IU0QzaTNjTU90YzZHejJYTjdSZm56dmpvQkhuSnZxYTdRN1V2N1Z5
-  admin.passwordMtime: MjAyMy0wNy0zMFQxOToyMjoxNlo=
+  admin.password: JDJhJDEwJHhJdHgxYmlKdTVRcWwuQU5mLzNDanUvbXhZRTA0V1VHNWUzSS9Nb1JweGJWU2RvRGdMTi9X
+  admin.passwordMtime: MjAyMy0wOC0yNlQxNjoyODo1N1o=
 ---
 # Source: argo-cd/templates/argocd-configs/repository-secret.yaml
 apiVersion: v1
@@ -140,15 +140,15 @@ metadata:
   namespace: "argocd"
   labels:
     argocd.argoproj.io/secret-type: repository
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
-  name: emJpYWxpay1rOHMtaW5mcmE=
+  name: emJpYWxpay1ob21lbGFi
   type: Z2l0
-  url: aHR0cHM6Ly9naXRodWIuY29tL3piaWFsaWsvazhzLWluZnJhLmdpdA==
+  url: aHR0cHM6Ly9naXRodWIuY29tL3piaWFsaWsvaG9tZWxhYi5naXQ=
 ---
 # Source: argo-cd/templates/argocd-configs/argocd-cm.yaml
 apiVersion: v1
@@ -157,13 +157,13 @@ metadata:
   name: argocd-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
   admin.enabled: "true"
   application.instanceLabelKey: argocd.argoproj.io/instance
@@ -179,13 +179,13 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-cmd-params-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
   applicationsetcontroller.enable.leader.election: "false"
   applicationsetcontroller.enable.progressive.syncs: "false"
@@ -208,7 +208,7 @@ data:
   server.dex.server: https://argocd-dex-server:5556
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
-  server.enable.gzip: "false"
+  server.enable.gzip: "true"
   server.insecure: "false"
   server.log.format: text
   server.log.level: info
@@ -224,12 +224,12 @@ metadata:
   name: argocd-gpg-keys-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-gpg-keys-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/argocd-configs/argocd-notifications-cm.yaml
 apiVersion: v1
@@ -238,13 +238,13 @@ metadata:
   name: argocd-notifications-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
   context: |
     argocdUrl:
@@ -256,13 +256,13 @@ metadata:
   name: argocd-rbac-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-rbac-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
   policy.csv: ""
   policy.default: ""
@@ -275,12 +275,12 @@ metadata:
   name: argocd-ssh-known-hosts-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-ssh-known-hosts-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 data:
   ssh_known_hosts: |
     [ssh.github.com]:443 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
@@ -305,12 +305,12 @@ metadata:
   name: argocd-tls-certs-cm
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-tls-certs-cm
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 ---
 # Source: argo-cd/templates/crds/crd-application.yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -603,8 +603,15 @@ spec:
                             type: array
                           values:
                             description: Values specifies Helm values to be passed
-                              to helm template, typically defined as a block
+                              to helm template, typically defined as a block. ValuesObject
+                              takes precedence over Values, so use one or the other.
                             type: string
+                          valuesObject:
+                            description: ValuesObject specifies Helm values to be
+                              passed to helm template, defined as a map. This takes
+                              precedence over Values.
+                            type: object
+                            x-kubernetes-preserve-unknown-fields: true
                           version:
                             description: Version is the Helm version to use for templating
                               ("3")
@@ -892,8 +899,15 @@ spec:
                               type: array
                             values:
                               description: Values specifies Helm values to be passed
-                                to helm template, typically defined as a block
+                                to helm template, typically defined as a block. ValuesObject
+                                takes precedence over Values, so use one or the other.
                               type: string
+                            valuesObject:
+                              description: ValuesObject specifies Helm values to be
+                                passed to helm template, defined as a map. This takes
+                                precedence over Values.
+                              type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             version:
                               description: Version is the Helm version to use for
                                 templating ("3")
@@ -1298,8 +1312,15 @@ spec:
                         type: array
                       values:
                         description: Values specifies Helm values to be passed to
-                          helm template, typically defined as a block
+                          helm template, typically defined as a block. ValuesObject
+                          takes precedence over Values, so use one or the other.
                         type: string
+                      valuesObject:
+                        description: ValuesObject specifies Helm values to be passed
+                          to helm template, defined as a map. This takes precedence
+                          over Values.
+                        type: object
+                        x-kubernetes-preserve-unknown-fields: true
                       version:
                         description: Version is the Helm version to use for templating
                           ("3")
@@ -1578,8 +1599,15 @@ spec:
                           type: array
                         values:
                           description: Values specifies Helm values to be passed to
-                            helm template, typically defined as a block
+                            helm template, typically defined as a block. ValuesObject
+                            takes precedence over Values, so use one or the other.
                           type: string
+                        valuesObject:
+                          description: ValuesObject specifies Helm values to be passed
+                            to helm template, defined as a map. This takes precedence
+                            over Values.
+                          type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         version:
                           description: Version is the Helm version to use for templating
                             ("3")
@@ -1744,7 +1772,7 @@ spec:
                           as part of automated sync (default: false)'
                         type: boolean
                       selfHeal:
-                        description: 'SelfHeal specifes whether to revert resources
+                        description: 'SelfHeal specifies whether to revert resources
                           back to their desired state upon modification in the cluster
                           (default: false)'
                         type: boolean
@@ -1808,7 +1836,7 @@ spec:
                   conditions
                 items:
                   description: ApplicationCondition contains details about an application
-                    condition, which is usally an error or warning
+                    condition, which is usually an error or warning
                   properties:
                     lastTransitionTime:
                       description: LastTransitionTime is the time the condition was
@@ -1827,6 +1855,10 @@ spec:
                   - type
                   type: object
                 type: array
+              controllerNamespace:
+                description: ControllerNamespace indicates the namespace in which
+                  the application controller is located
+                type: string
               health:
                 description: Health contains information about the application's current
                   health status
@@ -2006,8 +2038,15 @@ spec:
                               type: array
                             values:
                               description: Values specifies Helm values to be passed
-                                to helm template, typically defined as a block
+                                to helm template, typically defined as a block. ValuesObject
+                                takes precedence over Values, so use one or the other.
                               type: string
+                            valuesObject:
+                              description: ValuesObject specifies Helm values to be
+                                passed to helm template, defined as a map. This takes
+                                precedence over Values.
+                              type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             version:
                               description: Version is the Helm version to use for
                                 templating ("3")
@@ -2299,8 +2338,16 @@ spec:
                                 type: array
                               values:
                                 description: Values specifies Helm values to be passed
-                                  to helm template, typically defined as a block
+                                  to helm template, typically defined as a block.
+                                  ValuesObject takes precedence over Values, so use
+                                  one or the other.
                                 type: string
+                              valuesObject:
+                                description: ValuesObject specifies Helm values to
+                                  be passed to helm template, defined as a map. This
+                                  takes precedence over Values.
+                                type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               version:
                                 description: Version is the Helm version to use for
                                   templating ("3")
@@ -2737,8 +2784,15 @@ spec:
                                   values:
                                     description: Values specifies Helm values to be
                                       passed to helm template, typically defined as
-                                      a block
+                                      a block. ValuesObject takes precedence over
+                                      Values, so use one or the other.
                                     type: string
+                                  valuesObject:
+                                    description: ValuesObject specifies Helm values
+                                      to be passed to helm template, defined as a
+                                      map. This takes precedence over Values.
+                                    type: object
+                                    x-kubernetes-preserve-unknown-fields: true
                                   version:
                                     description: Version is the Helm version to use
                                       for templating ("3")
@@ -3046,8 +3100,15 @@ spec:
                                     values:
                                       description: Values specifies Helm values to
                                         be passed to helm template, typically defined
-                                        as a block
+                                        as a block. ValuesObject takes precedence
+                                        over Values, so use one or the other.
                                       type: string
+                                    valuesObject:
+                                      description: ValuesObject specifies Helm values
+                                        to be passed to helm template, defined as
+                                        a map. This takes precedence over Values.
+                                      type: object
+                                      x-kubernetes-preserve-unknown-fields: true
                                     version:
                                       description: Version is the Helm version to
                                         use for templating ("3")
@@ -3257,6 +3318,19 @@ spec:
                   syncResult:
                     description: SyncResult is the result of a Sync operation
                     properties:
+                      managedNamespaceMetadata:
+                        description: ManagedNamespaceMetadata contains the current
+                          sync state of managed namespace metadata
+                        properties:
+                          annotations:
+                            additionalProperties:
+                              type: string
+                            type: object
+                          labels:
+                            additionalProperties:
+                              type: string
+                            type: object
+                        type: object
                       resources:
                         description: Resources contains a list of sync result items
                           for each individual resource in a sync operation
@@ -3459,8 +3533,16 @@ spec:
                                 type: array
                               values:
                                 description: Values specifies Helm values to be passed
-                                  to helm template, typically defined as a block
+                                  to helm template, typically defined as a block.
+                                  ValuesObject takes precedence over Values, so use
+                                  one or the other.
                                 type: string
+                              valuesObject:
+                                description: ValuesObject specifies Helm values to
+                                  be passed to helm template, defined as a map. This
+                                  takes precedence over Values.
+                                type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               version:
                                 description: Version is the Helm version to use for
                                   templating ("3")
@@ -3763,8 +3845,15 @@ spec:
                                 values:
                                   description: Values specifies Helm values to be
                                     passed to helm template, typically defined as
-                                    a block
+                                    a block. ValuesObject takes precedence over Values,
+                                    so use one or the other.
                                   type: string
+                                valuesObject:
+                                  description: ValuesObject specifies Helm values
+                                    to be passed to helm template, defined as a map.
+                                    This takes precedence over Values.
+                                  type: object
+                                  x-kubernetes-preserve-unknown-fields: true
                                 version:
                                   description: Version is the Helm version to use
                                     for templating ("3")
@@ -4034,6 +4123,42 @@ spec:
                               and must be set to the Kubernetes control plane API
                             type: string
                         type: object
+                      ignoreDifferences:
+                        description: IgnoreDifferences is a reference to the application's
+                          ignored differences used for comparison
+                        items:
+                          description: ResourceIgnoreDifferences contains resource
+                            filter and list of json paths which should be ignored
+                            during comparison with live state.
+                          properties:
+                            group:
+                              type: string
+                            jqPathExpressions:
+                              items:
+                                type: string
+                              type: array
+                            jsonPointers:
+                              items:
+                                type: string
+                              type: array
+                            kind:
+                              type: string
+                            managedFieldsManagers:
+                              description: ManagedFieldsManagers is a list of trusted
+                                managers. Fields mutated by those managers will take
+                                precedence over the desired state defined in the SCM
+                                and won't be displayed in diffs
+                              items:
+                                type: string
+                              type: array
+                            name:
+                              type: string
+                            namespace:
+                              type: string
+                          required:
+                          - kind
+                          type: object
+                        type: array
                       source:
                         description: Source is a reference to the application's source
                           used for comparison
@@ -4172,8 +4297,16 @@ spec:
                                 type: array
                               values:
                                 description: Values specifies Helm values to be passed
-                                  to helm template, typically defined as a block
+                                  to helm template, typically defined as a block.
+                                  ValuesObject takes precedence over Values, so use
+                                  one or the other.
                                 type: string
+                              valuesObject:
+                                description: ValuesObject specifies Helm values to
+                                  be passed to helm template, defined as a map. This
+                                  takes precedence over Values.
+                                type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               version:
                                 description: Version is the Helm version to use for
                                   templating ("3")
@@ -4476,8 +4609,15 @@ spec:
                                 values:
                                   description: Values specifies Helm values to be
                                     passed to helm template, typically defined as
-                                    a block
+                                    a block. ValuesObject takes precedence over Values,
+                                    so use one or the other.
                                   type: string
+                                valuesObject:
+                                  description: ValuesObject specifies Helm values
+                                    to be passed to helm template, defined as a map.
+                                    This takes precedence over Values.
+                                  type: object
+                                  x-kubernetes-preserve-unknown-fields: true
                                 version:
                                   description: Version is the Helm version to use
                                     for templating ("3")
@@ -4695,6 +4835,8 @@ spec:
             type: object
           spec:
             properties:
+              applyNestedSelectors:
+                type: boolean
               generators:
                 items:
                   properties:
@@ -4890,6 +5032,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -5067,6 +5212,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -5403,6 +5551,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -5580,6 +5731,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -5920,6 +6074,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -6097,6 +6254,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -6240,6 +6400,10 @@ spec:
                           required:
                           - metadata
                           - spec
+                          type: object
+                        values:
+                          additionalProperties:
+                            type: string
                           type: object
                       required:
                       - repoURL
@@ -6413,6 +6577,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -6590,6 +6757,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -6934,6 +7104,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -7111,6 +7284,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -7447,6 +7623,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -7624,6 +7803,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -7964,6 +8146,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -8141,6 +8326,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -8284,6 +8472,10 @@ spec:
                                     required:
                                     - metadata
                                     - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
                                     type: object
                                 required:
                                 - repoURL
@@ -8457,6 +8649,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -8634,6 +8829,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -8785,8 +8983,595 @@ spec:
                                 x-kubernetes-preserve-unknown-fields: true
                               merge:
                                 x-kubernetes-preserve-unknown-fields: true
+                              plugin:
+                                properties:
+                                  configMapRef:
+                                    properties:
+                                      name:
+                                        type: string
+                                    required:
+                                    - name
+                                    type: object
+                                  input:
+                                    properties:
+                                      parameters:
+                                        additionalProperties:
+                                          x-kubernetes-preserve-unknown-fields: true
+                                        type: object
+                                    type: object
+                                  requeueAfterSeconds:
+                                    format: int64
+                                    type: integer
+                                  template:
+                                    properties:
+                                      metadata:
+                                        properties:
+                                          annotations:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          finalizers:
+                                            items:
+                                              type: string
+                                            type: array
+                                          labels:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          name:
+                                            type: string
+                                          namespace:
+                                            type: string
+                                        type: object
+                                      spec:
+                                        properties:
+                                          destination:
+                                            properties:
+                                              name:
+                                                type: string
+                                              namespace:
+                                                type: string
+                                              server:
+                                                type: string
+                                            type: object
+                                          ignoreDifferences:
+                                            items:
+                                              properties:
+                                                group:
+                                                  type: string
+                                                jqPathExpressions:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                jsonPointers:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                kind:
+                                                  type: string
+                                                managedFieldsManagers:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                name:
+                                                  type: string
+                                                namespace:
+                                                  type: string
+                                              required:
+                                              - kind
+                                              type: object
+                                            type: array
+                                          info:
+                                            items:
+                                              properties:
+                                                name:
+                                                  type: string
+                                                value:
+                                                  type: string
+                                              required:
+                                              - name
+                                              - value
+                                              type: object
+                                            type: array
+                                          project:
+                                            type: string
+                                          revisionHistoryLimit:
+                                            format: int64
+                                            type: integer
+                                          source:
+                                            properties:
+                                              chart:
+                                                type: string
+                                              directory:
+                                                properties:
+                                                  exclude:
+                                                    type: string
+                                                  include:
+                                                    type: string
+                                                  jsonnet:
+                                                    properties:
+                                                      extVars:
+                                                        items:
+                                                          properties:
+                                                            code:
+                                                              type: boolean
+                                                            name:
+                                                              type: string
+                                                            value:
+                                                              type: string
+                                                          required:
+                                                          - name
+                                                          - value
+                                                          type: object
+                                                        type: array
+                                                      libs:
+                                                        items:
+                                                          type: string
+                                                        type: array
+                                                      tlas:
+                                                        items:
+                                                          properties:
+                                                            code:
+                                                              type: boolean
+                                                            name:
+                                                              type: string
+                                                            value:
+                                                              type: string
+                                                          required:
+                                                          - name
+                                                          - value
+                                                          type: object
+                                                        type: array
+                                                    type: object
+                                                  recurse:
+                                                    type: boolean
+                                                type: object
+                                              helm:
+                                                properties:
+                                                  fileParameters:
+                                                    items:
+                                                      properties:
+                                                        name:
+                                                          type: string
+                                                        path:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                  ignoreMissingValueFiles:
+                                                    type: boolean
+                                                  parameters:
+                                                    items:
+                                                      properties:
+                                                        forceString:
+                                                          type: boolean
+                                                        name:
+                                                          type: string
+                                                        value:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                  passCredentials:
+                                                    type: boolean
+                                                  releaseName:
+                                                    type: string
+                                                  skipCrds:
+                                                    type: boolean
+                                                  valueFiles:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  values:
+                                                    type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
+                                                  version:
+                                                    type: string
+                                                type: object
+                                              kustomize:
+                                                properties:
+                                                  commonAnnotations:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  commonAnnotationsEnvsubst:
+                                                    type: boolean
+                                                  commonLabels:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  forceCommonAnnotations:
+                                                    type: boolean
+                                                  forceCommonLabels:
+                                                    type: boolean
+                                                  images:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  namePrefix:
+                                                    type: string
+                                                  nameSuffix:
+                                                    type: string
+                                                  namespace:
+                                                    type: string
+                                                  replicas:
+                                                    items:
+                                                      properties:
+                                                        count:
+                                                          anyOf:
+                                                          - type: integer
+                                                          - type: string
+                                                          x-kubernetes-int-or-string: true
+                                                        name:
+                                                          type: string
+                                                      required:
+                                                      - count
+                                                      - name
+                                                      type: object
+                                                    type: array
+                                                  version:
+                                                    type: string
+                                                type: object
+                                              path:
+                                                type: string
+                                              plugin:
+                                                properties:
+                                                  env:
+                                                    items:
+                                                      properties:
+                                                        name:
+                                                          type: string
+                                                        value:
+                                                          type: string
+                                                      required:
+                                                      - name
+                                                      - value
+                                                      type: object
+                                                    type: array
+                                                  name:
+                                                    type: string
+                                                  parameters:
+                                                    items:
+                                                      properties:
+                                                        array:
+                                                          items:
+                                                            type: string
+                                                          type: array
+                                                        map:
+                                                          additionalProperties:
+                                                            type: string
+                                                          type: object
+                                                        name:
+                                                          type: string
+                                                        string:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                type: object
+                                              ref:
+                                                type: string
+                                              repoURL:
+                                                type: string
+                                              targetRevision:
+                                                type: string
+                                            required:
+                                            - repoURL
+                                            type: object
+                                          sources:
+                                            items:
+                                              properties:
+                                                chart:
+                                                  type: string
+                                                directory:
+                                                  properties:
+                                                    exclude:
+                                                      type: string
+                                                    include:
+                                                      type: string
+                                                    jsonnet:
+                                                      properties:
+                                                        extVars:
+                                                          items:
+                                                            properties:
+                                                              code:
+                                                                type: boolean
+                                                              name:
+                                                                type: string
+                                                              value:
+                                                                type: string
+                                                            required:
+                                                            - name
+                                                            - value
+                                                            type: object
+                                                          type: array
+                                                        libs:
+                                                          items:
+                                                            type: string
+                                                          type: array
+                                                        tlas:
+                                                          items:
+                                                            properties:
+                                                              code:
+                                                                type: boolean
+                                                              name:
+                                                                type: string
+                                                              value:
+                                                                type: string
+                                                            required:
+                                                            - name
+                                                            - value
+                                                            type: object
+                                                          type: array
+                                                      type: object
+                                                    recurse:
+                                                      type: boolean
+                                                  type: object
+                                                helm:
+                                                  properties:
+                                                    fileParameters:
+                                                      items:
+                                                        properties:
+                                                          name:
+                                                            type: string
+                                                          path:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                    ignoreMissingValueFiles:
+                                                      type: boolean
+                                                    parameters:
+                                                      items:
+                                                        properties:
+                                                          forceString:
+                                                            type: boolean
+                                                          name:
+                                                            type: string
+                                                          value:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                    passCredentials:
+                                                      type: boolean
+                                                    releaseName:
+                                                      type: string
+                                                    skipCrds:
+                                                      type: boolean
+                                                    valueFiles:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    values:
+                                                      type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
+                                                    version:
+                                                      type: string
+                                                  type: object
+                                                kustomize:
+                                                  properties:
+                                                    commonAnnotations:
+                                                      additionalProperties:
+                                                        type: string
+                                                      type: object
+                                                    commonAnnotationsEnvsubst:
+                                                      type: boolean
+                                                    commonLabels:
+                                                      additionalProperties:
+                                                        type: string
+                                                      type: object
+                                                    forceCommonAnnotations:
+                                                      type: boolean
+                                                    forceCommonLabels:
+                                                      type: boolean
+                                                    images:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    namePrefix:
+                                                      type: string
+                                                    nameSuffix:
+                                                      type: string
+                                                    namespace:
+                                                      type: string
+                                                    replicas:
+                                                      items:
+                                                        properties:
+                                                          count:
+                                                            anyOf:
+                                                            - type: integer
+                                                            - type: string
+                                                            x-kubernetes-int-or-string: true
+                                                          name:
+                                                            type: string
+                                                        required:
+                                                        - count
+                                                        - name
+                                                        type: object
+                                                      type: array
+                                                    version:
+                                                      type: string
+                                                  type: object
+                                                path:
+                                                  type: string
+                                                plugin:
+                                                  properties:
+                                                    env:
+                                                      items:
+                                                        properties:
+                                                          name:
+                                                            type: string
+                                                          value:
+                                                            type: string
+                                                        required:
+                                                        - name
+                                                        - value
+                                                        type: object
+                                                      type: array
+                                                    name:
+                                                      type: string
+                                                    parameters:
+                                                      items:
+                                                        properties:
+                                                          array:
+                                                            items:
+                                                              type: string
+                                                            type: array
+                                                          map:
+                                                            additionalProperties:
+                                                              type: string
+                                                            type: object
+                                                          name:
+                                                            type: string
+                                                          string:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                  type: object
+                                                ref:
+                                                  type: string
+                                                repoURL:
+                                                  type: string
+                                                targetRevision:
+                                                  type: string
+                                              required:
+                                              - repoURL
+                                              type: object
+                                            type: array
+                                          syncPolicy:
+                                            properties:
+                                              automated:
+                                                properties:
+                                                  allowEmpty:
+                                                    type: boolean
+                                                  prune:
+                                                    type: boolean
+                                                  selfHeal:
+                                                    type: boolean
+                                                type: object
+                                              managedNamespaceMetadata:
+                                                properties:
+                                                  annotations:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  labels:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                type: object
+                                              retry:
+                                                properties:
+                                                  backoff:
+                                                    properties:
+                                                      duration:
+                                                        type: string
+                                                      factor:
+                                                        format: int64
+                                                        type: integer
+                                                      maxDuration:
+                                                        type: string
+                                                    type: object
+                                                  limit:
+                                                    format: int64
+                                                    type: integer
+                                                type: object
+                                              syncOptions:
+                                                items:
+                                                  type: string
+                                                type: array
+                                            type: object
+                                        required:
+                                        - destination
+                                        - project
+                                        type: object
+                                    required:
+                                    - metadata
+                                    - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
+                                    type: object
+                                required:
+                                - configMapRef
+                                type: object
                               pullRequest:
                                 properties:
+                                  azuredevops:
+                                    properties:
+                                      api:
+                                        type: string
+                                      labels:
+                                        items:
+                                          type: string
+                                        type: array
+                                      organization:
+                                        type: string
+                                      project:
+                                        type: string
+                                      repo:
+                                        type: string
+                                      tokenRef:
+                                        properties:
+                                          key:
+                                            type: string
+                                          secretName:
+                                            type: string
+                                        required:
+                                        - key
+                                        - secretName
+                                        type: object
+                                    required:
+                                    - organization
+                                    - project
+                                    - repo
+                                    type: object
+                                  bitbucket:
+                                    properties:
+                                      api:
+                                        type: string
+                                      basicAuth:
+                                        properties:
+                                          passwordRef:
+                                            properties:
+                                              key:
+                                                type: string
+                                              secretName:
+                                                type: string
+                                            required:
+                                            - key
+                                            - secretName
+                                            type: object
+                                          username:
+                                            type: string
+                                        required:
+                                        - passwordRef
+                                        - username
+                                        type: object
+                                      bearerToken:
+                                        properties:
+                                          tokenRef:
+                                            properties:
+                                              key:
+                                                type: string
+                                              secretName:
+                                                type: string
+                                            required:
+                                            - key
+                                            - secretName
+                                            type: object
+                                        required:
+                                        - tokenRef
+                                        type: object
+                                      owner:
+                                        type: string
+                                      repo:
+                                        type: string
+                                    required:
+                                    - owner
+                                    - repo
+                                    type: object
                                   bitbucketServer:
                                     properties:
                                       api:
@@ -8822,6 +9607,8 @@ spec:
                                     items:
                                       properties:
                                         branchMatch:
+                                          type: string
+                                        targetBranchMatch:
                                           type: string
                                       type: object
                                     type: array
@@ -8882,6 +9669,8 @@ spec:
                                     properties:
                                       api:
                                         type: string
+                                      insecure:
+                                        type: boolean
                                       labels:
                                         items:
                                           type: string
@@ -9066,6 +9855,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -9243,6 +10035,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -9390,6 +10185,26 @@ spec:
                                 type: object
                               scmProvider:
                                 properties:
+                                  awsCodeCommit:
+                                    properties:
+                                      allBranches:
+                                        type: boolean
+                                      region:
+                                        type: string
+                                      role:
+                                        type: string
+                                      tagFilters:
+                                        items:
+                                          properties:
+                                            key:
+                                              type: string
+                                            value:
+                                              type: string
+                                          required:
+                                          - key
+                                          type: object
+                                        type: array
+                                    type: object
                                   azureDevOps:
                                     properties:
                                       accessTokenRef:
@@ -9545,6 +10360,8 @@ spec:
                                       group:
                                         type: string
                                       includeSubgroups:
+                                        type: boolean
+                                      insecure:
                                         type: boolean
                                       tokenRef:
                                         properties:
@@ -9722,6 +10539,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -9899,6 +10719,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -10042,6 +10865,10 @@ spec:
                                     required:
                                     - metadata
                                     - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
                                     type: object
                                 type: object
                               selector:
@@ -10229,6 +11056,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -10406,6 +11236,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -10750,6 +11583,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -10927,6 +11763,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -11263,6 +12102,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -11440,6 +12282,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -11780,6 +12625,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -11957,6 +12805,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -12100,6 +12951,10 @@ spec:
                                     required:
                                     - metadata
                                     - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
                                     type: object
                                 required:
                                 - repoURL
@@ -12273,6 +13128,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -12450,6 +13308,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -12601,8 +13462,595 @@ spec:
                                 x-kubernetes-preserve-unknown-fields: true
                               merge:
                                 x-kubernetes-preserve-unknown-fields: true
+                              plugin:
+                                properties:
+                                  configMapRef:
+                                    properties:
+                                      name:
+                                        type: string
+                                    required:
+                                    - name
+                                    type: object
+                                  input:
+                                    properties:
+                                      parameters:
+                                        additionalProperties:
+                                          x-kubernetes-preserve-unknown-fields: true
+                                        type: object
+                                    type: object
+                                  requeueAfterSeconds:
+                                    format: int64
+                                    type: integer
+                                  template:
+                                    properties:
+                                      metadata:
+                                        properties:
+                                          annotations:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          finalizers:
+                                            items:
+                                              type: string
+                                            type: array
+                                          labels:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          name:
+                                            type: string
+                                          namespace:
+                                            type: string
+                                        type: object
+                                      spec:
+                                        properties:
+                                          destination:
+                                            properties:
+                                              name:
+                                                type: string
+                                              namespace:
+                                                type: string
+                                              server:
+                                                type: string
+                                            type: object
+                                          ignoreDifferences:
+                                            items:
+                                              properties:
+                                                group:
+                                                  type: string
+                                                jqPathExpressions:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                jsonPointers:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                kind:
+                                                  type: string
+                                                managedFieldsManagers:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                name:
+                                                  type: string
+                                                namespace:
+                                                  type: string
+                                              required:
+                                              - kind
+                                              type: object
+                                            type: array
+                                          info:
+                                            items:
+                                              properties:
+                                                name:
+                                                  type: string
+                                                value:
+                                                  type: string
+                                              required:
+                                              - name
+                                              - value
+                                              type: object
+                                            type: array
+                                          project:
+                                            type: string
+                                          revisionHistoryLimit:
+                                            format: int64
+                                            type: integer
+                                          source:
+                                            properties:
+                                              chart:
+                                                type: string
+                                              directory:
+                                                properties:
+                                                  exclude:
+                                                    type: string
+                                                  include:
+                                                    type: string
+                                                  jsonnet:
+                                                    properties:
+                                                      extVars:
+                                                        items:
+                                                          properties:
+                                                            code:
+                                                              type: boolean
+                                                            name:
+                                                              type: string
+                                                            value:
+                                                              type: string
+                                                          required:
+                                                          - name
+                                                          - value
+                                                          type: object
+                                                        type: array
+                                                      libs:
+                                                        items:
+                                                          type: string
+                                                        type: array
+                                                      tlas:
+                                                        items:
+                                                          properties:
+                                                            code:
+                                                              type: boolean
+                                                            name:
+                                                              type: string
+                                                            value:
+                                                              type: string
+                                                          required:
+                                                          - name
+                                                          - value
+                                                          type: object
+                                                        type: array
+                                                    type: object
+                                                  recurse:
+                                                    type: boolean
+                                                type: object
+                                              helm:
+                                                properties:
+                                                  fileParameters:
+                                                    items:
+                                                      properties:
+                                                        name:
+                                                          type: string
+                                                        path:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                  ignoreMissingValueFiles:
+                                                    type: boolean
+                                                  parameters:
+                                                    items:
+                                                      properties:
+                                                        forceString:
+                                                          type: boolean
+                                                        name:
+                                                          type: string
+                                                        value:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                  passCredentials:
+                                                    type: boolean
+                                                  releaseName:
+                                                    type: string
+                                                  skipCrds:
+                                                    type: boolean
+                                                  valueFiles:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  values:
+                                                    type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
+                                                  version:
+                                                    type: string
+                                                type: object
+                                              kustomize:
+                                                properties:
+                                                  commonAnnotations:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  commonAnnotationsEnvsubst:
+                                                    type: boolean
+                                                  commonLabels:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  forceCommonAnnotations:
+                                                    type: boolean
+                                                  forceCommonLabels:
+                                                    type: boolean
+                                                  images:
+                                                    items:
+                                                      type: string
+                                                    type: array
+                                                  namePrefix:
+                                                    type: string
+                                                  nameSuffix:
+                                                    type: string
+                                                  namespace:
+                                                    type: string
+                                                  replicas:
+                                                    items:
+                                                      properties:
+                                                        count:
+                                                          anyOf:
+                                                          - type: integer
+                                                          - type: string
+                                                          x-kubernetes-int-or-string: true
+                                                        name:
+                                                          type: string
+                                                      required:
+                                                      - count
+                                                      - name
+                                                      type: object
+                                                    type: array
+                                                  version:
+                                                    type: string
+                                                type: object
+                                              path:
+                                                type: string
+                                              plugin:
+                                                properties:
+                                                  env:
+                                                    items:
+                                                      properties:
+                                                        name:
+                                                          type: string
+                                                        value:
+                                                          type: string
+                                                      required:
+                                                      - name
+                                                      - value
+                                                      type: object
+                                                    type: array
+                                                  name:
+                                                    type: string
+                                                  parameters:
+                                                    items:
+                                                      properties:
+                                                        array:
+                                                          items:
+                                                            type: string
+                                                          type: array
+                                                        map:
+                                                          additionalProperties:
+                                                            type: string
+                                                          type: object
+                                                        name:
+                                                          type: string
+                                                        string:
+                                                          type: string
+                                                      type: object
+                                                    type: array
+                                                type: object
+                                              ref:
+                                                type: string
+                                              repoURL:
+                                                type: string
+                                              targetRevision:
+                                                type: string
+                                            required:
+                                            - repoURL
+                                            type: object
+                                          sources:
+                                            items:
+                                              properties:
+                                                chart:
+                                                  type: string
+                                                directory:
+                                                  properties:
+                                                    exclude:
+                                                      type: string
+                                                    include:
+                                                      type: string
+                                                    jsonnet:
+                                                      properties:
+                                                        extVars:
+                                                          items:
+                                                            properties:
+                                                              code:
+                                                                type: boolean
+                                                              name:
+                                                                type: string
+                                                              value:
+                                                                type: string
+                                                            required:
+                                                            - name
+                                                            - value
+                                                            type: object
+                                                          type: array
+                                                        libs:
+                                                          items:
+                                                            type: string
+                                                          type: array
+                                                        tlas:
+                                                          items:
+                                                            properties:
+                                                              code:
+                                                                type: boolean
+                                                              name:
+                                                                type: string
+                                                              value:
+                                                                type: string
+                                                            required:
+                                                            - name
+                                                            - value
+                                                            type: object
+                                                          type: array
+                                                      type: object
+                                                    recurse:
+                                                      type: boolean
+                                                  type: object
+                                                helm:
+                                                  properties:
+                                                    fileParameters:
+                                                      items:
+                                                        properties:
+                                                          name:
+                                                            type: string
+                                                          path:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                    ignoreMissingValueFiles:
+                                                      type: boolean
+                                                    parameters:
+                                                      items:
+                                                        properties:
+                                                          forceString:
+                                                            type: boolean
+                                                          name:
+                                                            type: string
+                                                          value:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                    passCredentials:
+                                                      type: boolean
+                                                    releaseName:
+                                                      type: string
+                                                    skipCrds:
+                                                      type: boolean
+                                                    valueFiles:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    values:
+                                                      type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
+                                                    version:
+                                                      type: string
+                                                  type: object
+                                                kustomize:
+                                                  properties:
+                                                    commonAnnotations:
+                                                      additionalProperties:
+                                                        type: string
+                                                      type: object
+                                                    commonAnnotationsEnvsubst:
+                                                      type: boolean
+                                                    commonLabels:
+                                                      additionalProperties:
+                                                        type: string
+                                                      type: object
+                                                    forceCommonAnnotations:
+                                                      type: boolean
+                                                    forceCommonLabels:
+                                                      type: boolean
+                                                    images:
+                                                      items:
+                                                        type: string
+                                                      type: array
+                                                    namePrefix:
+                                                      type: string
+                                                    nameSuffix:
+                                                      type: string
+                                                    namespace:
+                                                      type: string
+                                                    replicas:
+                                                      items:
+                                                        properties:
+                                                          count:
+                                                            anyOf:
+                                                            - type: integer
+                                                            - type: string
+                                                            x-kubernetes-int-or-string: true
+                                                          name:
+                                                            type: string
+                                                        required:
+                                                        - count
+                                                        - name
+                                                        type: object
+                                                      type: array
+                                                    version:
+                                                      type: string
+                                                  type: object
+                                                path:
+                                                  type: string
+                                                plugin:
+                                                  properties:
+                                                    env:
+                                                      items:
+                                                        properties:
+                                                          name:
+                                                            type: string
+                                                          value:
+                                                            type: string
+                                                        required:
+                                                        - name
+                                                        - value
+                                                        type: object
+                                                      type: array
+                                                    name:
+                                                      type: string
+                                                    parameters:
+                                                      items:
+                                                        properties:
+                                                          array:
+                                                            items:
+                                                              type: string
+                                                            type: array
+                                                          map:
+                                                            additionalProperties:
+                                                              type: string
+                                                            type: object
+                                                          name:
+                                                            type: string
+                                                          string:
+                                                            type: string
+                                                        type: object
+                                                      type: array
+                                                  type: object
+                                                ref:
+                                                  type: string
+                                                repoURL:
+                                                  type: string
+                                                targetRevision:
+                                                  type: string
+                                              required:
+                                              - repoURL
+                                              type: object
+                                            type: array
+                                          syncPolicy:
+                                            properties:
+                                              automated:
+                                                properties:
+                                                  allowEmpty:
+                                                    type: boolean
+                                                  prune:
+                                                    type: boolean
+                                                  selfHeal:
+                                                    type: boolean
+                                                type: object
+                                              managedNamespaceMetadata:
+                                                properties:
+                                                  annotations:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                  labels:
+                                                    additionalProperties:
+                                                      type: string
+                                                    type: object
+                                                type: object
+                                              retry:
+                                                properties:
+                                                  backoff:
+                                                    properties:
+                                                      duration:
+                                                        type: string
+                                                      factor:
+                                                        format: int64
+                                                        type: integer
+                                                      maxDuration:
+                                                        type: string
+                                                    type: object
+                                                  limit:
+                                                    format: int64
+                                                    type: integer
+                                                type: object
+                                              syncOptions:
+                                                items:
+                                                  type: string
+                                                type: array
+                                            type: object
+                                        required:
+                                        - destination
+                                        - project
+                                        type: object
+                                    required:
+                                    - metadata
+                                    - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
+                                    type: object
+                                required:
+                                - configMapRef
+                                type: object
                               pullRequest:
                                 properties:
+                                  azuredevops:
+                                    properties:
+                                      api:
+                                        type: string
+                                      labels:
+                                        items:
+                                          type: string
+                                        type: array
+                                      organization:
+                                        type: string
+                                      project:
+                                        type: string
+                                      repo:
+                                        type: string
+                                      tokenRef:
+                                        properties:
+                                          key:
+                                            type: string
+                                          secretName:
+                                            type: string
+                                        required:
+                                        - key
+                                        - secretName
+                                        type: object
+                                    required:
+                                    - organization
+                                    - project
+                                    - repo
+                                    type: object
+                                  bitbucket:
+                                    properties:
+                                      api:
+                                        type: string
+                                      basicAuth:
+                                        properties:
+                                          passwordRef:
+                                            properties:
+                                              key:
+                                                type: string
+                                              secretName:
+                                                type: string
+                                            required:
+                                            - key
+                                            - secretName
+                                            type: object
+                                          username:
+                                            type: string
+                                        required:
+                                        - passwordRef
+                                        - username
+                                        type: object
+                                      bearerToken:
+                                        properties:
+                                          tokenRef:
+                                            properties:
+                                              key:
+                                                type: string
+                                              secretName:
+                                                type: string
+                                            required:
+                                            - key
+                                            - secretName
+                                            type: object
+                                        required:
+                                        - tokenRef
+                                        type: object
+                                      owner:
+                                        type: string
+                                      repo:
+                                        type: string
+                                    required:
+                                    - owner
+                                    - repo
+                                    type: object
                                   bitbucketServer:
                                     properties:
                                       api:
@@ -12638,6 +14086,8 @@ spec:
                                     items:
                                       properties:
                                         branchMatch:
+                                          type: string
+                                        targetBranchMatch:
                                           type: string
                                       type: object
                                     type: array
@@ -12698,6 +14148,8 @@ spec:
                                     properties:
                                       api:
                                         type: string
+                                      insecure:
+                                        type: boolean
                                       labels:
                                         items:
                                           type: string
@@ -12882,6 +14334,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -13059,6 +14514,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -13206,6 +14664,26 @@ spec:
                                 type: object
                               scmProvider:
                                 properties:
+                                  awsCodeCommit:
+                                    properties:
+                                      allBranches:
+                                        type: boolean
+                                      region:
+                                        type: string
+                                      role:
+                                        type: string
+                                      tagFilters:
+                                        items:
+                                          properties:
+                                            key:
+                                              type: string
+                                            value:
+                                              type: string
+                                          required:
+                                          - key
+                                          type: object
+                                        type: array
+                                    type: object
                                   azureDevOps:
                                     properties:
                                       accessTokenRef:
@@ -13361,6 +14839,8 @@ spec:
                                       group:
                                         type: string
                                       includeSubgroups:
+                                        type: boolean
+                                      insecure:
                                         type: boolean
                                       tokenRef:
                                         properties:
@@ -13538,6 +15018,9 @@ spec:
                                                     type: array
                                                   values:
                                                     type: string
+                                                  valuesObject:
+                                                    type: object
+                                                    x-kubernetes-preserve-unknown-fields: true
                                                   version:
                                                     type: string
                                                 type: object
@@ -13715,6 +15198,9 @@ spec:
                                                       type: array
                                                     values:
                                                       type: string
+                                                    valuesObject:
+                                                      type: object
+                                                      x-kubernetes-preserve-unknown-fields: true
                                                     version:
                                                       type: string
                                                   type: object
@@ -13858,6 +15344,10 @@ spec:
                                     required:
                                     - metadata
                                     - spec
+                                    type: object
+                                  values:
+                                    additionalProperties:
+                                      type: string
                                     type: object
                                 type: object
                               selector:
@@ -14049,6 +15539,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -14226,6 +15719,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -14374,8 +15870,595 @@ spec:
                       - generators
                       - mergeKeys
                       type: object
+                    plugin:
+                      properties:
+                        configMapRef:
+                          properties:
+                            name:
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        input:
+                          properties:
+                            parameters:
+                              additionalProperties:
+                                x-kubernetes-preserve-unknown-fields: true
+                              type: object
+                          type: object
+                        requeueAfterSeconds:
+                          format: int64
+                          type: integer
+                        template:
+                          properties:
+                            metadata:
+                              properties:
+                                annotations:
+                                  additionalProperties:
+                                    type: string
+                                  type: object
+                                finalizers:
+                                  items:
+                                    type: string
+                                  type: array
+                                labels:
+                                  additionalProperties:
+                                    type: string
+                                  type: object
+                                name:
+                                  type: string
+                                namespace:
+                                  type: string
+                              type: object
+                            spec:
+                              properties:
+                                destination:
+                                  properties:
+                                    name:
+                                      type: string
+                                    namespace:
+                                      type: string
+                                    server:
+                                      type: string
+                                  type: object
+                                ignoreDifferences:
+                                  items:
+                                    properties:
+                                      group:
+                                        type: string
+                                      jqPathExpressions:
+                                        items:
+                                          type: string
+                                        type: array
+                                      jsonPointers:
+                                        items:
+                                          type: string
+                                        type: array
+                                      kind:
+                                        type: string
+                                      managedFieldsManagers:
+                                        items:
+                                          type: string
+                                        type: array
+                                      name:
+                                        type: string
+                                      namespace:
+                                        type: string
+                                    required:
+                                    - kind
+                                    type: object
+                                  type: array
+                                info:
+                                  items:
+                                    properties:
+                                      name:
+                                        type: string
+                                      value:
+                                        type: string
+                                    required:
+                                    - name
+                                    - value
+                                    type: object
+                                  type: array
+                                project:
+                                  type: string
+                                revisionHistoryLimit:
+                                  format: int64
+                                  type: integer
+                                source:
+                                  properties:
+                                    chart:
+                                      type: string
+                                    directory:
+                                      properties:
+                                        exclude:
+                                          type: string
+                                        include:
+                                          type: string
+                                        jsonnet:
+                                          properties:
+                                            extVars:
+                                              items:
+                                                properties:
+                                                  code:
+                                                    type: boolean
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                            libs:
+                                              items:
+                                                type: string
+                                              type: array
+                                            tlas:
+                                              items:
+                                                properties:
+                                                  code:
+                                                    type: boolean
+                                                  name:
+                                                    type: string
+                                                  value:
+                                                    type: string
+                                                required:
+                                                - name
+                                                - value
+                                                type: object
+                                              type: array
+                                          type: object
+                                        recurse:
+                                          type: boolean
+                                      type: object
+                                    helm:
+                                      properties:
+                                        fileParameters:
+                                          items:
+                                            properties:
+                                              name:
+                                                type: string
+                                              path:
+                                                type: string
+                                            type: object
+                                          type: array
+                                        ignoreMissingValueFiles:
+                                          type: boolean
+                                        parameters:
+                                          items:
+                                            properties:
+                                              forceString:
+                                                type: boolean
+                                              name:
+                                                type: string
+                                              value:
+                                                type: string
+                                            type: object
+                                          type: array
+                                        passCredentials:
+                                          type: boolean
+                                        releaseName:
+                                          type: string
+                                        skipCrds:
+                                          type: boolean
+                                        valueFiles:
+                                          items:
+                                            type: string
+                                          type: array
+                                        values:
+                                          type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
+                                        version:
+                                          type: string
+                                      type: object
+                                    kustomize:
+                                      properties:
+                                        commonAnnotations:
+                                          additionalProperties:
+                                            type: string
+                                          type: object
+                                        commonAnnotationsEnvsubst:
+                                          type: boolean
+                                        commonLabels:
+                                          additionalProperties:
+                                            type: string
+                                          type: object
+                                        forceCommonAnnotations:
+                                          type: boolean
+                                        forceCommonLabels:
+                                          type: boolean
+                                        images:
+                                          items:
+                                            type: string
+                                          type: array
+                                        namePrefix:
+                                          type: string
+                                        nameSuffix:
+                                          type: string
+                                        namespace:
+                                          type: string
+                                        replicas:
+                                          items:
+                                            properties:
+                                              count:
+                                                anyOf:
+                                                - type: integer
+                                                - type: string
+                                                x-kubernetes-int-or-string: true
+                                              name:
+                                                type: string
+                                            required:
+                                            - count
+                                            - name
+                                            type: object
+                                          type: array
+                                        version:
+                                          type: string
+                                      type: object
+                                    path:
+                                      type: string
+                                    plugin:
+                                      properties:
+                                        env:
+                                          items:
+                                            properties:
+                                              name:
+                                                type: string
+                                              value:
+                                                type: string
+                                            required:
+                                            - name
+                                            - value
+                                            type: object
+                                          type: array
+                                        name:
+                                          type: string
+                                        parameters:
+                                          items:
+                                            properties:
+                                              array:
+                                                items:
+                                                  type: string
+                                                type: array
+                                              map:
+                                                additionalProperties:
+                                                  type: string
+                                                type: object
+                                              name:
+                                                type: string
+                                              string:
+                                                type: string
+                                            type: object
+                                          type: array
+                                      type: object
+                                    ref:
+                                      type: string
+                                    repoURL:
+                                      type: string
+                                    targetRevision:
+                                      type: string
+                                  required:
+                                  - repoURL
+                                  type: object
+                                sources:
+                                  items:
+                                    properties:
+                                      chart:
+                                        type: string
+                                      directory:
+                                        properties:
+                                          exclude:
+                                            type: string
+                                          include:
+                                            type: string
+                                          jsonnet:
+                                            properties:
+                                              extVars:
+                                                items:
+                                                  properties:
+                                                    code:
+                                                      type: boolean
+                                                    name:
+                                                      type: string
+                                                    value:
+                                                      type: string
+                                                  required:
+                                                  - name
+                                                  - value
+                                                  type: object
+                                                type: array
+                                              libs:
+                                                items:
+                                                  type: string
+                                                type: array
+                                              tlas:
+                                                items:
+                                                  properties:
+                                                    code:
+                                                      type: boolean
+                                                    name:
+                                                      type: string
+                                                    value:
+                                                      type: string
+                                                  required:
+                                                  - name
+                                                  - value
+                                                  type: object
+                                                type: array
+                                            type: object
+                                          recurse:
+                                            type: boolean
+                                        type: object
+                                      helm:
+                                        properties:
+                                          fileParameters:
+                                            items:
+                                              properties:
+                                                name:
+                                                  type: string
+                                                path:
+                                                  type: string
+                                              type: object
+                                            type: array
+                                          ignoreMissingValueFiles:
+                                            type: boolean
+                                          parameters:
+                                            items:
+                                              properties:
+                                                forceString:
+                                                  type: boolean
+                                                name:
+                                                  type: string
+                                                value:
+                                                  type: string
+                                              type: object
+                                            type: array
+                                          passCredentials:
+                                            type: boolean
+                                          releaseName:
+                                            type: string
+                                          skipCrds:
+                                            type: boolean
+                                          valueFiles:
+                                            items:
+                                              type: string
+                                            type: array
+                                          values:
+                                            type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
+                                          version:
+                                            type: string
+                                        type: object
+                                      kustomize:
+                                        properties:
+                                          commonAnnotations:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          commonAnnotationsEnvsubst:
+                                            type: boolean
+                                          commonLabels:
+                                            additionalProperties:
+                                              type: string
+                                            type: object
+                                          forceCommonAnnotations:
+                                            type: boolean
+                                          forceCommonLabels:
+                                            type: boolean
+                                          images:
+                                            items:
+                                              type: string
+                                            type: array
+                                          namePrefix:
+                                            type: string
+                                          nameSuffix:
+                                            type: string
+                                          namespace:
+                                            type: string
+                                          replicas:
+                                            items:
+                                              properties:
+                                                count:
+                                                  anyOf:
+                                                  - type: integer
+                                                  - type: string
+                                                  x-kubernetes-int-or-string: true
+                                                name:
+                                                  type: string
+                                              required:
+                                              - count
+                                              - name
+                                              type: object
+                                            type: array
+                                          version:
+                                            type: string
+                                        type: object
+                                      path:
+                                        type: string
+                                      plugin:
+                                        properties:
+                                          env:
+                                            items:
+                                              properties:
+                                                name:
+                                                  type: string
+                                                value:
+                                                  type: string
+                                              required:
+                                              - name
+                                              - value
+                                              type: object
+                                            type: array
+                                          name:
+                                            type: string
+                                          parameters:
+                                            items:
+                                              properties:
+                                                array:
+                                                  items:
+                                                    type: string
+                                                  type: array
+                                                map:
+                                                  additionalProperties:
+                                                    type: string
+                                                  type: object
+                                                name:
+                                                  type: string
+                                                string:
+                                                  type: string
+                                              type: object
+                                            type: array
+                                        type: object
+                                      ref:
+                                        type: string
+                                      repoURL:
+                                        type: string
+                                      targetRevision:
+                                        type: string
+                                    required:
+                                    - repoURL
+                                    type: object
+                                  type: array
+                                syncPolicy:
+                                  properties:
+                                    automated:
+                                      properties:
+                                        allowEmpty:
+                                          type: boolean
+                                        prune:
+                                          type: boolean
+                                        selfHeal:
+                                          type: boolean
+                                      type: object
+                                    managedNamespaceMetadata:
+                                      properties:
+                                        annotations:
+                                          additionalProperties:
+                                            type: string
+                                          type: object
+                                        labels:
+                                          additionalProperties:
+                                            type: string
+                                          type: object
+                                      type: object
+                                    retry:
+                                      properties:
+                                        backoff:
+                                          properties:
+                                            duration:
+                                              type: string
+                                            factor:
+                                              format: int64
+                                              type: integer
+                                            maxDuration:
+                                              type: string
+                                          type: object
+                                        limit:
+                                          format: int64
+                                          type: integer
+                                      type: object
+                                    syncOptions:
+                                      items:
+                                        type: string
+                                      type: array
+                                  type: object
+                              required:
+                              - destination
+                              - project
+                              type: object
+                          required:
+                          - metadata
+                          - spec
+                          type: object
+                        values:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      required:
+                      - configMapRef
+                      type: object
                     pullRequest:
                       properties:
+                        azuredevops:
+                          properties:
+                            api:
+                              type: string
+                            labels:
+                              items:
+                                type: string
+                              type: array
+                            organization:
+                              type: string
+                            project:
+                              type: string
+                            repo:
+                              type: string
+                            tokenRef:
+                              properties:
+                                key:
+                                  type: string
+                                secretName:
+                                  type: string
+                              required:
+                              - key
+                              - secretName
+                              type: object
+                          required:
+                          - organization
+                          - project
+                          - repo
+                          type: object
+                        bitbucket:
+                          properties:
+                            api:
+                              type: string
+                            basicAuth:
+                              properties:
+                                passwordRef:
+                                  properties:
+                                    key:
+                                      type: string
+                                    secretName:
+                                      type: string
+                                  required:
+                                  - key
+                                  - secretName
+                                  type: object
+                                username:
+                                  type: string
+                              required:
+                              - passwordRef
+                              - username
+                              type: object
+                            bearerToken:
+                              properties:
+                                tokenRef:
+                                  properties:
+                                    key:
+                                      type: string
+                                    secretName:
+                                      type: string
+                                  required:
+                                  - key
+                                  - secretName
+                                  type: object
+                              required:
+                              - tokenRef
+                              type: object
+                            owner:
+                              type: string
+                            repo:
+                              type: string
+                          required:
+                          - owner
+                          - repo
+                          type: object
                         bitbucketServer:
                           properties:
                             api:
@@ -14411,6 +16494,8 @@ spec:
                           items:
                             properties:
                               branchMatch:
+                                type: string
+                              targetBranchMatch:
                                 type: string
                             type: object
                           type: array
@@ -14471,6 +16556,8 @@ spec:
                           properties:
                             api:
                               type: string
+                            insecure:
+                              type: boolean
                             labels:
                               items:
                                 type: string
@@ -14655,6 +16742,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -14832,6 +16922,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -14979,6 +17072,26 @@ spec:
                       type: object
                     scmProvider:
                       properties:
+                        awsCodeCommit:
+                          properties:
+                            allBranches:
+                              type: boolean
+                            region:
+                              type: string
+                            role:
+                              type: string
+                            tagFilters:
+                              items:
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                required:
+                                - key
+                                type: object
+                              type: array
+                          type: object
                         azureDevOps:
                           properties:
                             accessTokenRef:
@@ -15134,6 +17247,8 @@ spec:
                             group:
                               type: string
                             includeSubgroups:
+                              type: boolean
+                            insecure:
                               type: boolean
                             tokenRef:
                               properties:
@@ -15311,6 +17426,9 @@ spec:
                                           type: array
                                         values:
                                           type: string
+                                        valuesObject:
+                                          type: object
+                                          x-kubernetes-preserve-unknown-fields: true
                                         version:
                                           type: string
                                       type: object
@@ -15488,6 +17606,9 @@ spec:
                                             type: array
                                           values:
                                             type: string
+                                          valuesObject:
+                                            type: object
+                                            x-kubernetes-preserve-unknown-fields: true
                                           version:
                                             type: string
                                         type: object
@@ -15632,6 +17753,10 @@ spec:
                           - metadata
                           - spec
                           type: object
+                        values:
+                          additionalProperties:
+                            type: string
+                          type: object
                       type: object
                     selector:
                       properties:
@@ -15660,6 +17785,10 @@ spec:
                 type: array
               goTemplate:
                 type: boolean
+              goTemplateOptions:
+                items:
+                  type: string
+                type: array
               preservedFields:
                 properties:
                   annotations:
@@ -15700,6 +17829,13 @@ spec:
                 type: object
               syncPolicy:
                 properties:
+                  applicationsSync:
+                    enum:
+                    - create-only
+                    - create-update
+                    - create-delete
+                    - sync
+                    type: string
                   preserveResourcesOnDeletion:
                     type: boolean
                 type: object
@@ -15863,6 +17999,9 @@ spec:
                                 type: array
                               values:
                                 type: string
+                              valuesObject:
+                                type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               version:
                                 type: string
                             type: object
@@ -16040,6 +18179,9 @@ spec:
                                   type: array
                                 values:
                                   type: string
+                                valuesObject:
+                                  type: object
+                                  x-kubernetes-preserve-unknown-fields: true
                                 version:
                                   type: string
                               type: object
@@ -16574,13 +18716,13 @@ kind: ClusterRole
 metadata:
   name: argocd-application-controller
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
   - apiGroups:
     - '*'
@@ -16599,13 +18741,13 @@ kind: ClusterRole
 metadata:
   name: argocd-repo-server
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
   - apiGroups:
     - '*'
@@ -16624,13 +18766,13 @@ kind: ClusterRole
 metadata:
   name: argocd-server
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
   - apiGroups:
       - '*'
@@ -16662,6 +18804,18 @@ rules:
       - list
       - update
       - watch
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - create
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - workflows
+    verbs:
+      - create
 ---
 # Source: argo-cd/templates/argocd-application-controller/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -16669,13 +18823,13 @@ kind: ClusterRoleBinding
 metadata:
   name: argocd-application-controller
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -16691,13 +18845,13 @@ kind: ClusterRoleBinding
 metadata:
   name: argocd-repo-server
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -16713,13 +18867,13 @@ kind: ClusterRoleBinding
 metadata:
   name: argocd-server
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -16736,13 +18890,13 @@ metadata:
   name: argocd-application-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
 - apiGroups:
   - ""
@@ -16781,13 +18935,13 @@ metadata:
   name: argocd-applicationset-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: applicationset-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
   - apiGroups:
     - argoproj.io
@@ -16876,13 +19030,13 @@ metadata:
   name: argocd-notifications-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
 - apiGroups:
   - argoproj.io
@@ -16927,13 +19081,13 @@ metadata:
   name: argocd-repo-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
 ---
 # Source: argo-cd/templates/argocd-server/role.yaml
@@ -16943,13 +19097,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
 - apiGroups:
   - ""
@@ -16993,13 +19147,13 @@ metadata:
   name: argocd-dex-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: dex-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 rules:
 - apiGroups:
   - ""
@@ -17018,13 +19172,13 @@ metadata:
   name: argocd-application-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17041,13 +19195,13 @@ metadata:
   name: argocd-applicationset-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: applicationset-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17064,13 +19218,13 @@ metadata:
   name: argocd-notifications-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17087,13 +19241,13 @@ metadata:
   name: argocd-repo-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17110,13 +19264,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17133,13 +19287,13 @@ metadata:
   name: argocd-dex-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: dex-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17156,13 +19310,13 @@ metadata:
   name: argocd-applicationset-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: applicationset-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   type: ClusterIP
   ports:
@@ -17178,13 +19332,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
   name: argocd-repo-server
   namespace: "argocd"
 spec:
@@ -17204,13 +19358,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   type: ClusterIP
   ports:
@@ -17233,13 +19387,13 @@ metadata:
   name: argocd-dex-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: dex-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   ports:
   - name: http
@@ -17261,13 +19415,13 @@ metadata:
   name: argocd-redis
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: redis
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   ports:
   - name: redis
@@ -17284,13 +19438,13 @@ metadata:
   name: argocd-applicationset-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: applicationset-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -17301,20 +19455,20 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 1dc32c258b11e530186a15799a9340069e92bfcbc92b1d76e4bcaf58e88c2133
+        checksum/cmd-params: e0d82c29a52487d431f44d96d0cce71baf36cff24e234ac2166af239dbf3aaa4
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-applicationset-controller
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: applicationset-controller
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-applicationset-controller
       containers:
         - name: applicationset-controller
-          image: quay.io/argoproj/argocd:v2.7.9
+          image: quay.io/argoproj/argocd:v2.8.2
           imagePullPolicy: IfNotPresent
           args:
             - /usr/local/bin/argocd-applicationset-controller
@@ -17332,12 +19486,6 @@ spec:
                   key: applicationsetcontroller.enable.leader.election
                   name: argocd-cmd-params-cm
                   optional: true
-            - name: ARGOCD_APPLICATIONSET_CONTROLLER_NAMESPACE
-              valueFrom:
-                configMapKeyRef:
-                  key: applicationsetcontroller.namespace
-                  name: argocd-cmd-params-cm
-                  optional: true
             - name: ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER
               valueFrom:
                 configMapKeyRef:
@@ -17348,6 +19496,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: applicationsetcontroller.policy
+                  name: argocd-cmd-params-cm
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_POLICY_OVERRIDE
+              valueFrom:
+                configMapKeyRef:
+                  key: applicationsetcontroller.enable.policy.override
                   name: argocd-cmd-params-cm
                   optional: true
             - name: ARGOCD_APPLICATIONSET_CONTROLLER_DEBUG
@@ -17386,6 +19540,54 @@ spec:
                   key: applicationsetcontroller.enable.progressive.syncs
                   name: argocd-cmd-params-cm
                   optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_NEW_GIT_FILE_GLOBBING
+              valueFrom:
+                configMapKeyRef:
+                  key: applicationsetcontroller.enable.new.git.file.globbing
+                  name: argocd-cmd-params-cm
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_PLAINTEXT
+              valueFrom:
+                configMapKeyRef:
+                  name: argocd-cmd-params-cm
+                  key: applicationsetcontroller.repo.server.plaintext
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_STRICT_TLS
+              valueFrom:
+                configMapKeyRef:
+                  name: argocd-cmd-params-cm
+                  key: applicationsetcontroller.repo.server.strict.tls
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_TIMEOUT_SECONDS
+              valueFrom:
+                configMapKeyRef:
+                  name: argocd-cmd-params-cm
+                  key: applicationsetcontroller.repo.server.timeout.seconds
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_CONCURRENT_RECONCILIATIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: argocd-cmd-params-cm
+                  key: applicationsetcontroller.concurrent.reconciliations.max
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  key: applicationsetcontroller.namespaces
+                  name: argocd-cmd-params-cm
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_SCM_ROOT_CA_PATH
+              valueFrom:
+                configMapKeyRef:
+                  key: applicationsetcontroller.scm.root.ca.path
+                  name: argocd-cmd-params-cm
+                  optional: true
+            - name: ARGOCD_APPLICATIONSET_CONTROLLER_ALLOWED_SCM_PROVIDERS
+              valueFrom:
+                configMapKeyRef:
+                  name: argocd-cmd-params-cm
+                  key: applicationsetcontroller.allowed.scm.providers
+                  optional: true
           ports:
             - name: metrics
               containerPort: 8080
@@ -17416,6 +19618,8 @@ spec:
               name: gpg-keys
             - mountPath: /app/config/gpg/keys
               name: gpg-keyring
+            - mountPath: /app/config/reposerver/tls
+              name: argocd-repo-server-tls
             - mountPath: /tmp
               name: tmp
       affinity:
@@ -17441,6 +19645,17 @@ spec:
           emptyDir: {}
         - name: tmp
           emptyDir: {}
+        - name: argocd-repo-server-tls
+          secret:
+            secretName: argocd-repo-server-tls
+            optional: true
+            items:
+              - key: tls.crt
+                path: tls.crt
+              - key: tls.key
+                path: tls.key
+              - key: ca.crt
+                path: ca.crt
       dnsPolicy: ClusterFirst
 ---
 # Source: argo-cd/templates/argocd-notifications/deployment.yaml
@@ -17450,13 +19665,13 @@ metadata:
   name: argocd-notifications-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -17469,18 +19684,18 @@ spec:
   template:
     metadata:
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-notifications-controller
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: notifications-controller
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-notifications-controller
       containers:
         - name: notifications-controller
-          image: quay.io/argoproj/argocd:v2.7.9
+          image: quay.io/argoproj/argocd:v2.8.2
           imagePullPolicy: IfNotPresent
           args:
             - /usr/local/bin/argocd-notifications
@@ -17556,13 +19771,13 @@ metadata:
   name: argocd-repo-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: repo-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -17573,20 +19788,20 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 1dc32c258b11e530186a15799a9340069e92bfcbc92b1d76e4bcaf58e88c2133
+        checksum/cmd-params: e0d82c29a52487d431f44d96d0cce71baf36cff24e234ac2166af239dbf3aaa4
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-repo-server
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: repo-server
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-repo-server
       containers:
       - name: repo-server
-        image: quay.io/argoproj/argocd:v2.7.9
+        image: quay.io/argoproj/argocd:v2.8.2
         imagePullPolicy: IfNotPresent
         args:
         - /usr/local/bin/argocd-repo-server
@@ -17616,6 +19831,18 @@ spec:
               configMapKeyRef:
                 name: argocd-cmd-params-cm
                 key: reposerver.parallelism.limit
+                optional: true
+          - name: ARGOCD_REPO_SERVER_LISTEN_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: reposerver.listen.address
+                optional: true
+          - name: ARGOCD_REPO_SERVER_LISTEN_METRICS_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: reposerver.metrics.listen.address
                 optional: true
           - name: ARGOCD_REPO_SERVER_DISABLE_TLS
             valueFrom:
@@ -17790,7 +20017,7 @@ spec:
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
-        image: quay.io/argoproj/argocd:v2.7.9
+        image: quay.io/argoproj/argocd:v2.8.2
         imagePullPolicy: IfNotPresent
         name: copyutil
         securityContext:
@@ -17854,13 +20081,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -17871,20 +20098,20 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 1dc32c258b11e530186a15799a9340069e92bfcbc92b1d76e4bcaf58e88c2133
+        checksum/cmd-params: e0d82c29a52487d431f44d96d0cce71baf36cff24e234ac2166af239dbf3aaa4
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-server
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: server
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-server
       containers:
       - name: server
-        image: quay.io/argoproj/argocd:v2.7.9
+        image: quay.io/argoproj/argocd:v2.8.2
         imagePullPolicy: IfNotPresent
         args:
         - /usr/local/bin/argocd-server
@@ -18078,6 +20305,18 @@ spec:
                 name: argocd-cmd-params-cm
                 key: server.http.cookie.maxnumber
                 optional: true
+          - name: ARGOCD_SERVER_LISTEN_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: server.listen.address
+                optional: true
+          - name: ARGOCD_SERVER_METRICS_LISTEN_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: server.metrics.listen.address
+                optional: true
           - name: ARGOCD_SERVER_OTLP_ADDRESS
             valueFrom:
               configMapKeyRef:
@@ -18200,13 +20439,13 @@ metadata:
   name: argocd-dex-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: dex-server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -18217,15 +20456,15 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 1dc32c258b11e530186a15799a9340069e92bfcbc92b1d76e4bcaf58e88c2133
+        checksum/cmd-params: e0d82c29a52487d431f44d96d0cce71baf36cff24e234ac2166af239dbf3aaa4
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-dex-server
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: dex-server
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-dex-server
       containers:
@@ -18275,7 +20514,7 @@ spec:
           mountPath: /tls
       initContainers:
       - name: copyutil
-        image: quay.io/argoproj/argocd:v2.7.9
+        image: quay.io/argoproj/argocd:v2.8.2
         imagePullPolicy: IfNotPresent
         command:
         - /bin/cp
@@ -18332,13 +20571,13 @@ metadata:
   name: argocd-redis
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: redis
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -18348,13 +20587,13 @@ spec:
   template:
     metadata:
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-redis
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: redis
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       securityContext:
         runAsNonRoot: true
@@ -18400,13 +20639,13 @@ metadata:
   name: argocd-application-controller
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   replicas: 1
   # TODO: Remove for breaking release as history limit cannot be patched
@@ -18419,22 +20658,22 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: 1dc32c258b11e530186a15799a9340069e92bfcbc92b1d76e4bcaf58e88c2133
+        checksum/cmd-params: e0d82c29a52487d431f44d96d0cce71baf36cff24e234ac2166af239dbf3aaa4
       labels:
-        helm.sh/chart: argo-cd-5.42.0
+        helm.sh/chart: argo-cd-5.43.7
         app.kubernetes.io/name: argocd-application-controller
         app.kubernetes.io/instance: argocd
         app.kubernetes.io/component: application-controller
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.7.9"
+        app.kubernetes.io/version: "v2.8.2"
     spec:
       serviceAccountName: argocd-application-controller
       containers:
       - args:
         - /usr/local/bin/argocd-application-controller
         - --metrics-port=8082
-        image: quay.io/argoproj/argocd:v2.7.9
+        image: quay.io/argoproj/argocd:v2.8.2
         imagePullPolicy: IfNotPresent
         name: application-controller
         env:
@@ -18572,6 +20811,18 @@ spec:
                 name: argocd-cmd-params-cm
                 key: application.namespaces
                 optional: true
+          - name: ARGOCD_CONTROLLER_SHARDING_ALGORITHM
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: controller.sharding.algorithm
+                optional: true
+          - name: ARGOCD_APPLICATION_CONTROLLER_KUBECTL_PARALLELISM_LIMIT
+            valueFrom:
+              configMapKeyRef:
+                name: argocd-cmd-params-cm
+                key: controller.kubectl.parallelism.limit
+                optional: true
         ports:
         - name: metrics
           containerPort: 8082
@@ -18634,13 +20885,13 @@ metadata:
   name: argocd-server
   namespace: "argocd"
   labels:
-    helm.sh/chart: argo-cd-5.42.0
+    helm.sh/chart: argo-cd-5.43.7
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/component: server
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.7.9"
+    app.kubernetes.io/version: "v2.8.2"
 spec:
   rules:
     - host: "argo-cd.zb-macbook.local"
