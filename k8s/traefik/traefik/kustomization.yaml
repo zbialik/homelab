@@ -3,4 +3,5 @@ commonLabels:
   app: traefik
 
 resources:
+- crds.yaml
 - generated.yaml
