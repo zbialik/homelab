@@ -5,3 +5,4 @@ commonLabels:
 resources:
 - namespace.yaml
 - generated.yaml
+- confs.yaml
