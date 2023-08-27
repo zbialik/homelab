@@ -1,0 +1,7 @@
+kind: Kustomization
+commonLabels:
+  app: metallb
+
+resources:
+- namespace.yaml
+- generated.yaml
