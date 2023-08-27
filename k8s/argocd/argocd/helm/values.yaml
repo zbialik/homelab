@@ -10,3 +10,10 @@ configs:
 server:
   extraArgs:
     - "--insecure"
+  ingress:
+    enabled: true
+    hosts:
+    - argocd.zbialik.com
+    tls:
+    - hosts:
+      - argocd.zbialik.com
