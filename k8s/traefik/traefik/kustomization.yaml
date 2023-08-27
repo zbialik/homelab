@@ -1,8 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app: traefik
-
-resources: []
-# - crds.yaml
-# - namespace.yaml
-# - generated.yaml

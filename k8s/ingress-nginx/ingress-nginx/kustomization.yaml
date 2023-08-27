@@ -1,0 +1,7 @@
+kind: Kustomization
+commonLabels:
+  app: ingress-nginx
+
+resources:
+- namespace.yaml
+- generated.yaml
