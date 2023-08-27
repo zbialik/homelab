@@ -12,6 +12,7 @@ server:
     - "--insecure"
   ingress:
     enabled: true
+    ingressClassName: nginx
     hosts:
     - argocd.zbialik.com
     tls:
