@@ -5,7 +5,8 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.0.100-192.168.0.249 # DHCP IP Address Pool of Archer C7 router
+  - 192.168.0.181/32 # set to worker node IPs
+  # - 192.168.0.100-192.168.0.249 # DHCP IP Address Pool of Archer C7 router
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
