@@ -1,13 +1,7 @@
-# kind: Kustomization
-# commonLabels:
-#   app: metallb
-
-# resources:
-# - namespace.yaml
-# - generated.yaml
-
-# kustomization.yml
-namespace: metallb-system
+kind: Kustomization
+commonLabels:
+  app: metallb
 
 resources:
-  - github.com/metallb/metallb/config/native?ref=v0.13.10
+- namespace.yaml
+- generated.yaml
