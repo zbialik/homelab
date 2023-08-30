@@ -3,5 +3,6 @@ commonLabels:
   app: cert-manager
 
 resources:
+- namespace.yaml
 - generated.yaml
 - config
