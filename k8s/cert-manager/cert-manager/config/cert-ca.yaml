@@ -10,6 +10,7 @@ spec:
   privateKey:
     algorithm: ECDSA
     size: 256
+    rotationPolicy: Always
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
