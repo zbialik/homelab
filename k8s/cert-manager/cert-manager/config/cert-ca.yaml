@@ -9,7 +9,7 @@ spec:
   secretName: zbialik
   privateKey:
     algorithm: RSA
-    size: 256
+    size: 2048
     rotationPolicy: Always
   issuerRef:
     name: selfsigned-issuer
