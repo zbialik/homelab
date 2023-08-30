@@ -34,9 +34,12 @@ server:
     - "--insecure"
   ingress:
     enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: selfsigned-issuer
     ingressClassName: nginx
     hosts:
     - argocd.zbialik.com
     tls:
     - hosts:
       - argocd.zbialik.com
+      secretName: argocd-cert
