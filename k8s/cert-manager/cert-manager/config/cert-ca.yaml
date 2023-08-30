@@ -8,7 +8,7 @@ spec:
   commonName: zbialik.com
   secretName: zbialik
   privateKey:
-    algorithm: ECDSA
+    algorithm: RSA
     size: 256
     rotationPolicy: Always
   issuerRef:
