@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: homelab-selfsigned-ca
-  namespace: cert-manager-homelab
+  name: zbialik-selfsigned-ca
+  namespace: cert-manager-zbialik
 spec:
   isCA: true
-  commonName: homelab-selfsigned-ca
-  secretName: homelab-root-cert
+  commonName: zbialik.com
+  secretName: zbialik
   privateKey:
     algorithm: ECDSA
     size: 256

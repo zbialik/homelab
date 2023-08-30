@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: homelab-ca-issuer
-  namespace: cert-manager-homelab
+  namespace: cert-manager-zbialik
 spec:
   ca:
-    secretName: homelab-root-cert
+    secretName: zbialik-root-cert
