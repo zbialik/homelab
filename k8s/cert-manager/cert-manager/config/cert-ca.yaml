@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: homelab-selfsigned-ca
-  namespace: cert-manager
+  namespace: cert-manager-homelab
 spec:
   isCA: true
   commonName: homelab-selfsigned-ca
