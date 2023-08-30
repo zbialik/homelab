@@ -6,7 +6,7 @@ metadata:
 spec:
   isCA: true
   commonName: zbialik.com
-  secretName: zbialik
+  secretName: zbialik-root-cert
   privateKey:
     algorithm: RSA
     size: 2048
