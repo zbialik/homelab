@@ -1,6 +1,6 @@
 kind: Kustomization
 
 resources:
-# - cert-ca.yaml
+- cert-ca.yaml
 - cluster-issuer.yaml
-# - issuer.yaml
+- issuer.yaml
