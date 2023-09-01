@@ -1,7 +1,6 @@
 kind: Kustomization
 
 resources:
-- namespace.yaml
 - cert-ca.yaml
 - cluster-issuer.yaml
 - issuer.yaml

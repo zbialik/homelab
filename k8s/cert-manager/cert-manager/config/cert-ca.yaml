@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: zbialik-selfsigned-ca
-  namespace: cert-manager-zbialik
+  namespace: cert-manager
 spec:
   isCA: true
   commonName: zbialik.com

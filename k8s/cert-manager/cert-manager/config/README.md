@@ -12,7 +12,7 @@ openssl req -x509 -sha256 -new -nodes -key rootCAKey.pem -days 3650 -out rootCAC
 Then, use kustomize to generate `Secret` from those files. Add `kustomization.yaml` in the `tmp` directory with contents:
 ```
 kind: Kustomization
-namespace: cert-manager-zbialik
+namespace: cert-manager
 
 secretGenerator:
 - name: zbialik-root-cert
