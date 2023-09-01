@@ -5,13 +5,21 @@ metadata:
   namespace: cert-manager
 spec:
   isCA: true
-  commonName: zbialik.com
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - "Zach Bialik"
   secretName: zbialik-root-cert
+  dnsNames:
+    - zbialik.com
+  ipAddresses:
+    - 192.168.0.181
   privateKey:
     algorithm: RSA
+    encoding: PKCS1
     size: 2048
-    rotationPolicy: Always
   issuerRef:
-    name: selfsigned-issuer
+    name: ca-issuer
     kind: ClusterIssuer
     group: cert-manager.io
