@@ -5,4 +5,4 @@ commonLabels:
 resources:
 - namespace.yaml
 - generated.yaml
-- config
+# - config
