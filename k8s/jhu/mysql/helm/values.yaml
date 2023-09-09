@@ -8,3 +8,11 @@ auth:
 primary:
   persistence:
     existingClaim: "mysql-hostpath"
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: "OnRootMismatch"
+
+
+  service:
+    type: LoadBalancer

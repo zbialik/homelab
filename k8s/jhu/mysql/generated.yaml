@@ -96,14 +96,14 @@ metadata:
     helm.sh/chart: mysql-9.12.1
     app.kubernetes.io/component: primary
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   sessionAffinity: None
+  externalTrafficPolicy: "Cluster"
   ports:
     - name: mysql
       port: 3306
       protocol: TCP
       targetPort: mysql
-      nodePort: null
   selector:
     app.kubernetes.io/instance: mysql
     app.kubernetes.io/name: mysql
@@ -161,6 +161,7 @@ spec:
           
       securityContext:
         fsGroup: 1001
+        fsGroupChangePolicy: OnRootMismatch
       initContainers:
       containers:
         - name: mysql
