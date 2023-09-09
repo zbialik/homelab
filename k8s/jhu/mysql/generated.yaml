@@ -96,7 +96,7 @@ metadata:
     helm.sh/chart: mysql-9.12.1
     app.kubernetes.io/component: primary
 spec:
-  type: LoadBalancer
+  type: NodePort
   sessionAffinity: None
   externalTrafficPolicy: "Cluster"
   ports:

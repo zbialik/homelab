@@ -16,4 +16,4 @@ primary:
     runAsUser: 1000
 
   service:
-    type: LoadBalancer
+    type: NodePort
