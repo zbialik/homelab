@@ -16,4 +16,6 @@ primary:
     runAsUser: 1000
 
   service:
+    nodePorts:
+      mysql: "31201"
     type: NodePort

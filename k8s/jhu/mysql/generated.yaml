@@ -104,6 +104,7 @@ spec:
       port: 3306
       protocol: TCP
       targetPort: mysql
+      nodePort: 31201
   selector:
     app.kubernetes.io/instance: mysql
     app.kubernetes.io/name: mysql
