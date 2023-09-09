@@ -161,7 +161,7 @@ spec:
           
       securityContext:
         fsGroup: 1001
-        fsGroupChangePolicy: OnRootMismatch
+        fsGroupChangePolicy: Always
       initContainers:
       containers:
         - name: mysql
