@@ -251,16 +251,6 @@ spec:
         - name: config
           configMap:
             name: mysql
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-        labels:
-          app.kubernetes.io/instance: mysql
-          app.kubernetes.io/name: mysql
-          app.kubernetes.io/component: primary
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+        - name: data
+          persistentVolumeClaim:
+            claimName: mysql-hostpath

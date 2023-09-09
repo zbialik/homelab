@@ -4,3 +4,7 @@ auth:
   database: "jhu"
   username: "zbialik"
   existingSecret: mysql # contains root + zbialik passwords
+
+primary:
+  persistence:
+    existingClaim: "mysql-hostpath"
