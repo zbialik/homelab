@@ -3,7 +3,8 @@ kind: PersistentVolume
 metadata:
   name: mysql-hostpath
 spec:
-  capacity: 50Gi
+  capacity: 
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
