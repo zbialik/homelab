@@ -1,0 +1,6 @@
+
+auth:
+  createDatabase: true
+  database: "jhu"
+  username: "zbialik"
+  existingSecret: mysql # contains root + zbialik passwords
