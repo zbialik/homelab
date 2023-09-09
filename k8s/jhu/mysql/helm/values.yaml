@@ -10,9 +10,10 @@ primary:
     existingClaim: "mysql-hostpath"
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 1000
     fsGroupChangePolicy: "Always"
-
+  containerSecurityContext:
+    runAsUser: 1000
 
   service:
     type: LoadBalancer

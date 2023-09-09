@@ -160,7 +160,7 @@ spec:
         nodeAffinity:
           
       securityContext:
-        fsGroup: 1001
+        fsGroup: 1000
         fsGroupChangePolicy: Always
       initContainers:
       containers:
@@ -169,7 +169,7 @@ spec:
           imagePullPolicy: "IfNotPresent"
           securityContext:
             runAsNonRoot: true
-            runAsUser: 1001
+            runAsUser: 1000
           env:
             - name: BITNAMI_DEBUG
               value: "false"
