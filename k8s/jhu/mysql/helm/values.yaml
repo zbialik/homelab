@@ -18,4 +18,7 @@ primary:
   service:
     nodePorts:
       mysql: "31201"
-    type: NodePort
+    annotations:
+      metallb.universe.tf/allow-shared-ip: "homelab-192.168.0.181"
+    loadBalancerIP: 192.168.0.181
+    type: LoadBalancer
