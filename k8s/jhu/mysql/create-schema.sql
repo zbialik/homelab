@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `grant-and-program-tracking`.`GRANT_OPPORTUNITY` (
   `grant_opportunity_name` VARCHAR(45) NOT NULL,
   `grant_opportunity_submission_deadline` DATETIME NOT NULL,
   `grant_opportunity_description` VARCHAR(350) NULL,
-  `grant_opportunity_fund_amount` DECIMAL(10,2) NULL,
+  `grant_opportunity_fund_amount` DECIMAL(10,2) NOT NULL,
   `funding_organization_id` INT NOT NULL,
   PRIMARY KEY (`grant_opportunity_id`),
   INDEX `fk_GRANT_OPPORTUNITY_FUNDING_ORGANIZATION1_idx` (`funding_organization_id` ASC) VISIBLE,
@@ -168,7 +168,7 @@ DROP TABLE IF EXISTS `grant-and-program-tracking`.`STAKEHOLDER` ;
 
 CREATE TABLE IF NOT EXISTS `grant-and-program-tracking`.`STAKEHOLDER` (
   `stakeholder_id` INT NOT NULL AUTO_INCREMENT,
-  `stateholder_name` VARCHAR(45) NULL,
+  `stateholder_name` VARCHAR(45) NOT NULL,
   `stakeholder_role` VARCHAR(45) NULL,
   PRIMARY KEY (`stakeholder_id`),
   UNIQUE INDEX `stakeholder_id_UNIQUE` (`stakeholder_id` ASC) VISIBLE);
