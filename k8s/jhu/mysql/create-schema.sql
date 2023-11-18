@@ -339,13 +339,13 @@ DROP function IF EXISTS `grant-and-program-tracking`.`CheckSubmissionDate`;
 
 DELIMITER $$
 USE `grant-and-program-tracking`$$
-CREATE FUNCTION CheckSubmissionDate(grantAppId INT, plannedDate DATETIME) RETURNS INT DETERMINISTIC
+CREATE FUNCTION CheckSubmissionDate(opportunityId INT, plannedDate DATETIME) RETURNS INT DETERMINISTIC
 BEGIN
     DECLARE deadline DATETIME;
 
     SELECT grant_opportunity_submission_deadline INTO deadline
     FROM GRANT_OPPORTUNITY
-    WHERE grant_opportunity_id = grantAppId;
+    WHERE grant_opportunity_id = opportunityId;
 
     -- Compare the planned submission date with the deadline
     IF plannedDate <= deadline THEN
