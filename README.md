@@ -80,3 +80,5 @@ Update record like so:
 ```
 curl -g "https://www.duckdns.org/update/zeb17-ext/${DUCKDNS_TOKEN}/"
 ```
+
+NOTE: I would want to do some network segmentation here ideally. Maybe using a separate set of ingress controllers for the externally reachable records and hosting these on isolated hosts.
