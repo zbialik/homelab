@@ -36,11 +36,11 @@ server:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: selfsigned-issuer
-      cert-manager.io/common-name: argocd.zeb17.duckdns.org
+      cert-manager.io/common-name: argocd.zeb17-int.duckdns.org
     ingressClassName: nginx
     hosts:
-    - argocd.zeb17.duckdns.org
+    - argocd.zeb17-int.duckdns.org
     tls:
     - hosts:
-      - argocd.zeb17.duckdns.org
+      - argocd.zeb17-int.duckdns.org
       secretName: argocd-cert

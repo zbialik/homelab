@@ -52,7 +52,9 @@ ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root
 
 ## Network/DNS Architecture
 
-1. DuckDNS hosts subdomain `zeb17.duckdns.org` which targets my home router's publicly IP assigned by my ISP.
+1. DuckDNS hosts subdomains:
+- `zeb17-ext.duckdns.org` which targets my home router's publicly IP assigned by my ISP.
+- `zeb17-int.duckdns.org` which targets my home router's internal IP available from within my LAN (`192.168.0.1`).
 1. Setup port forwarding in my home router to send HTTPS traffic to my ingress controller IP(s)
 
 ## DuckDNS
@@ -62,7 +64,8 @@ I DuckDNS as a free service to host my DNS records under the following subdomain
 I must update the subdomain IP every 30 days, and can automate that with the following command ran inside my local network:
 
 ```
-curl -g https://www.duckdns.org/update?domains=zeb17&token=${DUCKDNS_TOKEN}[&verbose=true][&clear=true]
+curl -g "https://www.duckdns.org/update/zeb17-ext/${DUCKDNS_TOKEN}/"
+curl -g "https://www.duckdns.org/update/zeb17-int/${DUCKDNS_TOKEN}/192.168.0.1"
 ```
 
 Where I store DUCKDNS_TOKEN in a secret vault.

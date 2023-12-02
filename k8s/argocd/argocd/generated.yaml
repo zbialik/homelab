@@ -130,7 +130,7 @@ type: Opaque
 # Setting a blank data again will wipe admin password/key/cert
 data:
   admin.password: JDJhJDEwJHhJdHgxYmlKdTVRcWwuQU5mLzNDanUvbXhZRTA0V1VHNWUzSS9Nb1JweGJWU2RvRGdMTi9X
-  admin.passwordMtime: MjAyMy0xMi0wMlQyMTowNDoxN1o=
+  admin.passwordMtime: MjAyMy0xMi0wMlQyMTo1MToyMFo=
 ---
 # Source: argo-cd/templates/argocd-configs/repository-secret.yaml
 apiVersion: v1
@@ -20917,11 +20917,11 @@ metadata:
     app.kubernetes.io/version: "v2.8.3"
   annotations:
     cert-manager.io/cluster-issuer: "selfsigned-issuer"
-    cert-manager.io/common-name: "argocd.zeb17.duckdns.org"
+    cert-manager.io/common-name: "argocd.zeb17-int.duckdns.org"
 spec:
   ingressClassName: nginx
   rules:
-    - host: "argocd.zeb17.duckdns.org"
+    - host: "argocd.zeb17-int.duckdns.org"
       http:
         paths:
           - path: /
@@ -20933,5 +20933,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-      - argocd.zeb17.duckdns.org
+      - argocd.zeb17-int.duckdns.org
       secretName: argocd-cert
