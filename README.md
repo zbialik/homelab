@@ -50,22 +50,33 @@ cd ansible/kubespray
 ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik --ask-pass --ask-become-pass
 ```
 
-## Network/DNS Architecture
+## Ingres/DNS
 
-1. DuckDNS hosts subdomains:
-- `zeb17-ext.duckdns.org` which targets my home router's publicly IP assigned by my ISP.
-- `zeb17-int.duckdns.org` which targets my home router's internal IP available from within my LAN (`192.168.0.1`).
-1. Setup port forwarding in my home router to send HTTPS traffic to my ingress controller IP(s)
-
-## DuckDNS
+### DuckDNS
 
 I DuckDNS as a free service to host my DNS records under the following subdomain: zeb17.duckdns.org
 
-I must update the subdomain IP every 30 days, and can automate that with the following command ran inside my local network:
+I must update the subdomain IP every 30 days, and can automate that with curl commands.
+
+#### Internal DNS
+
+1. DuckDNS hosts subdomain `zeb17-int.duckdns.org` which targets ingress-controller's internal IP (`192.168.0.181`).
+
+Update record like so:
+
+```
+curl -g "https://www.duckdns.org/update/zeb17-int/${DUCKDNS_TOKEN}/192.168.0.181"
+```
+
+#### External DNS
+
+I've since disabled external access, but if I were to set this up again, I'd start with something like:
+
+1. DuckDNS hosts subdomain `zeb17-ext.duckdns.org` which targets ingress-controller's internal IP (`192.168.0.181`).
+1. Setup Port Forwarding (in NAT forwarding section in my Archer C7 router) to route `443` --> `443` on ingress-controller's internal IP (`192.168.0.181`).
+
+Update record like so:
 
 ```
 curl -g "https://www.duckdns.org/update/zeb17-ext/${DUCKDNS_TOKEN}/"
-curl -g "https://www.duckdns.org/update/zeb17-int/${DUCKDNS_TOKEN}/192.168.0.1"
 ```
-
-Where I store DUCKDNS_TOKEN in a secret vault.
