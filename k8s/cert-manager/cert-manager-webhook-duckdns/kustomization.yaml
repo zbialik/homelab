@@ -1,0 +1,6 @@
+kind: Kustomization
+commonLabels:
+  app: cert-manager-webhook-duckdns
+
+resources: []
+# - generated.yaml
