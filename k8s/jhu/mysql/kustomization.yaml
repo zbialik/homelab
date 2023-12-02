@@ -1,7 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app: mysql
-
-resources:
-- generated.yaml
-- pvc-hostpath.yaml
