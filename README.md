@@ -49,3 +49,20 @@ git submodule update
 cd ansible/kubespray
 ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik --ask-pass --ask-become-pass
 ```
+
+## Network/DNS Architecture
+
+1. DuckDNS hosts subdomain `zeb17.duckdns.org` which targets my home router's publicly IP assigned by my ISP.
+1. Setup port forwarding in my home router to send HTTPS traffic to my ingress controller IP(s)
+
+## DuckDNS
+
+I DuckDNS as a free service to host my DNS records under the following subdomain: zeb17.duckdns.org
+
+I must update the subdomain IP every 30 days, and can automate that with the following command ran inside my local network:
+
+```
+curl -g https://www.duckdns.org/update?domains=zeb17&token=${DUCKDNS_TOKEN}[&verbose=true][&clear=true]
+```
+
+Where I store DUCKDNS_TOKEN in a secret vault.
