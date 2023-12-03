@@ -4,7 +4,7 @@ commonLabels:
 
 resources:
 - namespace.yaml
-# - cert.yaml
+- cert.yaml
 - generated.yaml
 
 

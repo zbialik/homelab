@@ -7,6 +7,6 @@ spec:
   dnsNames:
   - "*.zeb17-int.duckdns.org"
   issuerRef:
-    name: letsencrypt
+    name: cert-manager-webhook-duckdns-production
     group: cert-manager.io
     kind: ClusterIssuer
