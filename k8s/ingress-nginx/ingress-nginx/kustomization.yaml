@@ -7,7 +7,6 @@ resources:
 - cert.yaml
 - generated.yaml
 
-
 patches:
 - target:
     group: ""
