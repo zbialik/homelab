@@ -1,4 +1,5 @@
 ## @section Common parameters
+
 ## @param kubeVersion Override Kubernetes version
 ##
 kubeVersion: ""
