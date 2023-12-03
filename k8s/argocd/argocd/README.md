@@ -29,8 +29,6 @@ helm repo update
 helm template argocd -n argocd argo/argo-cd -f helm/values.yaml > generated.yaml
 ```
 
-
-
 ## Update admin password
 
 ```

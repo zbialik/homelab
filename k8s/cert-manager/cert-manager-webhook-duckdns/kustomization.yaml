@@ -3,6 +3,7 @@ commonLabels:
   app: cert-manager-webhook-duckdns
 
 resources:
+- sealed-secret.yaml
 - generated.yaml
 
 patches:
