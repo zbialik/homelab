@@ -23,6 +23,9 @@ kubectl create secret generic argocd-secret -n argocd \
 
 # seal the secret
 kubeseal -f /tmp/secret.yaml -w sealed-secret.yaml
+
+# upon commit/update you need to bounce argocd
+kubectl -n argocd rollout restart sts,deploy -l app=argocd
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
