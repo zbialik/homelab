@@ -6,6 +6,25 @@ helm repo update
 helm template argocd -n argocd argo/argo-cd -f helm/values.yaml > generated.yaml
 ```
 
+## Update admin password
+
+```
+# install argocd CLI
+brew install argocd
+
+# generate and copy bcrypt hash of desired password to clipboard
+BCRYPT_PW=`argocd account bcrypt --password <YOUR-PASSWORD-HERE>`
+
+# generate plaintext secret
+kubectl create secret generic argocd-secret -n argocd \
+    --from-literal=admin.password=${BCRYPT_PW} \
+    --from-literal=admin.passwordMtime="$(date +%FT%T%Z)" \
+    --dry-run -o yaml > /tmp/secret.yaml
+
+# seal the secret
+kubeseal -f /tmp/secret.yaml -w sealed-secret.yaml
+```
+
 ## Update `helm/values.yaml` with changes from chart upgrade
 
 ```bash
