@@ -6,6 +6,8 @@ resources:
 - generated.yaml
 
 patches:
+# only patching to fix argo app sync status
+# TODO: remove patches once bug fixed: https://github.com/argoproj/argo-cd/issues/6008
 - target:
     group: cert-manager.io
     kind: Certificate
