@@ -1,0 +1,12 @@
+logLevel: 2
+
+secret:
+  existingSecret: true
+  existingSecretName: "duckdns-token"
+
+clusterIssuer:
+  email: zachary.e.bialik@gmail.com
+  production:
+    create: true
+  staging:
+    create: true
