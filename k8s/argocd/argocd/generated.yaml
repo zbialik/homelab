@@ -130,7 +130,7 @@ type: Opaque
 # Setting a blank data again will wipe admin password/key/cert
 data:
   admin.password: JDJhJDEwJHhJdHgxYmlKdTVRcWwuQU5mLzNDanUvbXhZRTA0V1VHNWUzSS9Nb1JweGJWU2RvRGdMTi9X
-  admin.passwordMtime: MjAyMy0xMi0wM1QwNTozMzo0OVo=
+  admin.passwordMtime: MjAyMy0xMi0wM1QwODo1ODo0Mlo=
 ---
 # Source: argo-cd/templates/argocd-configs/repository-secret.yaml
 apiVersion: v1
@@ -20139,7 +20139,6 @@ spec:
         - /usr/local/bin/argocd-server
         - --port=8080
         - --metrics-port=8083
-        - --insecure
         env:
           - name: ARGOCD_SERVER_INSECURE
             valueFrom:

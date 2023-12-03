@@ -30,8 +30,8 @@ configs:
     argocdServerAdminPassword: $2a$10$xItx1biJu5Qql.ANf/3Cju/mxYE04WUG5e3I/MoRpxbVSdoDgLN/W
 
 server:
-  extraArgs:
-    - "--insecure"
+  # extraArgs:
+  #   - "--insecure"
   ingress:
     enabled: true
     # annotations:
