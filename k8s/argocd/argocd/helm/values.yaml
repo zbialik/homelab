@@ -1953,7 +1953,6 @@ server:
     tls:
     - hosts:
       - argocd.zeb17-int.duckdns.org
-      secretName: argocd-cert
       # - secretName: your-certificate-name
       #   hosts:
       #     - argocd.example.com
