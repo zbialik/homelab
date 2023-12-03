@@ -16,7 +16,7 @@ NEW_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
 
 # get diff between helm/default.yaml versions + patch helm/values.yaml
 git diff --relative $CURR_SHA $NEW_SHA helm/default.yaml > /tmp/values.diff
-patch helm/values.yaml /tmp/values.diff
+patch helm/values.yaml /tmp/values.diff && rm -rf helm/values.yaml.orig
 
 # solve all the conflicts
 ```
