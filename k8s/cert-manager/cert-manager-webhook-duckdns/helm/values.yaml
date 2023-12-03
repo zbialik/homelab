@@ -10,5 +10,3 @@ clusterIssuer:
   email: zachary.e.bialik@gmail.com
   production:
     create: true
-  staging:
-    create: true

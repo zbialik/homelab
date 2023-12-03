@@ -319,33 +319,6 @@ spec:
           groupName: zb17.duckdns.org
           solverName: duckdns
 ---
-# Source: cert-manager-webhook-duckdns/templates/staging.cluster-issuer.yaml
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: cert-manager-webhook-duckdns-staging
-  labels:
-    app: cert-manager-webhook-duckdns
-    chart: cert-manager-webhook-duckdns-v1.2.3
-    release: cert-manager-webhook-duckdns
-    heritage: Helm
-spec:
-  acme:
-    email: zachary.e.bialik@gmail.com
-    preferredChain: "ISRG Root X1"
-    privateKeySecretRef:
-      name: cert-manager-webhook-duckdns-staging
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    solvers:
-    - dns01:
-        webhook:
-          config:
-            apiTokenSecretRef:
-              key: token
-              name: duckdns-token
-          groupName: zb17.duckdns.org
-          solverName: duckdns
----
 # Source: cert-manager-webhook-duckdns/templates/pki.yaml
 # Create a selfsigned Issuer, in order to create a root CA certificate for
 # signing webhook serving certificates
