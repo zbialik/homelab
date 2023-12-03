@@ -7,7 +7,7 @@ resources:
 
 patches:
 - target:
-    apiVersion: cert-manager.io/v1
+    group: cert-manager.io
     kind: Certificate
     name: cert-manager-webhook-duckdns-ca
   patch: |-
@@ -15,7 +15,7 @@ patches:
       path: /spec/duration
       value: 43800h0m0s
 - target:
-    apiVersion: cert-manager.io/v1
+    group: cert-manager.io
     kind: Certificate
     name: cert-manager-webhook-duckdns-webhook-tls
   patch: |-
