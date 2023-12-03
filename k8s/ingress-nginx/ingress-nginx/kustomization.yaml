@@ -24,5 +24,4 @@ patches:
   patch: |-
     - op: add
       path: /spec/template/spec/containers/0/args/-
-      value:
-        - --default-ssl-certificate=$(POD_NAMESPACE)/wildcard-zeb17-internal
+      value: --default-ssl-certificate=$(POD_NAMESPACE)/wildcard-zeb17-internal
