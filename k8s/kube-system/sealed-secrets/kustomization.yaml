@@ -2,5 +2,5 @@ kind: Kustomization
 commonLabels:
   app: sealed-secrets
 
-resources: []
-# - generated.yaml
+resources:
+- generated.yaml
