@@ -24,7 +24,7 @@ metadata:
     heritage: Helm
 rules:
   - apiGroups:
-      - acme.duckdns.org
+      - zb17.duckdns.org
     resources:
       - '*'
     verbs:
@@ -203,7 +203,7 @@ spec:
             - --v=2
           env:
             - name: GROUP_NAME
-              value: "acme.duckdns.org"
+              value: "zb17.duckdns.org"
           ports:
             - name: https
               containerPort: 443
@@ -233,7 +233,7 @@ spec:
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  name: v1alpha1.acme.duckdns.org
+  name: v1alpha1.zb17.duckdns.org
   labels:
     app: cert-manager-webhook-duckdns
     chart: cert-manager-webhook-duckdns-v1.2.3
@@ -242,7 +242,7 @@ metadata:
   annotations:
     cert-manager.io/inject-ca-from: "cert-manager/cert-manager-webhook-duckdns-webhook-tls"
 spec:
-  group: acme.duckdns.org
+  group: zb17.duckdns.org
   groupPriorityMinimum: 1000
   versionPriority: 15
   service:
@@ -316,7 +316,7 @@ spec:
             apiTokenSecretRef:
               key: token
               name: duckdns-token
-          groupName: acme.duckdns.org
+          groupName: zb17.duckdns.org
           solverName: duckdns
 ---
 # Source: cert-manager-webhook-duckdns/templates/staging.cluster-issuer.yaml
@@ -343,7 +343,7 @@ spec:
             apiTokenSecretRef:
               key: token
               name: duckdns-token
-          groupName: acme.duckdns.org
+          groupName: zb17.duckdns.org
           solverName: duckdns
 ---
 # Source: cert-manager-webhook-duckdns/templates/pki.yaml
