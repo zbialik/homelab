@@ -1943,6 +1943,7 @@ server:
     enabled: true
     # -- Additional ingress annotations
     annotations:
+      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       # If you encounter a redirect loop or are getting a 307 response code
@@ -1981,6 +1982,7 @@ server:
     tls:
     - hosts:
       - argocd.zeb17-int.duckdns.org
+      secretName: argocd-cert
       # - secretName: your-certificate-name
       #   hosts:
       #     - argocd.example.com
