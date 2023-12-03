@@ -1,4 +1,5 @@
 kind: Kustomization
+namespace: kube-system
 commonLabels:
   app: sealed-secrets
 
