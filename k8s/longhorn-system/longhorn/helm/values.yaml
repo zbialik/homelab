@@ -107,10 +107,11 @@ helmPreUpgradeCheckerJob:
 
 csi:
   kubeletRootDir: ~
-  attacherReplicaCount: ~
-  provisionerReplicaCount: ~
-  resizerReplicaCount: ~
-  snapshotterReplicaCount: ~
+  # setting all replica countsb to 1 since only 1 worker right now
+  attacherReplicaCount: 1
+  provisionerReplicaCount: 1
+  resizerReplicaCount: 1
+  snapshotterReplicaCount: 1
 
 defaultSettings:
   backupTarget: ~
