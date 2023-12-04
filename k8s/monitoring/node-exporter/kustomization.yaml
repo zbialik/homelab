@@ -1,0 +1,6 @@
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/name: node-exporter
+
+resources:
+- generated.yaml
