@@ -44,6 +44,13 @@ data:
     
     
     default-data-path: /mnt/usb01/longhorn
+    
+    
+    
+    
+    
+    
+    default-replica-count: 1
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
@@ -4330,7 +4337,7 @@ metadata:
   name: longhorn-ui
   namespace: longhorn-system
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: longhorn-ui

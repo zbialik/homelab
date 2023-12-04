@@ -126,7 +126,7 @@ defaultSettings:
   storageMinimalAvailablePercentage: ~
   storageReservedPercentageForDefaultDisk: ~
   upgradeChecker: ~
-  defaultReplicaCount: ~
+  defaultReplicaCount: 1
   defaultLonghornStaticStorageClass: ~
   backupstorePollInterval: ~
   failedBackupTTL: ~
@@ -217,7 +217,7 @@ longhornDriver:
   #  label-key2: "label-value2"
 
 longhornUI:
-  replicas: 2
+  replicas: 1
   priorityClass: ~
   tolerations: []
   ## If you want to set tolerations for Longhorn UI Deployment, delete the `[]` in the line above
