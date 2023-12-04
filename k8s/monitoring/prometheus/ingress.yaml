@@ -1,26 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  name: prometheus
-spec:
-  ingressClassName: nginx-internal
-  rules:
-  - host: thanos.internal.yuha0.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: thanos-query
-            port:
-              number: 9090
-        path: /
-        pathType: Prefix
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: prometheus
   annotations:
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
