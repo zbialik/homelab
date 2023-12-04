@@ -10,4 +10,4 @@ spec:
     protocol: TCP
     targetPort: web
   selector:
-    prometheus: prometheus
+    prometheus: main
