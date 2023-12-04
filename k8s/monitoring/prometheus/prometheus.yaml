@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: main
+spec:
+  version: v2.48.0
+  externalLabels:
+    cluster: homelab
+    prom_shard: "$(SHARD)"
+  serviceAccountName: prometheus
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector: {}
+  storage:
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 50Gi
+        storageClassName: longhorn
+  replicas: 1
+  shards: 1
+  resources:
+    limits:
+      cpu: 300m
+      memory: 400Mi
+    requests:
+      cpu: 300m
+      memory: 400Mi
+  enableAdminAPI: false
