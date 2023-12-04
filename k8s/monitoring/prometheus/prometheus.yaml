@@ -7,6 +7,10 @@ spec:
   externalLabels:
     cluster: homelab
     prom_shard: "$(SHARD)"
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsUser: 65534
   serviceAccountName: prometheus
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
