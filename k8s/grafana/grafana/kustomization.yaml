@@ -4,5 +4,8 @@ commonLabels:
   app.kubernetes.io/name: grafana
 
 resources:
-- install.yaml
+- deployment.yaml
+- ingress.yaml
+- pvc.yaml
+- service.yaml
 
