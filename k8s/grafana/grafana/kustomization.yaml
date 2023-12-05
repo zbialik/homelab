@@ -17,3 +17,11 @@ images:
   - name: k8s-sidecar
     newName: kiwigrid/k8s-sidecar
     newTag: 1.25.3
+
+configMapGenerator:
+  - name: grafana-provisioning-datasources
+    files:
+      - files/datasources.yaml
+  - name: grafana-provisioning-providers
+    files:
+      - files/providers.yaml
