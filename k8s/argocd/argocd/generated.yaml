@@ -31,22 +31,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.9.3"
 ---
-# Source: argo-cd/templates/argocd-notifications/serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
-metadata:
-  name: argocd-notifications-controller
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
----
 # Source: argo-cd/templates/argocd-repo-server/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -94,23 +78,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.9.3"
----
-# Source: argo-cd/templates/argocd-configs/argocd-notifications-secret.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: argocd-notifications-secret
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-type: Opaque
-stringData:
 ---
 # Source: argo-cd/templates/argocd-configs/repository-secret.yaml
 apiVersion: v1
@@ -232,24 +199,6 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.9.3"
----
-# Source: argo-cd/templates/argocd-configs/argocd-notifications-cm.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-notifications-cm
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-data:
-  context: |
-    argocdUrl:
 ---
 # Source: argo-cd/templates/argocd-configs/argocd-rbac-cm.yaml
 apiVersion: v1
@@ -20585,31 +20534,6 @@ rules:
     verbs:
     - '*'
 ---
-# Source: argo-cd/templates/argocd-notifications/clusterrole.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: argocd-notifications-controller
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-rules:
-  - apiGroups:
-    - "argoproj.io"
-    resources:
-    - "applications"
-    verbs:
-    - get
-    - list
-    - watch
-    - update
-    - patch
----
 # Source: argo-cd/templates/argocd-repo-server/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -20715,28 +20639,6 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: argocd-application-controller
-  namespace: argocd
----
-# Source: argo-cd/templates/argocd-notifications/clusterrolebinding.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: argocd-notifications-controller
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: argocd-notifications-controller
-subjects:
-- kind: ServiceAccount
-  name: argocd-notifications-controller
   namespace: argocd
 ---
 # Source: argo-cd/templates/argocd-repo-server/clusterrolebinding.yaml
@@ -20923,57 +20825,6 @@ rules:
     - update
     - watch
 ---
-# Source: argo-cd/templates/argocd-notifications/role.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: argocd-notifications-controller
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-rules:
-- apiGroups:
-  - argoproj.io
-  resources:
-  - applications
-  - appprojects
-  verbs:
-  - get
-  - list
-  - watch
-  - update
-  - patch
-- apiGroups:
-  - ""
-  resources:
-  - configmaps
-  - secrets
-  verbs:
-  - list
-  - watch
-- apiGroups:
-  - ""
-  resourceNames:
-  - argocd-notifications-cm
-  resources:
-  - configmaps
-  verbs:
-  - get
-- apiGroups:
-  - ""
-  resourceNames:
-  - argocd-notifications-secret
-  resources:
-  - secrets
-  verbs:
-  - get
----
 # Source: argo-cd/templates/argocd-repo-server/role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -21109,29 +20960,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argocd-applicationset-controller
-    namespace: argocd
----
-# Source: argo-cd/templates/argocd-notifications/rolebinding.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: argocd-notifications-controller
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: argocd-notifications-controller
-subjects:
-  - kind: ServiceAccount
-    name: argocd-notifications-controller
     namespace: argocd
 ---
 # Source: argo-cd/templates/argocd-repo-server/rolebinding.yaml
@@ -21512,7 +21340,12 @@ spec:
               containerPort: 7000
               protocol: TCP
           resources:
-            {}
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -21569,119 +21402,6 @@ spec:
                 path: tls.key
               - key: ca.crt
                 path: ca.crt
-      dnsPolicy: ClusterFirst
----
-# Source: argo-cd/templates/argocd-notifications/deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: argocd-notifications-controller
-  namespace: "argocd"
-  labels:
-    helm.sh/chart: argo-cd-5.51.6
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/version: "v2.9.3"
-spec:
-  replicas: 1
-  revisionHistoryLimit: 3
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-notifications-controller
-      app.kubernetes.io/instance: argocd
-  template:
-    metadata:
-      labels:
-        helm.sh/chart: argo-cd-5.51.6
-        app.kubernetes.io/name: argocd-notifications-controller
-        app.kubernetes.io/instance: argocd
-        app.kubernetes.io/component: notifications-controller
-        app.kubernetes.io/managed-by: Helm
-        app.kubernetes.io/part-of: argocd
-        app.kubernetes.io/version: "v2.9.3"
-    spec:
-      terminationGracePeriodSeconds: 30
-      serviceAccountName: argocd-notifications-controller
-      containers:
-        - name: notifications-controller
-          image: quay.io/argoproj/argocd:v2.9.3
-          imagePullPolicy: IfNotPresent
-          args:
-            - /usr/local/bin/argocd-notifications
-            - --metrics-port=9001
-            - --loglevel=info
-            - --logformat=text
-            - --namespace=argocd
-            - --argocd-repo-server=argocd-repo-server:8081
-          env:
-            - name: ARGOCD_NOTIFICATIONS_CONTROLLER_LOGLEVEL
-              valueFrom:
-                configMapKeyRef:
-                  key: notificationscontroller.log.level
-                  name: argocd-cmd-params-cm
-                  optional: true
-            - name: ARGOCD_NOTIFICATIONS_CONTROLLER_LOGFORMAT
-              valueFrom:
-                configMapKeyRef:
-                  key: notificationscontroller.log.format
-                  name: argocd-cmd-params-cm
-                  optional: true
-            - name: ARGOCD_APPLICATION_NAMESPACES
-              valueFrom:
-                configMapKeyRef:
-                  key: application.namespaces
-                  name: argocd-cmd-params-cm
-                  optional: true
-          ports:
-          - name: metrics
-            containerPort: 9001
-            protocol: TCP
-          resources:
-            {}
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-              - ALL
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            seccompProfile:
-              type: RuntimeDefault
-          workingDir: /app
-          volumeMounts:
-            - name: tls-certs
-              mountPath: /app/config/tls
-            - name: argocd-repo-server-tls
-              mountPath: /app/config/reposerver/tls
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: argocd-notifications-controller
-              topologyKey: kubernetes.io/hostname
-      volumes:
-        - name: tls-certs
-          configMap:
-            name: argocd-tls-certs-cm
-        - name: argocd-repo-server-tls
-          secret:
-            secretName: argocd-repo-server-tls
-            optional: true
-            items:
-            - key: tls.crt
-              path: tls.crt
-            - key: tls.key
-              path: tls.key
-            - key: ca.crt
-              path: ca.crt
       dnsPolicy: ClusterFirst
 ---
 # Source: argo-cd/templates/argocd-repo-server/deployment.yaml
@@ -21935,7 +21655,12 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         resources:
-          {}
+          limits:
+            cpu: 50m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -21954,6 +21679,13 @@ spec:
         image: quay.io/argoproj/argocd:v2.9.3
         imagePullPolicy: IfNotPresent
         name: copyutil
+        resources:
+          limits:
+            cpu: 50m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -22310,7 +22042,12 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         resources:
-          {}
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -22430,7 +22167,12 @@ spec:
           containerPort: 5558
           protocol: TCP
         resources:
-          {}
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -22462,7 +22204,12 @@ spec:
         - mountPath: /tmp
           name: dexconfig
         resources:
-          {}
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -22551,7 +22298,12 @@ spec:
           containerPort: 6379
           protocol: TCP
         resources:
-          {}
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -22776,7 +22528,12 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         resources:
-          {}
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
