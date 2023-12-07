@@ -1,4 +1,25 @@
-## Initial Raspberry Pi Setup (after flashing SD with Ubuntu + enabling SSH)
+## Initial Raspberry Pi Setup ( + enabling SSH)
+
+### 1. Flashing SD with Ubuntu
+
+Use Raspberry Pi Imager to install Ubuntu Server on MicroSD with the following configs:
+
+***TBD***
+
+(enabling SSH)
+
+### 2. OS Pre-reqs
+
+On RaspberryPi, run:
+
+```
+sudo su -
+apt update
+apt install linux-modules-extra-$(uname -r)
+apt-get install linux-modules-extra-raspi # https://github.com/kubernetes-sigs/kubespray/issues/9456#issuecomment-1501250889
+apt upgrade
+reboot
+```
 
 First, copy over ssh key from personal Macbook to rpi:
 
@@ -6,29 +27,20 @@ First, copy over ssh key from personal Macbook to rpi:
 ssh-copy-id -i ~/.ssh/id_rsa IP_ADDRESS
 ```
 
-Next, ensure eth0 is properly setup. SSH to rpi and do the following:
+If you want to ensure a wired connection, do the following:
+1. ensure eth0 is properly setup. SSH to rpi and do the following:
+    ```
+    # check for wired connection to internet
+    ifconfig
+    ```
+1. you don't see eth0 show up (with appropriate IP address), then write the following to /etc/systemd/network/eth0.network and reboot
+    ```
+    [Match]
+    Name=eth0
 
-```
-# check for wired connection to internet
-ifconfig
-```
-
-If you don't see eth0 show up (with appropriate IP address), then write the following to /etc/systemd/network/eth0.network and reboot
-
-```
-[Match]
-Name=eth0
-
-[Network]
-DHCP=yes
-```
-
-Finally, install apt depdendencies on the rpi:
-
-```
-# see this comment: https://github.com/kubernetes-sigs/kubespray/issues/9456#issuecomment-1501250889
-apt-get install linux-modules-extra-raspi 
-```
+    [Network]
+    DHCP=yes
+    ```
 
 ## Adding USB external disk
 

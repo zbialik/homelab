@@ -4,13 +4,19 @@ all:
       ansible_host: 192.168.0.181
       ip: 192.168.0.181
       access_ip: 192.168.0.181
+    rpi02:
+      ansible_host: 192.168.0.196
+      ip: 192.168.0.196
+      access_ip: 192.168.0.196
   children:
     kube_control_plane:
       hosts:
         rpi01:
+        rpi02:
     kube_node:
       hosts:
         rpi01:
+        rpi02:
     etcd:
       hosts:
         rpi01:

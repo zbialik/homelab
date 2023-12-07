@@ -30,8 +30,19 @@ pip install -r ansible/kubespray/requirements.txt
 
 ```
 git submodule update
+source venv/bin/activate
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik --ask-pass --ask-become-pass
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik 
+```
+
+## Add Worker Node
+
+```
+git submodule update
+source venv/bin/activate
+cd ansible/kubespray
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root facts.yml --user zbialik 
+ansible-playbook -i ../inventory/homelab/hosts.yaml --limit=$NODE_NAME  --become --become-user=root scale.yml --user zbialik 
 ```
 
 ## Access Kubernetes Cluster
