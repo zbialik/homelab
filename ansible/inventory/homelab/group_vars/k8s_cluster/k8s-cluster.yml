@@ -288,17 +288,17 @@ podsecuritypolicy_enabled: false
 # kube_master_pid_reserved: "1000"
 
 ## Optionally reserve resources for OS system daemons.
-# system_reserved: true
+system_reserved: true
 ## Uncomment to override default values
 ## The following two items need to be set when system_reserved is true
 # system_reserved_cgroups_for_service_slice: system.slice
 # system_reserved_cgroups: "/{{ system_reserved_cgroups_for_service_slice }}"
-# system_memory_reserved: 512Mi
-# system_cpu_reserved: 500m
+system_memory_reserved: 256Mi
+system_cpu_reserved: 250m
 # system_ephemeral_storage_reserved: 2Gi
 ## Reservation for master hosts
-# system_master_memory_reserved: 256Mi
-# system_master_cpu_reserved: 250m
+system_master_memory_reserved: 256Mi
+system_master_cpu_reserved: 250m
 # system_master_ephemeral_storage_reserved: 2Gi
 
 ## Eviction Thresholds to avoid system OOMs
@@ -371,7 +371,7 @@ persistent_volumes_enabled: false
 event_ttl_duration: "1h0m0s"
 
 ## Automatically renew K8S control plane certificates on first Monday of each month
-auto_renew_certificates: false
+auto_renew_certificates: true
 # First Monday of each month
 # auto_renew_certificates_systemd_calendar: "Mon *-*-1,2,3,4,5,6,7 03:{{ groups['kube_control_plane'].index(inventory_hostname) }}0:00"
 
