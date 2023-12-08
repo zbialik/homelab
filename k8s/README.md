@@ -1,23 +1,35 @@
 # Initialize GitOps
 
 
+1. deploy initial k8s infra
+    ```
+    kubectl apply -k k8s/kube-system/sealed-secrets
+    kubectl apply -k k8s/kube-system/cilium
+    kubectl apply -k k8s/metallb-system/metallb
+    kubectl apply -k k8s/cert-manager/cert-manager
+    kubectl apply -k k8s/cert-manager/cert-manager-webhook-duckdns
+    kubectl apply -k k8s/ingress-nginx/ingress-nginx
+    ```
 1. install argocd cli: 
     ```
     brew install argocd
     ```
 1. generate bcrypt has of desired password: 
     ```
-    argocd account bcrypt --password <YOUR-PASSWORD-HERE>
+    BCRYPT_PW=`argocd account bcrypt --password <YOUR-PASSWORD-HERE>`
     ```
-1. set bcrypt hash in `values.yaml` at `configs.secret.argocdServerAdminPassword`
-1. helm generate k8s manifests: 
+1. create secret ArgoCD `Secret` from bcrypted password
     ```
-    helm repo add argo https://argoproj.github.io/argo-helm
-    helm template argocd -n argocd argo/argo-cd -f argocd/argocd/helm/values.yaml > argocd/argocd/generated.yaml
+    kubectl create ns argocd
+    kubectl create secret generic argocd-secret -n argocd \
+        --from-literal=admin.password=${BCRYPT_PW} \
+        --from-literal=admin.passwordMtime="$(date +%FT%T%Z)"
     ```
 1. deploy ArgoCD
     ```
-    kubectl apply -k argocd/argocd
+    kubectl apply -k k8s/argocd/argocd
+
+    # NOTE: ignore the error about SealedSecret CRD not existing yet
     ```
 1. initialize Gitops
     ```
