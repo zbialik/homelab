@@ -10,6 +10,12 @@ Use Raspberry Pi Imager to install Ubuntu Server on MicroSD with the following c
 
 ### 2. OS Pre-reqs
 
+Copy over ssh key from personal Macbook to rpi:
+
+```
+ssh-copy-id -i ~/.ssh/id_rsa IP_ADDRESS
+```
+
 On RaspberryPi, run:
 
 ```
@@ -21,28 +27,7 @@ apt upgrade
 reboot
 ```
 
-First, copy over ssh key from personal Macbook to rpi:
-
-```
-ssh-copy-id -i ~/.ssh/id_rsa IP_ADDRESS
-```
-
-If you want to ensure a wired connection, do the following:
-1. ensure eth0 is properly setup. SSH to rpi and do the following:
-    ```
-    # check for wired connection to internet
-    ifconfig
-    ```
-1. you don't see eth0 show up (with appropriate IP address), then write the following to /etc/systemd/network/eth0.network and reboot
-    ```
-    [Match]
-    Name=eth0
-
-    [Network]
-    DHCP=yes
-    ```
-
-## Adding USB external disk
+## (optional) Adding USB external disk
 
 Verify connected USB storage:
 ```
