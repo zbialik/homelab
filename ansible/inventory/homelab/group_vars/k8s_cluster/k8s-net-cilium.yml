@@ -1,5 +1,5 @@
 ---
-# cilium_version: "v1.12.1"
+# cilium_version: "v1.12.1
 
 # Log-level
 # cilium_debug: false
@@ -140,21 +140,21 @@
 
 # Hubble
 ### Enable Hubble without install
-# cilium_enable_hubble: false
+cilium_enable_hubble: true
 ### Enable Hubble Metrics
-# cilium_enable_hubble_metrics: false
+cilium_enable_hubble_metrics: true
 ### if cilium_enable_hubble_metrics: true
-# cilium_hubble_metrics: {}
-# - dns
-# - drop
-# - tcp
-# - flow
-# - icmp
-# - http
+cilium_hubble_metrics:
+- dns
+- drop
+- tcp
+- flow
+- icmp
+- http
 ### Enable Hubble install
-# cilium_hubble_install: false
+cilium_hubble_install: true
 ### Enable auto generate certs if cilium_hubble_install: true
-# cilium_hubble_tls_generate: false
+cilium_hubble_tls_generate: true
 
 # IP address management mode for v1.9+.
 # https://docs.cilium.io/en/v1.9/concepts/networking/ipam/

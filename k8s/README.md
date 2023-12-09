@@ -1,11 +1,11 @@
 # Initialize GitOps
 
 
+1. `cd` to root repository directory
 1. deploy initial k8s infra
     ```
     kubectl apply -k k8s/kube-system/sealed-secrets
-    kubectl apply -k k8s/kube-system/cilium
-    kubectl apply -k k8s/metallb-system/metallb
+    kubectl apply -k k8s/metallb-system/metallb # may need to execute twice for CRD
     kubectl apply -k k8s/cert-manager/cert-manager
 
     # will need to create sealed secret first
