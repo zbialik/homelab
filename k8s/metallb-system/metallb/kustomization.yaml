@@ -1,7 +1,7 @@
 kind: Kustomization
 namespace: metallb-system
 commonLabels:
-  app: metallb
+  app.zb/name: metallb
 
 resources:
 - namespace.yaml

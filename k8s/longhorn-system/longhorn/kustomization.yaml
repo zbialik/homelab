@@ -1,6 +1,6 @@
 kind: Kustomization
 commonLabels:
-  app.kubernetes.io/name: longhorn
+  app.zb/name: longhorn
 
 resources:
 - generated.yaml

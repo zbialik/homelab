@@ -1,6 +1,6 @@
 kind: Kustomization
 commonLabels:
-  app: ingress-nginx
+  app.zb/name: ingress-nginx
 
 resources:
 - namespace.yaml

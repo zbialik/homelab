@@ -1,6 +1,6 @@
 kind: Kustomization
 commonLabels:
-  app: cert-manager-webhook-duckdns
+  app.zb/name: cert-manager-webhook-duckdns
 
 resources:
 - sealed-secret.yaml
