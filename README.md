@@ -1,38 +1,28 @@
 # Personal Kubernetes Homelab
 IaC repository for managing my home kubespray cluster made up of Raspberry Pi's
 
-# Pre-reqs
-IaC repository for managing my home kubespray cluster
+If building the cluster as-new, goto [this doc](docs/INIT_CLUSTER.md).
 
-## init/update kubespray git submodule
+# Cluster Maintenance
 
-```
-git submodule init
-git submodule update
-```
-
-## setup python virtual env
-
-```
-python3 -m venv venv
-source venv/bin/activate
-```
-
-## install python depdendencies
-
-```
-pip install -r ansible/kubespray/requirements.txt
-```
-
-# Deployment Instructions
-
-## Init/Update Kubernetes Cluster and Nodes
+## Update Cluster Configs
 
 ```
 git submodule update
 source venv/bin/activate
 cd ansible/kubespray
 ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik 
+```
+
+## Kubernetes Version Upgrades
+
+```
+git submodule update
+source venv/bin/activate
+cd ansible/kubespray
+git pull
+git checkout ${desired_kubespray_release_tag}
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root upgrade-cluster..yml --user zbialik 
 ```
 
 ## Add Worker Node
@@ -45,23 +35,21 @@ ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root
 ansible-playbook -i ../inventory/homelab/hosts.yaml --limit=$NODE_NAME  --become --become-user=root scale.yml --user zbialik 
 ```
 
-## Access Kubernetes Cluster
-
-For now, I just log into the control-plane node and snag the `/etc/kubernetes/admin.conf` file 
-
 # Disaster Recovery
-
-## Reset Kubernetes Cluster
 
 Only perform the following when you want to completely rebuild the kubernetes cluster.
 
 ```
 git submodule update
 cd ansible/kubespray
-ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik --ask-pass --ask-become-pass
+ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root reset.yml --user zbialik
 ```
 
-## Ingres/DNS
+## Access Kubernetes Cluster
+
+For now, I just log into the control-plane node and snag the `/etc/kubernetes/admin.conf` file 
+
+## Ingress/DNS
 
 ### DuckDNS
 
