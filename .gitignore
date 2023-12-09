@@ -2,4 +2,5 @@
 venv 
 tmp
 secret*.yaml
+ansible/inventory/homelab/artifacts
 ansible/inventory/homelab/credentials
