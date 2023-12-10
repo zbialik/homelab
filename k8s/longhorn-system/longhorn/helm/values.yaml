@@ -103,7 +103,7 @@ persistence:
   removeSnapshotsDuringFilesystemTrim: ignored # "enabled" or "disabled" otherwise
 
 helmPreUpgradeCheckerJob:
-  enabled: true
+  enabled: false
 
 csi:
   kubeletRootDir: ~
