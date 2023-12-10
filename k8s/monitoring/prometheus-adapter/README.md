@@ -4,7 +4,7 @@
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
-helm template -f helm/values.yaml prometheus-adapter prometheus-community/prometheus-adapter > generated.yaml
+helm template -f helm/values.yaml prometheus-adapter prometheus-community/prometheus-adapter --api-versions apiregistration.k8s.io/v1 > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
