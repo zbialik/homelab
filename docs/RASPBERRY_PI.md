@@ -27,6 +27,11 @@ apt upgrade
 reboot
 ```
 
+MetalLB wasn't working when the Pis are connected over wlan0 (wifi) as opposed to eth0 (wired). This is a result of the following github issue: https://github.com/metallb/metallb/issues/284. To remediate, I had to apply the below fix on my Pis:
+```
+sudo ifconfig wlan0 promisc
+```
+
 ## (optional) Adding USB external disk
 
 Verify connected USB storage:
