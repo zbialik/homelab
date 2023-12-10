@@ -117,8 +117,7 @@ prometheus:
 
     ## Override serviceMonitor selector
     ##
-    selectorOverride:
-      app.kubernetes.io/name: node-exporter
+    selectorOverride: {}
 
     ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
     ##
