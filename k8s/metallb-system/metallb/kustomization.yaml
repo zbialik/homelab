@@ -4,6 +4,5 @@ commonLabels:
   app.zb/name: metallb
 
 resources:
-- namespace.yaml
 - generated.yaml
 - confs.yaml

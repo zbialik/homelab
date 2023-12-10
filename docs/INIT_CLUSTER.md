@@ -34,4 +34,4 @@ This document outlines how you'd initialize a brand new kubespray cluster from s
     ```
     ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik 
     ```
-1. initialize GitOps pattern by following [this document](../k8s/README.md)
+1. initialize GitOps pattern by following [this document](./INIT_GITOPS.md)

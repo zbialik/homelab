@@ -4,7 +4,5 @@ commonLabels:
   app.zb/name: argocd
 
 resources:
-- namespace.yaml
 - generated.yaml
 - sealed-secret.yaml
-

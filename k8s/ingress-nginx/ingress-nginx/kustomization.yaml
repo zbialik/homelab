@@ -1,9 +1,9 @@
 kind: Kustomization
+namespace: ingress-nginx
 commonLabels:
   app.zb/name: ingress-nginx
 
 resources:
-- namespace.yaml
 - cert.yaml
 - generated.yaml
 
@@ -15,7 +15,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/loadBalancerIP
-      value: 192.168.0.178
+      value: 192.168.1.100
 - target:
     group: apps
     kind: Deployment

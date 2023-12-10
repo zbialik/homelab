@@ -5,8 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.0.178/32 # set to worker node IPs
-  - 192.168.0.196/32 # set to worker node IPs
+  - 192.168.1.100-192.168.1.249 # should not conflict with other IPs (nodes, pods, etc.)
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
