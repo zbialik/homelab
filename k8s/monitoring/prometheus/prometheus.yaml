@@ -7,6 +7,10 @@ spec:
   externalLabels:
     cluster: homelab
     prom_shard: "$(SHARD)"
+  podMetadata:
+    labels:
+      prometheus: main
+      app.zb/name: prometheus
   securityContext:
     fsGroup: 65534
     runAsGroup: 65534
