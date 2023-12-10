@@ -16,7 +16,7 @@ CURR_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
 # update helm/default.yaml with changes from next chart version and commit
 helm show values prometheus-community/prometheus-adapter > helm/default.yaml
 git add .
-git commit -m "updating node-exporter helm/default.yaml"
+git commit -m "updating prometheus-adapter helm/default.yaml"
 
 # get new commit sha of helm/default.yaml
 NEW_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
