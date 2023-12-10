@@ -3,5 +3,4 @@ namespace: kube-system
 commonLabels:
   app.zb/name: controlplane-service-monitors
 resources:
-- apiserver.yaml
 - kubelet.yaml
