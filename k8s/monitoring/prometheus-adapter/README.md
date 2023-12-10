@@ -1,5 +1,6 @@
 # Prometheus Adapter
 
+Primarily deployed as a vanilla metrics-server given my cluster can't auto-scale.
 
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
