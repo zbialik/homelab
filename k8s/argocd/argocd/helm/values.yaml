@@ -718,10 +718,10 @@ controller:
   # -- Resource limits and requests for the application controller pods
   resources:
    limits:
-     cpu: 500m
-     memory: 1Gi
+     cpu: 1
+     memory: 512Mi
    requests:
-     cpu: 250m
+     cpu: 500m
      memory: 512Mi
 
   # Application controller container ports
@@ -1049,7 +1049,7 @@ dex:
      cpu: 50m
      memory: 64Mi
    requests:
-     cpu: 10m
+     cpu: 5m
      memory: 32Mi
 
   # Dex container ports
@@ -2260,7 +2260,7 @@ repoServer:
      cpu: 1
      memory: 256Mi
    requests:
-     cpu: 100m
+     cpu: 50m
      memory: 128Mi
 
   # Repo server container ports
@@ -2617,7 +2617,7 @@ applicationSet:
       cpu: 100m
       memory: 128Mi
     requests:
-      cpu: 100m
+      cpu: 50m
       memory: 128Mi
 
   # ApplicationSet controller container ports

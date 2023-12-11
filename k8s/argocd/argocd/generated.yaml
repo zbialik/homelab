@@ -21344,7 +21344,7 @@ spec:
               cpu: 100m
               memory: 128Mi
             requests:
-              cpu: 100m
+              cpu: 50m
               memory: 128Mi
           securityContext:
             allowPrivilegeEscalation: false
@@ -21659,7 +21659,7 @@ spec:
             cpu: 1
             memory: 256Mi
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 128Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -21684,7 +21684,7 @@ spec:
             cpu: 1
             memory: 256Mi
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 128Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -22171,7 +22171,7 @@ spec:
             cpu: 50m
             memory: 64Mi
           requests:
-            cpu: 10m
+            cpu: 5m
             memory: 32Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -22208,7 +22208,7 @@ spec:
             cpu: 50m
             memory: 64Mi
           requests:
-            cpu: 10m
+            cpu: 5m
             memory: 32Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -22529,10 +22529,10 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 500m
-            memory: 1Gi
+            cpu: 1
+            memory: 512Mi
           requests:
-            cpu: 250m
+            cpu: 500m
             memory: 512Mi
         securityContext:
           allowPrivilegeEscalation: false
