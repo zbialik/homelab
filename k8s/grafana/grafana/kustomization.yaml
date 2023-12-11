@@ -3,13 +3,13 @@ namespace: grafana
 commonLabels:
   app.zb/name: grafana
 
-resources: []
-# - sealed-secret.yaml
-# - rbac.yaml
-# - deployment.yaml
-# - ingress.yaml
-# - pvc.yaml
-# - service.yaml
+resources:
+- sealed-secret.yaml
+- rbac.yaml
+- deployment.yaml
+- ingress.yaml
+- pvc.yaml
+- service.yaml
 
 images:
   - name: grafana
