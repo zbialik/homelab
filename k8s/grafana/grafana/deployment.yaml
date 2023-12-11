@@ -41,6 +41,7 @@ spec:
         name: grafana
         ports:
         - containerPort: 3000
+          name: http-port
         readinessProbe:
           failureThreshold: 3
           httpGet:
