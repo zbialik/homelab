@@ -377,10 +377,13 @@ webhook:
   # webhook pod.
   featureGates: ""
 
-  resources: {}
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+  resources:
+    limits:
+      cpu: 100m
+      memory: 64Mi
+    requests:
+      cpu: 5m
+      memory: 16Mi
 
   ## Liveness and readiness probe values
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
@@ -555,10 +558,13 @@ cainjector:
   # Enable profiling for cainjector
   # - --enable-profiling=true
 
-  resources: {}
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+  resources:
+    limits:
+      cpu: 100m
+      memory: 64Mi
+    requests:
+      cpu: 5m
+      memory: 32Mi
 
   nodeSelector:
     kubernetes.io/os: linux
