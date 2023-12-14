@@ -1,37 +1,12 @@
-## Initial Raspberry Pi Setup ( + enabling SSH)
+## Initial Raspberry Pi Setup
 
-### 1. Flashing SD with Ubuntu
+### Flashing SD with Ubuntu
 
 Use Raspberry Pi Imager to install Ubuntu Server on MicroSD with the following configs:
 
 ***TBD***
 
 (enabling SSH)
-
-### 2. OS Pre-reqs
-
-Copy over ssh key from personal Macbook to rpi:
-
-```
-ssh-copy-id -i ~/.ssh/id_rsa IP_ADDRESS
-```
-
-On RaspberryPi, run:
-
-```
-sudo su -
-apt update
-apt install linux-modules-extra-$(uname -r)
-apt-get install linux-modules-extra-raspi # https://github.com/kubernetes-sigs/kubespray/issues/9456#issuecomment-1501250889
-apt upgrade
-reboot
-```
-
-MetalLB wasn't working when the Pis are connected over wlan0 (wifi) as opposed to eth0 (wired). This is a result of the following github issue: https://github.com/metallb/metallb/issues/284. To remediate, I had to apply the below fix on my Pis:
-```
-apt install net-tools 
-ifconfig wlan0 promisc
-```
 
 ## (optional) Adding USB external disk
 

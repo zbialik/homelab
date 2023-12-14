@@ -3,7 +3,6 @@ This document outlines how you'd initialize a brand new kubespray cluster from s
 
 # Pre-reqs (only need to do 1 time)
 
-1. make sure all Raspberry Pi's are setup based on the [instructions here](./RASPBERRY_PI.md).
 1. init kubespray git submodule
     ```
     git submodule init
@@ -29,9 +28,11 @@ This document outlines how you'd initialize a brand new kubespray cluster from s
     git pull
     git checkout v2.23.1 # replace with desired tag/release
     pip install -r requirements.txt
+    cd ../
     ```
 1. run `cluster.yml` playbook
     ```
-    ansible-playbook -i ../inventory/homelab/hosts.yaml  --become --become-user=root cluster.yml --user zbialik 
+    ansible-playbook -i inventory/homelab/hosts.yaml  --become --become-user=root playbooks/raspberrypi-patch-and-reboot.yml --user zbialik 
+    ansible-playbook -i inventory/homelab/hosts.yaml  --become --become-user=root playbooks/cluster.yml --user zbialik 
     ```
 1. initialize GitOps pattern by following [this document](./INIT_GITOPS.md)
