@@ -4238,6 +4238,8 @@ spec:
         secret:
           secretName: longhorn-grpc-tls
           optional: true
+      nodeSelector:
+        kubernetes.io/hostname: rpi03
       serviceAccountName: longhorn-service-account
   updateStrategy:
     rollingUpdate:
@@ -4468,6 +4470,8 @@ spec:
               fieldPath: metadata.namespace
       restartPolicy: OnFailure
       serviceAccountName: longhorn-service-account
+      nodeSelector:
+        kubernetes.io/hostname: rpi03
 ---
 # Source: longhorn/templates/uninstall-job.yaml
 apiVersion: batch/v1
@@ -4512,3 +4516,5 @@ spec:
               fieldPath: metadata.namespace
       restartPolicy: Never
       serviceAccountName: longhorn-service-account
+      nodeSelector:
+        kubernetes.io/hostname: rpi03
