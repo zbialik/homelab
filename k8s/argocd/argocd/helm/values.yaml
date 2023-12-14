@@ -719,10 +719,10 @@ controller:
   resources:
    limits:
      cpu: 1
-     memory: 512Mi
+     memory: 1Gi
    requests:
      cpu: 500m
-     memory: 512Mi
+     memory: 768Mi
 
   # Application controller container ports
   containerPorts:
