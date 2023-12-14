@@ -33,5 +33,6 @@
     ```
     git add . 
     git commit -m "initializing gitops w/sealed secrets"
+    git push
     kubectl apply -f k8s/root.yaml
     ```
