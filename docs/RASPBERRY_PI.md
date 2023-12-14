@@ -10,7 +10,7 @@ Use Raspberry Pi Imager to install Ubuntu Server on MicroSD with the following c
 
 ## (optional) Adding USB external disk
 
-Verify connected USB storage:
+Verify connected USB storage (should see `sda`):
 ```
 lsblk 
 
@@ -23,7 +23,7 @@ loop4         7:4    0  35.5M  1 loop /snap/snapd/20102
 sda           8:0    0 931.5G  0 disk 
 mmcblk0     179:0    0 119.1G  0 disk 
 ├─mmcblk0p1 179:1    0   256M  0 part /boot/firmware
-└─mmcblk0p2 179:2    0 118.8G  0 part /mnt/usb1
+└─mmcblk0p2 179:2    0 118.8G  0 part /
 ```
 
 Execute:
@@ -50,7 +50,6 @@ mmcblk0
 Create folder for mounting: 
 ```
 mkdir /mnt/usb01
-chown zbialik:zbialik -R /mnt/usb01
 ```
 
 Execute/add the following line to /etc/fstab to mount storage on reboot:
@@ -59,3 +58,21 @@ echo "UUID=$(blkid --output value /dev/sda | head -n1) /mnt/usb01 ext4 defaults 
 ```
 
 Mount the storage to folder manually without reboot: `mount -o defaults /dev/sda /mnt/usb01`
+
+Confirm mount created:
+
+```
+# lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0         7:0    0  59.2M  1 loop /snap/core20/1977
+loop1         7:1    0 109.6M  1 loop /snap/lxd/24326
+loop2         7:2    0  46.4M  1 loop /snap/snapd/19459
+loop3         7:3    0  35.5M  1 loop /snap/snapd/20298
+loop4         7:4    0  59.7M  1 loop /snap/core20/2107
+sda           8:0    0 931.5G  0 disk /mnt/usb01
+mmcblk0     179:0    0 119.4G  0 disk 
+├─mmcblk0p1 179:1    0   256M  0 part /boot/firmware
+└─mmcblk0p2 179:2    0 119.1G  0 part /var/lib/kubelet/pods/4b0af82f-ca1d-4a49-9dc9-4a88d06a81b6/volume-subpaths/hubble-ui-nginx-conf/frontend/0
+                                      /
+
+```
