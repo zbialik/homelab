@@ -43,7 +43,7 @@ data:
     
     
     
-    default-data-path: /mnt/usb01/longhorn
+    default-data-path: /mnt/usb01
     
     
     

@@ -118,7 +118,7 @@ defaultSettings:
   backupTargetCredentialSecret: ~
   allowRecurringJobWhileVolumeDetached: ~
   createDefaultDiskLabeledNodes: ~
-  defaultDataPath: /mnt/usb01/longhorn
+  defaultDataPath: /mnt/usb01
   defaultDataLocality: ~
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
