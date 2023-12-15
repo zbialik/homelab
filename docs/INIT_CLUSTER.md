@@ -32,7 +32,7 @@ This document outlines how you'd initialize a brand new kubespray cluster from s
     ```
 1. run `cluster.yml` playbook
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml  --become --become-user=root playbooks/raspberrypi-patch-and-reboot.yml --user zbialik 
+    ansible-playbook -i inventory/homelab/hosts.yaml  --become --become-user=root playbooks/raspberrypi-patch.yml --user zbialik 
     ansible-playbook -i inventory/homelab/hosts.yaml  --become --become-user=root playbooks/cluster.yml --user zbialik 
     ```
 1. initialize GitOps pattern by following [this document](./INIT_GITOPS.md)

@@ -36,9 +36,9 @@ ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --
     source venv/bin/activate
     cd ansible
     ```
-1. Run the `raspberrypi-patch-and-reboot.yml` for the desired host (**WARNING: this will reboot the server**)
+1. Run the `raspberrypi-patch.yml` for the desired host (**WARNING: this will reboot the server**)
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik playbooks/raspberrypi-patch-and-reboot.yml --limit=$NODE_NAME
+    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik playbooks/raspberrypi-patch.yml --limit=$NODE_NAME
     ```
 1. Run the `facts.yml` playbook for all hosts
     ```
@@ -61,9 +61,9 @@ ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --
     source venv/bin/activate
     cd ansible
     ```
-1. Run the `raspberrypi-patch-and-reboot.yml` for the desired host (**WARNING: this will reboot the server**)
+1. Run the `raspberrypi-patch.yml` for the desired host (**WARNING: this will reboot the server**)
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik raspberrypi-patch-and-reboot.yml --limit=$NODE_NAME
+    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik raspberrypi-patch.yml --limit=$NODE_NAME
     ```
 1. Uncordon the `Node`
     ```

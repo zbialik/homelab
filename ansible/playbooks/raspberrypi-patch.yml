@@ -8,29 +8,32 @@
     ansible.builtin.apt:
       update_cache: yes
     become: yes
+
   - name: Install linux-modules-extra-kernel package
     ansible.builtin.apt:
       name: "linux-modules-extra-{{ ansible_kernel }}"
       state: present
     become: yes
+
   - name: Install linux-modules-extra-raspi package
     ansible.builtin.apt:
       name: "linux-modules-extra-raspi"
       state: present
     become: yes
+
   - name: Install net-tools package
     ansible.builtin.apt:
       name: "net-tools"
       state: present
     become: yes
+
+  - name: Install open-iscsi package for Rancher Longhorn
+    ansible.builtin.apt:
+      name: "open-iscsi"
+      state: present
+    become: yes
+
   - name: Upgrade all packages
     ansible.builtin.apt:
       upgrade: yes
-    become: yes
-- name: System reboot
-  hosts: all
-  become: yes
-  tasks:
-  - name: Reboot the system
-    ansible.builtin.reboot:
     become: yes
