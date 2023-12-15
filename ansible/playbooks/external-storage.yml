@@ -13,7 +13,14 @@
         fstype: ext4
         dev: /dev/sda
 
-    - name: Mount /dev/sda to /mnt/my_mount_point
+
+    - name: Create mount point directory /mnt/usb01
+      ansible.builtin.file:
+        path: /mnt/usb01
+        state: directory
+        mode: 0775
+
+    - name: Mount /dev/sda to /mnt/usb01
       ansible.builtin.mount:
         path: /mnt/usb01
         src: /dev/sda
