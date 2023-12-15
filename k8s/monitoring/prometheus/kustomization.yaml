@@ -5,7 +5,7 @@ commonLabels:
 
 resources:
 - ingress.yaml
-- prometheus.yaml
+# - prometheus.yaml
 - rbac.yaml
 - service.yaml
 - servicemonitor.yaml
