@@ -93,8 +93,9 @@ persistence:
     dataSourceParameters: ~
     expectedChecksum: ~
   defaultNodeSelector:
-    enable: false # disable by default
-    selector: ""
+    enable: true # disable by default
+    selector:
+      kubernetes.io/hostname: rpi03
   removeSnapshotsDuringFilesystemTrim: ignored # "enabled" or "disabled" otherwise
 
 helmPreUpgradeCheckerJob:
