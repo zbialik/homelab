@@ -2,5 +2,5 @@ kind: Kustomization
 commonLabels:
   app.zb/name: longhorn
 
-resources:
-- generated.yaml
+resources: []
+# - generated.yaml
