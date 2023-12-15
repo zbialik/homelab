@@ -1,4 +1,6 @@
 - name: Apply common configs for kubespray cluster
   import_playbook: common.yml
+- name: Configure external storage devices
+  import_playbook: external-storage.yml
 - name: Execute kubespray playbook - cluster.yml
   import_playbook: ../kubespray/cluster.yml

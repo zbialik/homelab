@@ -1,0 +1,21 @@
+---
+- name: Configure Ext4 filesystem on USB block device
+  hosts: external_storage
+  become: yes
+  tasks:
+    - name: Ensure e2fsprogs is installed
+      ansible.builtin.package:
+        name: e2fsprogs
+        state: present
+
+    - name: Create Ext4 filesystem on /dev/sda
+      ansible.builtin.filesystem:
+        fstype: ext4
+        dev: /dev/sda
+
+    - name: Mount /dev/sda to /mnt/my_mount_point
+      ansible.builtin.mount:
+        path: /mnt/usb01
+        src: /dev/sda
+        fstype: ext4
+        state: mounted
