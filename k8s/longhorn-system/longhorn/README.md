@@ -3,7 +3,7 @@
 ```
 helm repo add longhorn https://charts.longhorn.io
 helm repo update
-helm template -f helm/values.yaml longhorn/longhorn --namespace longhorn-system > generated.yaml
+helm template -f helm/values.yaml longhorn/longhorn --namespace longhorn-system --version 1.5.3 > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
