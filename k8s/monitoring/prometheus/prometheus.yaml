@@ -24,7 +24,6 @@ spec:
         resources:
           requests:
             storage: 100Gi
-        storageClassName: longhorn
   replicas: 1
   shards: 1
   resources:
