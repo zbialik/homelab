@@ -4,27 +4,14 @@ commonLabels:
   app.kubernetes.io/name: grafana
   app.zb/name: grafana
 
-resources: []
-# - sealed-secret.yaml
-# - rbac.yaml
-# - deployment.yaml
-# - ingress.yaml
-# - pvc.yaml
-# - service.yaml
-
-images:
-  - name: grafana
-    newName: grafana/grafana
-    newTag: 10.2.2
-  - name: k8s-sidecar
-    newName: kiwigrid/k8s-sidecar
-    newTag: 1.25.3
+resources:
+- sealed-secret.yaml
+- generated.yaml
 
 configMapGenerator:
   - name: grafana-provisioning-datasources
+    options:
+      labels:
+        grafana.zb/datasource: ""
     files:
       - files/datasources.yaml
-  - name: grafana-provisioning-providers
-    files:
-      - files/providers.yaml
-
