@@ -13,7 +13,7 @@ helm template -f helm/values.yaml longhorn/longhorn --namespace longhorn-system 
 CURR_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
 
 # update helm/default.yaml with changes from next chart version and commit
-helm show values longhorn/longhorn > helm/default.yaml
+helm show values longhorn/longhorn --version 1.5.3 > helm/default.yaml
 git add .
 git commit -m "updating longhorn helm/default.yaml"
 

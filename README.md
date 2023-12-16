@@ -11,7 +11,7 @@ If building the cluster as-new, goto [this doc](docs/INIT_CLUSTER.md).
 git submodule update
 source venv/bin/activate
 cd ansible
-ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --user zbialik playbooks/cluster.yml
+ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root playbooks/cluster.yml
 mv ~/.kube/homelab ~/.kube/homelab.bak && cp -rp inventory/homelab/artifacts/admin.conf ~/.kube/homelab
 ```
 
@@ -25,7 +25,7 @@ git pull
 git checkout ${desired_kubespray_release_tag}
 pip install requirements.txt
 cd ../
-ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --user zbialik playbooks/cluster.yml
+ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root  --user zbialik playbooks/cluster.yml
 ```
 
 ## Adding Worker Node
@@ -38,15 +38,15 @@ ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --
     ```
 1. Run the `raspberrypi-patch.yml` for the desired host (**WARNING: this will reboot the server**)
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik playbooks/raspberrypi-patch.yml --limit=$NODE_NAME
+    ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root --user zbialik playbooks/raspberrypi-patch.yml --limit=$NODE_NAME
     ```
 1. Run the `facts.yml` playbook for all hosts
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik kubespray/facts.yml
+    ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root --user zbialik kubespray/facts.yml
     ```
 1. Run the `scale.yml` playbook for the desired host
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik playbooks/scale.yml --limit=$NODE_NAME
+    ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root --user zbialik playbooks/scale.yml --limit=$NODE_NAME
     ```
 
 ## Updating Worker Node (e.g. apt packages)
@@ -63,7 +63,7 @@ ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root  --
     ```
 1. Run the `raspberrypi-patch.yml` for the desired host (**WARNING: this will reboot the server**)
     ```
-    ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik raspberrypi-patch.yml --limit=$NODE_NAME
+    ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root --user zbialik raspberrypi-patch.yml --limit=$NODE_NAME
     ```
 1. Uncordon the `Node`
     ```
@@ -78,7 +78,7 @@ Only perform the following when you want to completely rebuild the kubernetes cl
 git submodule update
 source venv/bin/activate
 cd ansible
-ansible-playbook -i inventory/homelab/hosts.yaml --become --become-user=root --user zbialik kubespray/reset.yml
+ansible-playbook -i inventory/homelab/homelab.ini --become --become-user=root --user zbialik kubespray/reset.yml
 ```
 
 ## Ingress/DNS
