@@ -42,14 +42,14 @@ data:
     
     
     
-    
+    create-default-disk-labeled-nodes: true
     default-data-path: /mnt/usb01
     
     
     
     
     
-    default-replica-count: 1
+    default-replica-count: 0
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
@@ -76,12 +76,11 @@ data:
     reclaimPolicy: "Delete"
     volumeBindingMode: Immediate
     parameters:
-      numberOfReplicas: "1"
+      numberOfReplicas: "0"
       staleReplicaTimeout: "30"
       fromBackup: ""
       fsType: "ext4"
       dataLocality: "disabled"
-      nodeSelector: ""
 ---
 # Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -4099,14 +4098,6 @@ spec:
             value: "longhornio/csi-snapshotter:v5.0.1"
           - name: CSI_LIVENESS_PROBE_IMAGE
             value: "longhornio/livenessprobe:v2.8.0"
-          - name: CSI_ATTACHER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_PROVISIONER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_RESIZER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_SNAPSHOTTER_REPLICA_COUNT
-            value: "1"
       serviceAccountName: longhorn-service-account
       securityContext:
         runAsUser: 0

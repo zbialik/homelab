@@ -1,6 +1,6 @@
 ---
 - name: Configure Ext4 filesystem on USB block device
-  hosts: external_storage
+  hosts: storage_node
   become: yes
   tasks:
     - name: Ensure e2fsprogs is installed

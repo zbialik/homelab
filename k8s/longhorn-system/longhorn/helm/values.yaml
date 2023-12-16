@@ -79,7 +79,7 @@ persistence:
   defaultClass: true
   defaultFsType: ext4
   defaultMkfsParams: ""
-  defaultClassReplicaCount: 1 # setting to 1 since only have 1 worker right now
+  defaultClassReplicaCount: 0 # setting to 1 since only have 1 worker right now
   defaultDataLocality: disabled # best-effort otherwise
   reclaimPolicy: Delete
   migratable: false
@@ -93,7 +93,7 @@ persistence:
     dataSourceParameters: ~
     expectedChecksum: ~
   defaultNodeSelector:
-    enable: true # disable by default
+    enable: false # disable by default
     selector: ""
   removeSnapshotsDuringFilesystemTrim: ignored # "enabled" or "disabled" otherwise
 
@@ -112,7 +112,7 @@ defaultSettings:
   backupTarget: ~
   backupTargetCredentialSecret: ~
   allowRecurringJobWhileVolumeDetached: ~
-  createDefaultDiskLabeledNodes: ~
+  createDefaultDiskLabeledNodes: true
   defaultDataPath: /mnt/usb01
   defaultDataLocality: ~
   replicaSoftAntiAffinity: ~
