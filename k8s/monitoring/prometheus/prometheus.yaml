@@ -3,7 +3,7 @@ kind: Prometheus
 metadata:
   name: main
 spec:
-  version: v2.48.0
+  version: v2.48.1
   externalLabels:
     cluster: homelab
     prom_shard: "$(SHARD)"
@@ -23,15 +23,15 @@ spec:
       spec:
         resources:
           requests:
-            storage: 50Gi
+            storage: 100Gi
         storageClassName: longhorn
   replicas: 1
   shards: 1
   resources:
     limits:
-      cpu: 300m
-      memory: 1Gi
+      cpu: 1
+      memory: 2Gi
     requests:
-      cpu: 300m
-      memory: 1Gi
+      cpu: 500m
+      memory: 2Gi
   enableAdminAPI: false
