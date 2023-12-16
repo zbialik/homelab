@@ -176,7 +176,7 @@ spec:
       app.kubernetes.io/name: grafana
       app.kubernetes.io/instance: grafana
   strategy:
-    type: RollingUpdate
+    type: Recreate
   template:
     metadata:
       labels:
