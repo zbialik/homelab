@@ -416,7 +416,7 @@ adminUser: admin
 admin:
   ## Name of the secret. Can be templated.
   existingSecret: "grafana-admin"
-  userKey: admin
+  userKey: username
   passwordKey: password
 
 ## Define command to be executed at startup by grafana container

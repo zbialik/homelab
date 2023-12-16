@@ -233,7 +233,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: grafana-admin
-                  key: admin
+                  key: username
             - name: REQ_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -290,7 +290,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: grafana-admin
-                  key: admin
+                  key: username
             - name: GF_SECURITY_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
