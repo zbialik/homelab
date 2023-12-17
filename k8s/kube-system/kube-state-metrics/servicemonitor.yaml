@@ -26,12 +26,6 @@ spec:
     scrapeTimeout: 30s
     tlsConfig:
       insecureSkipVerify: true
-  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-    interval: 30s
-    port: telemetry
-    scheme: https
-    tlsConfig:
-      insecureSkipVerify: true
   jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
