@@ -359,7 +359,7 @@ tolerations:
     operator: Exists
 
 ## Assign a PriorityClassName to pods if set
-# priorityClassName: ""
+priorityClassName: "observability-daemonset"
 
 ## Additional container arguments
 ##

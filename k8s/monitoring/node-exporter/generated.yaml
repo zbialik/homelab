@@ -84,6 +84,7 @@ spec:
         runAsGroup: 65534
         runAsNonRoot: true
         runAsUser: 65534
+      priorityClassName: observability-daemonset
       serviceAccountName: node-exporter
       containers:
         - name: node-exporter
