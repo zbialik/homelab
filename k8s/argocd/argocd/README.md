@@ -26,7 +26,7 @@ patch helm/values.yaml /tmp/values.diff && rm -rf helm/values.yaml.orig
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
-helm template argocd -n argocd argo/argo-cd -f helm/values.yaml > generated.yaml
+helm template argocd -n argocd argo/argo-cd -f helm/values.yaml --version 5.51.6 > generated.yaml
 ```
 
 ## Update admin password

@@ -1701,10 +1701,10 @@ server:
   resources:
    limits:
      cpu: 1
-     memory: 128Mi
+     memory: 256Mi
    requests:
      cpu: 50m
-     memory: 64Mi
+     memory: 128Mi
 
   # Server container ports
   containerPorts:
