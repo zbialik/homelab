@@ -22043,7 +22043,7 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 100m
+            cpu: 1
             memory: 128Mi
           requests:
             cpu: 50m

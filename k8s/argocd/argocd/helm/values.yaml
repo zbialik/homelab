@@ -1700,7 +1700,7 @@ server:
   # -- Resource limits and requests for the Argo CD server
   resources:
    limits:
-     cpu: 100m
+     cpu: 1
      memory: 128Mi
    requests:
      cpu: 50m
