@@ -362,7 +362,7 @@ controller:
     ##    memory: 90Mi
     requests:
       cpu: 100m
-      memory: 90Mi
+      memory: 128Mi
   # Mutually exclusive with keda autoscaling
   autoscaling:
     enabled: false
