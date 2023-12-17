@@ -14,6 +14,8 @@ spec:
     interval: 30s
     port: http-metrics
     scrapeTimeout: 30s
+    tlsConfig:
+      insecureSkipVerify: true
   jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
