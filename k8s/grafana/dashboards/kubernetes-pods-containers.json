@@ -207,7 +207,8 @@
       "options": {
         "legend": {
           "calcs": [
-            "max"
+            "max",
+            "mean"
           ],
           "displayMode": "table",
           "placement": "right",
@@ -306,7 +307,8 @@
       "options": {
         "legend": {
           "calcs": [
-            "max"
+            "max",
+            "mean"
           ],
           "displayMode": "table",
           "placement": "right",
@@ -522,7 +524,8 @@
       "options": {
         "legend": {
           "calcs": [
-            "max"
+            "max",
+            "mean"
           ],
           "displayMode": "table",
           "placement": "right",
@@ -621,7 +624,8 @@
       "options": {
         "legend": {
           "calcs": [
-            "max"
+            "max",
+            "mean"
           ],
           "displayMode": "table",
           "placement": "right",
@@ -871,7 +875,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 38,
   "tags": [
     "kubernetes"
@@ -902,10 +906,10 @@
         "current": {
           "selected": true,
           "text": [
-            "kube-system"
+            "argocd"
           ],
           "value": [
-            "kube-system"
+            "argocd"
           ]
         },
         "datasource": {
@@ -1027,6 +1031,6 @@
   "timezone": "",
   "title": "Kubernetes Pods/Containers Resources",
   "uid": "ZQnBeRvmz",
-  "version": 22,
+  "version": 23,
   "weekStart": ""
 }
