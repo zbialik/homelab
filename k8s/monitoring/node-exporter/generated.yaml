@@ -177,7 +177,7 @@ spec:
       app.kubernetes.io/name: prometheus-node-exporter
       app.kubernetes.io/instance: node-exporter
   attachMetadata:
-    node: false
+    node: true
   endpoints:
     - port: metrics
       scheme: http

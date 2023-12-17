@@ -122,7 +122,7 @@ prometheus:
     ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
     ##
     attachMetadata:
-      node: false
+      node: true
 
     relabelings: []
     metricRelabelings: []
