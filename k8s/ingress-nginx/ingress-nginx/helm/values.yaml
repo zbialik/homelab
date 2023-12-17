@@ -345,7 +345,7 @@ controller:
   # -- Annotations to be added to controller pods
   ##
   podAnnotations: {}
-  replicaCount: 1
+  replicaCount: 2
   # -- Minimum available pods set in PodDisruptionBudget.
   # Define either 'minAvailable' or 'maxUnavailable', never both.
   minAvailable: 1
