@@ -1804,6 +1804,13 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 3
+        resources:
+          limits:
+            cpu: 250m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 32Mi
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
@@ -1976,6 +1983,13 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 3
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true

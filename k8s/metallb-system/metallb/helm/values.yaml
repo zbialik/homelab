@@ -223,10 +223,13 @@ controller:
     # nobody
     runAsUser: 65534
     fsGroup: 65534
-  resources: {}
-    # limits:
-      # cpu: 100m
-      # memory: 100Mi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 128Mi
   nodeSelector: {}
   tolerations: []
   priorityClassName: ""
@@ -286,10 +289,13 @@ speaker:
   ## By default secretName: {{ "metallb.fullname" }}-memberlist
   ##
   # secretName:
-  resources: {}
-    # limits:
-      # cpu: 100m
-      # memory: 100Mi
+  resources:
+    requests:
+      cpu: 50m
+      memory: 32Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
   nodeSelector: {}
   tolerations: []
   priorityClassName: ""
