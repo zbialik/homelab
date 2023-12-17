@@ -232,7 +232,7 @@ controller:
       memory: 128Mi
   nodeSelector: {}
   tolerations: []
-  priorityClassName: ""
+  priorityClassName: "system-cluster-critical"
   runtimeClassName: ""
   affinity: {}
   podAnnotations: {}
@@ -298,7 +298,7 @@ speaker:
       memory: 128Mi
   nodeSelector: {}
   tolerations: []
-  priorityClassName: ""
+  priorityClassName: "system-cluster-critical"
   affinity: {}
   ## Selects which runtime class will be used by the pod.
   runtimeClassName: ""
