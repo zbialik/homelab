@@ -1,0 +1,15 @@
+kind: Kustomization
+namespace: grafana
+commonLabels:
+  app.zb/name: dashboards
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: kubernetes-pods-containers
+  files:
+  - kubernetes-pods-containers.json
+- name: node-exporter
+  files:
+  - node-exporter.json
