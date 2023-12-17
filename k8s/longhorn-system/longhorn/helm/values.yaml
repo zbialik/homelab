@@ -191,7 +191,7 @@ longhornManager:
   #   value: "value"
   #   effect: "NoSchedule"
   nodeSelector:
-    kubernetes.io/hostname: rpi03
+    nodegroup.zb/persistent-data: "true"
   ## If you want to set node selector for Longhorn Manager DaemonSet, delete the `{}` in the line above
   ## and uncomment this example block
   #  label-key1: "label-value1"

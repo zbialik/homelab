@@ -4239,7 +4239,7 @@ spec:
           secretName: longhorn-grpc-tls
           optional: true
       nodeSelector:
-        kubernetes.io/hostname: rpi03
+        nodegroup.zb/persistent-data: "true"
       serviceAccountName: longhorn-service-account
   updateStrategy:
     rollingUpdate:
@@ -4471,7 +4471,7 @@ spec:
       restartPolicy: OnFailure
       serviceAccountName: longhorn-service-account
       nodeSelector:
-        kubernetes.io/hostname: rpi03
+        nodegroup.zb/persistent-data: "true"
 ---
 # Source: longhorn/templates/uninstall-job.yaml
 apiVersion: batch/v1
@@ -4517,4 +4517,4 @@ spec:
       restartPolicy: Never
       serviceAccountName: longhorn-service-account
       nodeSelector:
-        kubernetes.io/hostname: rpi03
+        nodegroup.zb/persistent-data: "true"
