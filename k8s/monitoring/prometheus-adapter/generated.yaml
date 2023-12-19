@@ -110,10 +110,10 @@ data:
           )
         resources:
           overrides:
-            instance:
-              resource: node
             namespace:
               resource: namespace
+            node:
+              resource: node
             pod:
               resource: pod
       memory:
@@ -130,10 +130,10 @@ data:
           )
         resources:
           overrides:
-            instance:
-              resource: node
             namespace:
               resource: namespace
+            node:
+              resource: node
             pod:
               resource: pod
       window: 3m
@@ -381,7 +381,7 @@ spec:
         app.kubernetes.io/version: "v0.11.1"
       name: prometheus-adapter
       annotations:
-        checksum/config: f8178a29a62a0f43e65fb9d7d5bdf0e8661f925d95cc442259982137f6e9b134
+        checksum/config: ff6646031c43fc63ceb3e347960e5cbeb84583bb26439811246c9199b2511a38
     spec:
       serviceAccountName: prometheus-adapter
       containers:
