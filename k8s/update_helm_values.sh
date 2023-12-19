@@ -6,7 +6,7 @@ CURRENT_CHART_VERSION=$(cat helm/CHART_VERSION)
 
 # INPUT VALIDATION
 # Validation 1: semantic versioning (and effectively that they're not empty)
-SEMVER_REGEX="^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$"
+SEMVER_REGEX="[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$"
 if [[ $TARGET_CHART_VERSION =~ $SEMVER_REGEX ]] && [[ $CURRENT_CHART_VERSION =~ $SEMVER_REGEX ]]; then
     echo "$TARGET_CHART_VERSION and $CURRENT_CHART_VERSION are valid semantic versions."
 else
@@ -35,10 +35,11 @@ echo "CURR_SHA: "$CURR_SHA
 # update helm/default.yaml with changes from next chart version and commit
 cp -rp helm/default.yaml helm/default.yaml.bak
 helm show values $HELM_CHART --version ${TARGET_CHART_VERSION} > helm/default.yaml
-if [[ diff helm/default.yaml helm/default.yaml.bak == "" ]]; then
+if [[ $(diff helm/default.yaml helm/default.yaml.bak) == "" ]]; then
     echo "no diff in default values.yaml in upgraded chart version"
-    echo "setting CHART_VERSION to target version"
+    echo "setting CHART_VERSION to target version ($TARGET_CHART_VERSION)"
     echo $TARGET_CHART_VERSION > helm/CHART_VERSION
+    rm -rf helm/default.yaml.bak
     exit 0
 fi
 
