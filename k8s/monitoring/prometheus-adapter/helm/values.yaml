@@ -163,7 +163,7 @@ rules:
         )
       resources:
         overrides:
-          node:
+          instance:
             resource: node
           namespace:
             resource: namespace
@@ -183,7 +183,7 @@ rules:
         )
       resources:
         overrides:
-          node:
+          instance:
             resource: node
           namespace:
             resource: namespace
