@@ -2,29 +2,29 @@
 
 Primarily deployed as a vanilla metrics-server given my cluster can't auto-scale.
 
+Add helm repo:
 ```
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add jetstack https://charts.jetstack.io
 helm repo update
-helm template -f helm/values.yaml prometheus-adapter prometheus-community/prometheus-adapter --api-versions apiregistration.k8s.io/v1 --version 4.9.0 > generated.yaml
+```
+
+## Generate manifests
+
+```
+helm template \
+    prometheus-adapter prometheus-community/prometheus-adapter \
+    --api-versions apiregistration.k8s.io/v1 \
+    -f helm/values.yaml --version $(cat helm/CHART_VERSION) > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
 
+Get latest chart version like so:
 ```bash
-# get curr commit sha of helm/default.yaml
-CURR_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
+helm repo update
+helm search repo prometheus-community/prometheus-adapter
+```
 
-# update helm/default.yaml with changes from next chart version and commit
-helm show values prometheus-community/prometheus-adapter > helm/default.yaml
-git add .
-git commit -m "updating prometheus-adapter helm/default.yaml"
-
-# get new commit sha of helm/default.yaml
-NEW_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
-
-# get diff between helm/default.yaml versions + patch helm/values.yaml
-git diff --relative $CURR_SHA $NEW_SHA helm/default.yaml > /tmp/values.diff
-patch helm/values.yaml /tmp/values.diff
-
-# solve all the conflicts
+```bash
+../../update_helm_values.sh prometheus-community/prometheus-adapter TARGET_CHART_VERSION
 ```
