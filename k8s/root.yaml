@@ -20,6 +20,8 @@ spec:
           prune: true
           allowEmpty: true
           selfHeal: true
+        syncOptions:
+        - Replace=true
       source:
         repoURL: https://github.com/zbialik/homelab.git
         targetRevision: HEAD
