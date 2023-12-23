@@ -1541,7 +1541,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: api
 stringData:  
-  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$fJ1B4dfZiVTgHOEu33Vh5uc20PqszBOudoFmC06uEf4QAhvE1sD5C  
+  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$GO0EMvoTHeF326E21u4J0uO7mTIm/tCog2s5Weu.RuOKUBqiVUYdS  
   ADMIN_ACCOUNT_TOKEN_SIGNING_KEY: "iwishtowashmyirishwristwatch"
 ---
 # Source: kargo/templates/api/configmap.yaml
@@ -2288,7 +2288,7 @@ spec:
         app.kubernetes.io/component: api
       annotations:
         configmap/checksum: 4ae1fb26eef685f3b692cd658057512754f1bd124d3844bf21e19722768dc67b
-        secret/checksum: 56447cb8371d6848ddb7d84a0b141cb10f0d7b84464868d3fa17a8e10f75bceb
+        secret/checksum: 1a1e10ff7eb07f72ac221c09c2424d7d0431d0c42bbb6f5ea11b6537eeb801ad
     spec:
       serviceAccount: kargo-api
       containers:
@@ -2493,6 +2493,8 @@ metadata:
     app.kubernetes.io/component: api
   annotations:
     cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
