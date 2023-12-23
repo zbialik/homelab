@@ -127,7 +127,7 @@ defaultSettings:
   storageReservedPercentageForDefaultDisk: ~
   upgradeChecker: ~
   defaultReplicaCount: 1
-  defaultLonghornStaticStorageClass: ~
+  defaultLonghornStaticStorageClass: longhorn-default
   backupstorePollInterval: ~
   failedBackupTTL: ~
   restoreVolumeRecurringJobs: ~

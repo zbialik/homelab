@@ -51,6 +51,8 @@ data:
     
     
     default-replica-count: 1
+    
+    default-longhorn-static-storage-class: longhorn-default
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1

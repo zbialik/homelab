@@ -4,3 +4,4 @@ commonLabels:
 
 resources:
 - generated.yaml
+- storage-class.yaml
