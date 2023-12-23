@@ -43,7 +43,7 @@ api:
   ## @param api.replicas The number of API server pods.
   replicas: 1
   ## @param api.host The domain name where Kargo's API server will be accessible. When applicable, this is used for generation of an Ingress resource, certificates, and the OpenID Connect issuer and callback URLs. Note: The value in this field MAY include a port number and MUST NOT specify the protocol (http vs https), which is automatically inferred from other configuration options.
-  host: localhost
+  host: kargo.zeb17-int.duckdns.org
   ## @param api.logLevel The log level for the API server.
   logLevel: INFO
   ## @param api.resources Resources limits and requests for the api containers.
@@ -76,12 +76,13 @@ api:
 
   ingress:
     ## @param api.ingress.enabled Whether to enable ingress. By default, this is disabled. Enabling ingress is advanced usage.
-    enabled: false
+    enabled: true
     ## @param api.ingress.annotations Annotations specified by your ingress controller to customize the behavior of the ingress resource.
     annotations:
+      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
       # kubernetes.io/ingress.class: nginx
     ## @param api.ingress.ingressClassName From Kubernetes 1.18+, this field is supported if implemented by your ingress controller. When set, you do not need to add the ingress class as annotation.
-    ingressClassName:
+    ingressClassName: nginx
     tls:
       ## @param api.ingress.tls.enabled Whether to enable TLS for the ingress. All other settings in this section will be ignored when this is set to `false`.
       enabled: true

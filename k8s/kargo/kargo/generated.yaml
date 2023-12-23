@@ -1541,7 +1541,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: api
 stringData:  
-  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$BpJJhB8AYwVW9cvkC21cLOydhIBpOxGH5xB0sxpRe5csBgj9HWFeK  
+  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$fJ1B4dfZiVTgHOEu33Vh5uc20PqszBOudoFmC06uEf4QAhvE1sD5C  
   ADMIN_ACCOUNT_TOKEN_SIGNING_KEY: "iwishtowashmyirishwristwatch"
 ---
 # Source: kargo/templates/api/configmap.yaml
@@ -1565,8 +1565,8 @@ data:
   TLS_KEY_PATH: /etc/kargo/tls.key
   PERMISSIVE_CORS_POLICY_ENABLED: "false"
   ADMIN_ACCOUNT_ENABLED: "true"
-  ADMIN_ACCOUNT_TOKEN_ISSUER: https://localhost
-  ADMIN_ACCOUNT_TOKEN_AUDIENCE: localhost
+  ADMIN_ACCOUNT_TOKEN_ISSUER: https://kargo.zeb17-int.duckdns.org
+  ADMIN_ACCOUNT_TOKEN_AUDIENCE: kargo.zeb17-int.duckdns.org
   ADMIN_ACCOUNT_TOKEN_TTL: 24h
 ---
 # Source: kargo/templates/controller/configmap.yaml
@@ -2287,8 +2287,8 @@ spec:
         app.kubernetes.io/instance: kargo
         app.kubernetes.io/component: api
       annotations:
-        configmap/checksum: e7ce4a9b9ccbbfcbc87f9229debc33c2e86937f75dd179e836bb833807fc661a
-        secret/checksum: 7b182fea85ad51d214c65e0a4761f163f1cfb80ffd546cb879bac3e0c35602b8
+        configmap/checksum: 4ae1fb26eef685f3b692cd658057512754f1bd124d3844bf21e19722768dc67b
+        secret/checksum: 56447cb8371d6848ddb7d84a0b141cb10f0d7b84464868d3fa17a8e10f75bceb
     spec:
       serviceAccount: kargo-api
       containers:
@@ -2478,6 +2478,39 @@ spec:
               {}
           restartPolicy: Never
 ---
+# Source: kargo/templates/api/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+  annotations:
+    cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kargo.zeb17-int.duckdns.org
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: /
+        backend:
+          service:
+            name: kargo-api
+            port:
+              number: 443
+  tls:
+  - hosts:
+    - kargo.zeb17-int.duckdns.org
+    secretName: kargo-api-ingress-cert
+---
 # Source: kargo/templates/api/cert.yaml
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -2493,11 +2526,32 @@ metadata:
     app.kubernetes.io/component: api
 spec:
   dnsNames:
-  - localhost
+  - kargo.zeb17-int.duckdns.org
   issuerRef:
     kind: Issuer
     name: kargo-selfsigned-cert-issuer
   secretName: kargo-api-cert
+---
+# Source: kargo/templates/api/ingress-cert.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kargo-api-ingress
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+spec:
+  dnsNames:
+  - kargo.zeb17-int.duckdns.org
+  issuerRef:
+    kind: Issuer
+    name: kargo-selfsigned-cert-issuer
+  secretName: kargo-api-ingress-cert
 ---
 # Source: kargo/templates/webhooks-server/cert.yaml
 apiVersion: cert-manager.io/v1
