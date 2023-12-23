@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/zbialik/homelab.git
       revision: HEAD
       directories:
-      - path: k8s/kustomize/*
+      - path: k8s/kustomize/*/*
   template:
     metadata:
       name: '{{path[3]}}'
