@@ -1,0 +1,1189 @@
+---
+# Source: kargo/templates/api/service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+---
+# Source: kargo/templates/controller/service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-controller
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+---
+# Source: kargo/templates/garbage-collector/service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-garbage-collector
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: garbage-collector
+---
+# Source: kargo/templates/webhooks-server/service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-webhooks-server
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+---
+# Source: kargo/templates/api/secret.yaml
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+stringData:  
+  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$QqCaVk/n0F5o6t3nttVpk.EyfBxHLYFhWf2JJeqrlk6aqeCDLWk.G  
+  ADMIN_ACCOUNT_TOKEN_SIGNING_KEY: "iwishtowashmyirishwristwatch"
+---
+# Source: kargo/templates/api/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+data:
+  KARGO_NAMESPACE: kargo
+  LOG_LEVEL: INFO
+  TLS_ENABLED: "true"
+  TLS_CERT_PATH: /etc/kargo/tls.crt
+  TLS_KEY_PATH: /etc/kargo/tls.key
+  PERMISSIVE_CORS_POLICY_ENABLED: "false"
+  ADMIN_ACCOUNT_ENABLED: "true"
+  ADMIN_ACCOUNT_TOKEN_ISSUER: https://localhost
+  ADMIN_ACCOUNT_TOKEN_AUDIENCE: localhost
+  ADMIN_ACCOUNT_TOKEN_TTL: 24h
+---
+# Source: kargo/templates/controller/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-controller
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+data:
+  LOG_LEVEL: INFO
+  ARGOCD_NAMESPACE: argocd
+  ARGOCD_ENABLE_CREDENTIAL_BORROWING: "true"
+  ARGOCD_WATCH_ARGOCD_NAMESPACE_ONLY: "false"
+---
+# Source: kargo/templates/garbage-collector/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-garbage-collector
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: garbage-collector
+data:
+  LOG_LEVEL: INFO
+  NUM_WORKERS: "3"
+  MAX_RETAINED_PROMOTIONS: "20"
+---
+# Source: kargo/templates/webhooks-server/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-webhooks-server
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+data:
+  LOG_LEVEL: INFO
+---
+# Source: kargo/templates/api/cluster-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-api
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - patch
+      - update
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - serviceaccounts
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      - freights
+    verbs:
+      - get
+      - list
+      - patch
+      - watch
+      - delete
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      - freights/status
+    verbs:
+      - update
+      - patch
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      - promotionpolicies
+      - stages
+      - warehouses
+    verbs:
+      - "*"
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      - promotions
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - patch
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      # Needed for OpenShift
+      - stages/finalizers
+    verbs:
+      - patch
+      - update
+---
+# Source: kargo/templates/controller/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-controller
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - freights
+  - promotions
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - promotionpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - get
+  - list
+  - patch
+  - promote
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - warehouses
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - freights/status
+  - promotions/status
+  - stages/status
+  - warehouses/finalizers
+  - warehouses/status
+  verbs:
+  - update
+  - patch
+- apiGroups:
+  - argoproj.io
+  resources:
+  - analysistemplates
+  verbs:
+  - get
+  - list
+  - watch
+---
+# Source: kargo/templates/controller/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-controller-argocd
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+rules:
+- apiGroups:
+  - argoproj.io
+  resources:
+  - applications
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+- apiGroups:
+  - argoproj.io
+  resources:
+  - analysisruns
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+---
+# Source: kargo/templates/garbage-collector/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-garbage-collector
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: garbage-collector
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+# The garbage collector cannot actually carry our promotions because it lacks
+# permission to create Promotion resources, but having the custom promote verb
+# on Stages allows it to delete Promotion resources associated with any Stage.
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - promote
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - promotions
+  verbs:
+  - delete
+  - get
+  - list
+  - watch
+---
+# Source: kargo/templates/user-roles/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-admin
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  - rolebindings
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  - promotions
+  - promotionpolicies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - promote
+---
+# Source: kargo/templates/user-roles/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-developer
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - promotions
+  - promotionpolicies
+  verbs:
+  - get
+  - list
+  - watch
+---
+# Source: kargo/templates/user-roles/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-promoter
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - promotions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  - promotionpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - promote
+---
+# Source: kargo/templates/webhooks-server/cluster-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-webhooks-server
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+rules:
+- apiGroups:
+    - ""
+  resources:
+    - namespaces
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups:
+    - kargo.akuity.io
+  resources:
+    - freights
+    - promotionpolicies
+    - stages
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - subjectaccessreviews
+  verbs:
+  - create
+---
+# Source: kargo/templates/webhooks-server/cluster-role.yaml
+# This cluster role is custom for the namespace controller. The namespace
+# controller will not actually be able to carry our promotions because it lacks
+# permission to create Promotion resources, but having the custom promote verb
+# on Stages allows it to delete Promotion resources associated with any Stage
+# when a namespace is deleted. Without this, the webhook would prevent that.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-webhooks-server-ns-controller
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+rules:
+- apiGroups:
+  - kargo.akuity.io
+  resources:
+  - stages
+  verbs:
+  - promote
+---
+# Source: kargo/templates/api/cluster-role-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-api
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-api
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-api
+---
+# Source: kargo/templates/controller/cluster-role-bindings.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-controller
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-controller
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-controller
+---
+# Source: kargo/templates/controller/cluster-role-bindings.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-controller-argocd
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-controller-argocd
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-controller
+---
+# Source: kargo/templates/garbage-collector/cluster-role-bindings.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-garbage-collector
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: garbage-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-garbage-collector
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-garbage-collector
+---
+# Source: kargo/templates/webhooks-server/cluster-role-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-webhooks-server
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-webhooks-server
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-webhooks-server
+---
+# Source: kargo/templates/webhooks-server/cluster-role-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-webhooks-server-ns-controller
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-webhooks-server-ns-controller
+subjects:
+- kind: ServiceAccount
+  namespace: kube-system
+  name: namespace-controller
+---
+# Source: kargo/templates/argocd/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kargo-controller
+  namespace: argocd
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+---
+# Source: kargo/templates/argocd/role-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kargo-controller
+  namespace: argocd
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kargo-controller
+subjects:
+- kind: ServiceAccount
+  namespace: kargo
+  name: kargo-controller
+---
+# Source: kargo/templates/api/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 443
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/component: api
+---
+# Source: kargo/templates/webhooks-server/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kargo-webhooks-server
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+spec:
+  type: ClusterIP
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/component: webhooks-server
+---
+# Source: kargo/templates/api/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kargo
+      app.kubernetes.io/instance: kargo
+      app.kubernetes.io/component: api
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kargo
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/component: api
+      annotations:
+        configmap/checksum: e7ce4a9b9ccbbfcbc87f9229debc33c2e86937f75dd179e836bb833807fc661a
+        secret/checksum: f81c03bd66d8c2e0126be9b83db22647e91fe429891351431eb241d2a4e7a2ec
+    spec:
+      serviceAccount: kargo-api
+      containers:
+        - name: api
+          image: ghcr.io/akuity/kargo:v0.3.0
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/kargo", "api"]
+          envFrom:
+            - configMapRef:
+                name: kargo-api
+            - secretRef:
+                name: kargo-api
+          ports:
+            - name: h2c
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command:
+                - /usr/local/bin/grpc_health_probe
+                - -addr=:8080
+                - -tls
+                - -tls-no-verify
+            initialDelaySeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - /usr/local/bin/grpc_health_probe
+                - -addr=:8080
+                - -tls
+                - -tls-no-verify
+            initialDelaySeconds: 5
+          volumeMounts:
+            - mountPath: /etc/kargo
+              name: config
+              readOnly: true
+          resources:
+            {}
+      volumes:
+        - name: config
+          projected:
+            sources:
+              - secret:
+                  name: kargo-api-cert
+                  items:
+                    - key: tls.crt
+                      path: tls.crt
+                    - key: tls.key
+                      path: tls.key
+---
+# Source: kargo/templates/controller/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-controller
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kargo
+      app.kubernetes.io/instance: kargo
+      app.kubernetes.io/component: controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kargo
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/component: controller
+      annotations:
+        configmap/checksum: d5c5056b1eecfc29af238bf8d9095435a2be0f040f7a225ce9a8b21c26e4caf2
+    spec:
+      serviceAccount: kargo-controller
+      containers:
+      - name: controller
+        image: ghcr.io/akuity/kargo:v0.3.0
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/local/bin/kargo", "controller"]
+        envFrom:
+        - configMapRef:
+            name: kargo-controller
+        resources:
+          {}
+---
+# Source: kargo/templates/webhooks-server/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-webhooks-server
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: webhooks-server
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kargo
+      app.kubernetes.io/instance: kargo
+      app.kubernetes.io/component: webhooks-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kargo
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/component: webhooks-server
+      annotations:
+        configmap/checksum: 3174e1e80ab0e39f24352645c4bc1099463c28425a9009bde96fcd4ab7348a19
+    spec:
+      serviceAccount: kargo-webhooks-server
+      containers:
+      - name: webhooks-server
+        image: ghcr.io/akuity/kargo:v0.3.0
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/local/bin/kargo", "webhooks-server"]
+        envFrom:
+        - configMapRef:
+            name: kargo-webhooks-server
+        ports:
+        - containerPort: 9443
+          name: webhooks-server
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+        resources:
+          {}
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 0644
+          secretName: kargo-webhooks-server-cert
+---
+# Source: kargo/templates/garbage-collector/cron-job.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kargo-garbage-collector
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: garbage-collector
+spec:
+  schedule: "0 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kargo
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/component: garbage-collector
+      annotations:
+        configmap/checksum: 2b318fcf578e7a7d3436ce80ab2f750f8f08cf52c60f64c49ff86d4cac026493
+    spec:
+      template:
+        spec:
+          serviceAccountName: kargo-garbage-collector
+          containers:
+          - name: garbage-collector
+            image: ghcr.io/akuity/kargo:v0.3.0
+            imagePullPolicy: IfNotPresent
+            command: ["/usr/local/bin/kargo", "garbage-collector"]
+            envFrom:
+            - configMapRef:
+                name: kargo-garbage-collector
+            resources:
+              {}
+          restartPolicy: Never
+---
+# Source: kargo/templates/api/cert.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kargo-api
+  namespace: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: api
+spec:
+  dnsNames:
+  - localhost
+  issuerRef:
+    kind: Issuer
+    name: kargo-selfsigned-cert-issuer
+  secretName: kargo-api-cert
+---
+# Source: kargo/templates/webhooks-server/cert.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kargo-webhooks-server
+  namespace: kargo
+spec:
+  dnsNames:
+  - kargo-webhooks-server.kargo.svc
+  issuerRef:
+    kind: Issuer
+    name: kargo-selfsigned-cert-issuer
+  secretName: kargo-webhooks-server-cert
+---
+# Source: kargo/templates/common/cert-issuer.yaml
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: kargo-selfsigned-cert-issuer
+  namespace: kargo
+spec:
+  selfSigned: {}
+---
+# Source: kargo/templates/webhooks/webhooks.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+  annotations:
+    cert-manager.io/inject-ca-from: kargo/kargo-webhooks-server
+webhooks:
+- name: freight.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /mutate-kargo-akuity-io-v1alpha1-freight
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["freights"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: promotion.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /mutate-kargo-akuity-io-v1alpha1-promotion
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["promotions"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+---
+# Source: kargo/templates/webhooks/webhooks.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: kargo
+  labels:
+    helm.sh/chart: kargo-0.3.0
+    app.kubernetes.io/name: kargo
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.3.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+  annotations:
+    cert-manager.io/inject-ca-from: kargo/kargo-webhooks-server
+webhooks:
+- name: freight.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /validate-kargo-akuity-io-v1alpha1-freight
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["freights"]
+    operations: ["CREATE", "UPDATE", "DELETE"]
+  failurePolicy: Fail
+- name: promotion.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /validate-kargo-akuity-io-v1alpha1-promotion
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["promotions"]
+    operations: ["CREATE", "UPDATE", "DELETE"]
+  failurePolicy: Fail
+- name: promotionpolicy.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /validate-kargo-akuity-io-v1alpha1-promotionpolicy
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["promotionpolicies"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: stage.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /validate-kargo-akuity-io-v1alpha1-stage
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["stages"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: warehouse.kargo.akuity.io
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  clientConfig:
+    service:
+      namespace: kargo
+      name: kargo-webhooks-server
+      path: /validate-kargo-akuity-io-v1alpha1-warehouse
+  rules:
+  - scope: Namespaced
+    apiGroups: ["kargo.akuity.io"]
+    apiVersions: ["v1alpha1"]
+    resources: ["warehouses"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
