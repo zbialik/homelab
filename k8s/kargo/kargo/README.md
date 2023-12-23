@@ -9,5 +9,6 @@ helm template kargo \
   --create-namespace \
   --set api.adminAccount.password=admin \
   --set api.adminAccount.tokenSigningKey=iwishtowashmyirishwristwatch \
+  --include-crds \
   -f helm/values.yaml --version $(cat helm/CHART_VERSION) > generated.yaml
 ```
