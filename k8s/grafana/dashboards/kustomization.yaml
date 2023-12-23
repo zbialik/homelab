@@ -2,6 +2,7 @@ kind: Kustomization
 namespace: grafana
 commonLabels:
   app.zb/name: dashboards
+  grafana_dashboard: 'true'
 
 generatorOptions:
   disableNameSuffixHash: true

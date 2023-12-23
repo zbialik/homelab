@@ -3,31 +3,27 @@
 ```
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm template grafana -f helm/values.yaml grafana/grafana --version 7.0.17 > generated.yaml
+```
+
+## Generate manifests
+
+```
+helm template grafana grafana/grafana \
+    -f helm/values.yaml \
+    --version $(cat helm/CHART_VERSION) > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
 
+Get latest chart version like so:
 ```bash
-# get curr commit sha of helm/default.yaml
-CURR_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
-
-# update helm/default.yaml with changes from next chart version and commit
-helm show values grafana/grafana --version 7.0.17 > helm/default.yaml
-git add .
-git commit -m "updating longhorn helm/default.yaml"
-
-# get new commit sha of helm/default.yaml
-NEW_SHA=`git --no-pager log -n 1 --pretty=format:%H -- helm/default.yaml`
-
-# get diff between helm/default.yaml versions + patch helm/values.yaml
-git diff --relative $CURR_SHA $NEW_SHA helm/default.yaml > /tmp/values.diff
-patch helm/values.yaml /tmp/values.diff 
-rm -rf helm/values.yaml.*
-
-# solve all the conflicts
+helm repo update
+helm search repo grafana/grafana
 ```
 
+```bash
+../../update_helm_values.sh grafana/grafana TARGET_CHART_VERSION
+```
 
 ## Update admin credentials sealed secret
 
