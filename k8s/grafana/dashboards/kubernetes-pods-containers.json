@@ -20,7 +20,6 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 9810,
   "graphTooltip": 1,
-  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -46,6 +45,109 @@
       "fieldConfig": {
         "defaults": {
           "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "cores"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*Memory/"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 21,
+      "maxPerRow": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.2.2",
+      "repeat": "node",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(kube_node_status_allocatable{resource=\"cpu\",node=\"$node\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Allocatable CPU",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$source"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(kube_node_status_allocatable{resource=\"memory\",node=\"$node\"})",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Allocatable Memory",
+          "range": false,
+          "refId": "B"
+        }
+      ],
+      "title": "$node allocatable",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$source"
+      },
+      "description": "remaining cpu and memory resources for $node",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
             "fixedColor": "red",
             "mode": "fixed"
           },
@@ -65,21 +167,6 @@
           {
             "matcher": {
               "id": "byRegexp",
-              "options": "/Remaining.*/"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
               "options": "/.*Memory/"
             },
             "properties": [
@@ -92,10 +179,10 @@
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 8,
         "x": 0,
-        "y": 1
+        "y": 4
       },
       "id": 16,
       "maxPerRow": 4,
@@ -112,30 +199,13 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto",
+        "textMode": "value",
         "wideLayout": true
       },
       "pluginVersion": "10.2.2",
       "repeat": "node",
       "repeatDirection": "h",
       "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max(kube_node_status_allocatable{resource=\"cpu\",node=\"$node\"})",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": true,
-          "legendFormat": "Allocatable CPU",
-          "range": false,
-          "refId": "A",
-          "useBackend": false
-        },
         {
           "datasource": {
             "type": "prometheus",
@@ -157,20 +227,6 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "max(kube_node_status_allocatable{resource=\"memory\",node=\"$node\"})",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Allocatable Memory",
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$source"
-          },
-          "editorMode": "code",
-          "exemplar": false,
           "expr": "max(kube_node_status_allocatable{resource=\"memory\",node=\"$node\"}) - sum(max(kube_pod_container_resource_requests{resource=\"memory\",node=\"$node\"}) by (namespace,pod,container))",
           "hide": false,
           "instant": true,
@@ -179,7 +235,7 @@
           "refId": "D"
         }
       ],
-      "title": "$node",
+      "title": "$node remaining",
       "type": "stat"
     },
     {
@@ -222,7 +278,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 13,
       "options": {
@@ -283,7 +339,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 12
       },
       "id": 7,
       "title": "CPU",
@@ -353,7 +409,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 13
       },
       "id": 2,
       "links": [],
@@ -455,7 +511,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 13
       },
       "id": 4,
       "links": [],
@@ -580,7 +636,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 18
       },
       "id": 5,
       "links": [],
@@ -626,7 +682,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 23
       },
       "id": 8,
       "panels": [],
@@ -697,7 +753,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 24
       },
       "id": 1,
       "links": [],
@@ -798,7 +854,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 24
       },
       "id": 6,
       "links": [],
@@ -897,7 +953,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 29
       },
       "id": 10,
       "links": [],
@@ -943,7 +999,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 34
       },
       "id": 9,
       "panels": [],
@@ -1013,7 +1069,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 35
       },
       "id": 3,
       "links": [],
@@ -1114,7 +1170,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 35
       },
       "id": 11,
       "links": [],
@@ -1344,6 +1400,6 @@
   "timezone": "",
   "title": "Kubernetes Pods/Containers Resources",
   "uid": "ZQnBeRvmz",
-  "version": 30,
+  "version": 1,
   "weekStart": ""
 }
