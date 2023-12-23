@@ -1,0 +1,7 @@
+kind: Kustomization
+namespace: argo-rollouts
+commonLabels:
+  app.zb/name: argo-rollouts
+
+resources:
+- install.yaml
