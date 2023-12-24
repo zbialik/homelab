@@ -31,3 +31,35 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path[2]}}'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/zbialik/homelab.git
+      revision: HEAD
+      directories:
+      - path: k8s/helm/*/*
+  template:
+    metadata:
+      name: '{{path[3]}}'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
+        syncOptions:
+        - Replace=true
+      source:
+        repoURL: https://github.com/zbialik/homelab.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path[2]}}'
