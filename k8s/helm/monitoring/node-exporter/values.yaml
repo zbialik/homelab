@@ -14,7 +14,7 @@ prometheus-node-exporter:
   imagePullSecrets: []
   # - name: "image-pull-secret"
   nameOverride: ""
-  fullnameOverride: ""
+  fullnameOverride: "node-exporter"
 
   # Number of old history to retain to allow rollback
   # Default Kubernetes value is set to 10
@@ -98,7 +98,7 @@ prometheus-node-exporter:
 
   prometheus:
     monitor:
-      enabled: false
+      enabled: true
       additionalLabels: {}
       namespace: ""
 
@@ -124,9 +124,15 @@ prometheus-node-exporter:
       ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
       ##
       attachMetadata:
-        node: false
+        node: true
 
-      relabelings: []
+      relabelings:
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: node
+        replacement: $1
+        action: replace
       metricRelabelings: []
       interval: ""
       scrapeTimeout: 10s
@@ -249,17 +255,17 @@ prometheus-node-exporter:
     rollingUpdate:
       maxUnavailable: 1
 
-  resources: {}
+  resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 200m
-    #   memory: 50Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 30Mi
+    limits:
+      cpu: 100m
+      memory: 50Mi
+    requests:
+      cpu: 10m
+      memory: 30Mi
 
   serviceAccount:
     # Specifies whether a ServiceAccount should be created
@@ -361,7 +367,7 @@ prometheus-node-exporter:
       operator: Exists
 
   ## Assign a PriorityClassName to pods if set
-  # priorityClassName: ""
+  priorityClassName: "observability-daemonset"
 
   ## Additional container arguments
   ##
