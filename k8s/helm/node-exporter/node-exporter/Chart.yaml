@@ -1,3 +1,5 @@
+apiVersion: v2
+name: node-exporter
 dependencies:
   - name: "prometheus-node-exporter"
     version: "4.24.0"
