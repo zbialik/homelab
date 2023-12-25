@@ -1,11 +1,41 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
+  name: kargo-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/zbialik/homelab.git
+      revision: HEAD
+      directories:
+      - path: k8s/kargo/*
+  template:
+    metadata:
+      name: '{{path[2]}}'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
+        syncOptions:
+        - Replace=true
+      source:
+        repoURL: https://github.com/zbialik/homelab.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'kargo-homelab'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
   name: kustomize-apps
   namespace: argocd
 spec:
-  syncPolicy:
-    preserveResourcesOnDeletion: true
   generators:
   - git:
       repoURL: https://github.com/zbialik/homelab.git
