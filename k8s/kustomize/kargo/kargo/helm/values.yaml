@@ -69,7 +69,7 @@ api:
     ## @param api.tls.enabled Whether to enable TLS directly on the API server. This is helpful if you do not intend to use an ingress controller or if you require TLS end-to-end. All other settings in this section will be ignored when this is set to `false`.
     enabled: true
     ## @param api.tls.selfSignedCert Whether to generate a self-signed certificate for use by the API server. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-api-cert` **must** be provided in the same namespace as Kargo.
-    selfSignedCert: true
+    selfSignedCert: false
 
   ## @param api.enablePermissiveCORSPolicy Whether to enable a permissive CORS (Cross Origin Resource Sharing) policy. This is sometimes advantageous during local development, but otherwise, should generally be left disabled.
   enablePermissiveCORSPolicy: false
@@ -89,7 +89,7 @@ api:
       ## @param api.ingress.tls.enabled Whether to enable TLS for the ingress. All other settings in this section will be ignored when this is set to `false`.
       enabled: true
       ## @param api.ingress.tls.selfSignedCert Whether to generate a self-signed certificate for use with the API server's Ingress resource. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-api-ingress-cert` **must** be provided in the same namespace as Kargo.
-      selfSignedCert: true
+      selfSignedCert: false
 
   service:
     ## @param api.service.type If you're not going to use an ingress controller, you may want to change this value to `LoadBalancer` for production deployments. If running locally, you may want to change it to `NodePort` OR leave it as `ClusterIP` and use `kubectl port-forward` to map a port on the local network interface to the service.
@@ -251,7 +251,7 @@ webhooksServer:
 
   tls:
     ## @param webhooksServer.tls.selfSignedCert  Whether to generate a self-signed certificate for the controller's built-in webhook server. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-webhooks-server-cert` **must** be provided in the same namespace as Kargo. There is no provision for webhooks without TLS.
-    selfSignedCert: true
+    selfSignedCert: false
   ## @param webhooksServer.resources Resources limits and requests for the webhooks server containers.
   resources: {}
     # limits:

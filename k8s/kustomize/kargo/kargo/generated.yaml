@@ -1541,7 +1541,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: api
 stringData:  
-  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$GO0EMvoTHeF326E21u4J0uO7mTIm/tCog2s5Weu.RuOKUBqiVUYdS  
+  ADMIN_ACCOUNT_PASSWORD_HASH: $2a$10$emiWXMuGNOxzo9JapsRT5ei5G5B3yRi5kPprpMPPCbpyBAx.7Xre.  
   ADMIN_ACCOUNT_TOKEN_SIGNING_KEY: "iwishtowashmyirishwristwatch"
 ---
 # Source: kargo/templates/api/configmap.yaml
@@ -2288,7 +2288,7 @@ spec:
         app.kubernetes.io/component: api
       annotations:
         configmap/checksum: 4ae1fb26eef685f3b692cd658057512754f1bd124d3844bf21e19722768dc67b
-        secret/checksum: 1a1e10ff7eb07f72ac221c09c2424d7d0431d0c42bbb6f5ea11b6537eeb801ad
+        secret/checksum: c21b997c70d9db73a2930cec161bbe352a6ea5cedb8363586be676c11cf81b60
     spec:
       serviceAccount: kargo-api
       containers:
@@ -2512,71 +2512,6 @@ spec:
   - hosts:
     - kargo.zeb17-int.duckdns.org
     secretName: kargo-api-ingress-cert
----
-# Source: kargo/templates/api/cert.yaml
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: kargo-api
-  namespace: kargo
-  labels:
-    helm.sh/chart: kargo-0.3.0
-    app.kubernetes.io/name: kargo
-    app.kubernetes.io/instance: kargo
-    app.kubernetes.io/version: "v0.3.0"
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/component: api
-spec:
-  dnsNames:
-  - kargo.zeb17-int.duckdns.org
-  issuerRef:
-    kind: Issuer
-    name: kargo-selfsigned-cert-issuer
-  secretName: kargo-api-cert
----
-# Source: kargo/templates/api/ingress-cert.yaml
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: kargo-api-ingress
-  namespace: kargo
-  labels:
-    helm.sh/chart: kargo-0.3.0
-    app.kubernetes.io/name: kargo
-    app.kubernetes.io/instance: kargo
-    app.kubernetes.io/version: "v0.3.0"
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/component: api
-spec:
-  dnsNames:
-  - kargo.zeb17-int.duckdns.org
-  issuerRef:
-    kind: Issuer
-    name: kargo-selfsigned-cert-issuer
-  secretName: kargo-api-ingress-cert
----
-# Source: kargo/templates/webhooks-server/cert.yaml
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: kargo-webhooks-server
-  namespace: kargo
-spec:
-  dnsNames:
-  - kargo-webhooks-server.kargo.svc
-  issuerRef:
-    kind: Issuer
-    name: kargo-selfsigned-cert-issuer
-  secretName: kargo-webhooks-server-cert
----
-# Source: kargo/templates/common/cert-issuer.yaml
-apiVersion: cert-manager.io/v1
-kind: Issuer
-metadata:
-  name: kargo-selfsigned-cert-issuer
-  namespace: kargo
-spec:
-  selfSigned: {}
 ---
 # Source: kargo/templates/webhooks/webhooks.yaml
 apiVersion: admissionregistration.k8s.io/v1
