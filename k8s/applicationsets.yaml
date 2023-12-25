@@ -77,6 +77,8 @@ spec:
   template:
     metadata:
       name: '{{path[3]}}'
+      annotations:
+        kargo.akuity.io/authorized-stage: "kargo-homelab:{{path[3]}}-dev"
     spec:
       project: default
       syncPolicy:
