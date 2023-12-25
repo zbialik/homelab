@@ -5,7 +5,7 @@ metadata:
   namespace: kargo-homelab
 spec:
   subscriptions:
-    warehouse: prometheus-node-exporter
+    warehouse: node-exporter
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/zbialik/homelab.git
