@@ -1,5 +1,5 @@
 kind: Kustomization
 
-resources:
-- stage.yaml
-- warehouse.yaml
+resources: []
+# - stage.yaml
+# - warehouse.yaml
