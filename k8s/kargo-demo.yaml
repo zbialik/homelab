@@ -1,8 +1,8 @@
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
-  name: kargo-demo
-  namespace: kargo-demo
+  name: prometheus-node-exporter
+  namespace: kargo-homelab
 spec:
   subscriptions:
   - chart:
@@ -13,11 +13,11 @@ spec:
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: dev
-  namespace: kargo-demo
+  name: prometheus-node-exporter-dev
+  namespace: kargo-homelab
 spec:
   subscriptions:
-    warehouse: kargo-demo
+    warehouse: prometheus-node-exporter
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/zbialik/homelab.git
@@ -30,45 +30,3 @@ spec:
     argoCDAppUpdates:
     - appName: node-exporter
       appNamespace: argocd
-# ---
-# apiVersion: kargo.akuity.io/v1alpha1
-# kind: Stage
-# metadata:
-#   name: uat
-#   namespace: kargo-demo
-# spec:
-#   subscriptions:
-#     upstreamStages:
-#     - name: test
-#   promotionMechanisms:
-#     gitRepoUpdates:
-#     - repoURL: ${GITOPS_REPO_URL}
-#       writeBranch: stage/uat
-#       kustomize:
-#         images:
-#         - image: nginx
-#           path: stages/uat
-#     argoCDAppUpdates:
-#     - appName: kargo-demo-uat
-#       appNamespace: argocd
-# ---
-# apiVersion: kargo.akuity.io/v1alpha1
-# kind: Stage
-# metadata:
-#   name: prod
-#   namespace: kargo-demo
-# spec:
-#   subscriptions:
-#     upstreamStages:
-#     - name: uat
-#   promotionMechanisms:
-#     gitRepoUpdates:
-#     - repoURL: ${GITOPS_REPO_URL}
-#       writeBranch: stage/prod
-#       kustomize:
-#         images:
-#         - image: nginx
-#           path: stages/prod
-#     argoCDAppUpdates:
-#     - appName: kargo-demo-prod
-#       appNamespace: argocd
