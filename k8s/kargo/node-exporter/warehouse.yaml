@@ -8,4 +8,4 @@ spec:
   - chart:
       name: prometheus-node-exporter
       registryURL: https://prometheus-community.github.io/helm-charts
-      semverConstraint: ^4.23.0
+      semverConstraint: ^4.21.0
