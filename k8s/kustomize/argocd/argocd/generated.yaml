@@ -21657,10 +21657,10 @@ spec:
         resources:
           limits:
             cpu: 1
-            memory: 256Mi
+            memory: 512Mi
           requests:
             cpu: 50m
-            memory: 128Mi
+            memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -21682,10 +21682,10 @@ spec:
         resources:
           limits:
             cpu: 1
-            memory: 256Mi
+            memory: 512Mi
           requests:
             cpu: 50m
-            memory: 128Mi
+            memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
