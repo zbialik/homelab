@@ -12,7 +12,7 @@ spec:
       - path: k8s/kargo/*
   template:
     metadata:
-      name: '{{path[2]}}'
+      name: '{{path[1]}}-{{path[2]}}'
     spec:
       project: default
       syncPolicy:
