@@ -43,7 +43,7 @@ api:
   ## @param api.replicas The number of API server pods.
   replicas: 1
   ## @param api.host The domain name where Kargo's API server will be accessible. When applicable, this is used for generation of an Ingress resource, certificates, and the OpenID Connect issuer and callback URLs. Note: The value in this field MAY include a port number and MUST NOT specify the protocol (http vs https), which is automatically inferred from other configuration options.
-  host: kargo.zeb17-int.duckdns.org
+  host: localhost
   ## @param api.logLevel The log level for the API server.
   logLevel: INFO
   ## @param api.resources Resources limits and requests for the api containers.
@@ -69,27 +69,24 @@ api:
     ## @param api.tls.enabled Whether to enable TLS directly on the API server. This is helpful if you do not intend to use an ingress controller or if you require TLS end-to-end. All other settings in this section will be ignored when this is set to `false`.
     enabled: true
     ## @param api.tls.selfSignedCert Whether to generate a self-signed certificate for use by the API server. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-api-cert` **must** be provided in the same namespace as Kargo.
-    selfSignedCert: false
+    selfSignedCert: true
 
   ## @param api.enablePermissiveCORSPolicy Whether to enable a permissive CORS (Cross Origin Resource Sharing) policy. This is sometimes advantageous during local development, but otherwise, should generally be left disabled.
   enablePermissiveCORSPolicy: false
 
   ingress:
     ## @param api.ingress.enabled Whether to enable ingress. By default, this is disabled. Enabling ingress is advanced usage.
-    enabled: true
+    enabled: false
     ## @param api.ingress.annotations Annotations specified by your ingress controller to customize the behavior of the ingress resource.
     annotations:
-      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       # kubernetes.io/ingress.class: nginx
     ## @param api.ingress.ingressClassName From Kubernetes 1.18+, this field is supported if implemented by your ingress controller. When set, you do not need to add the ingress class as annotation.
-    ingressClassName: nginx
+    ingressClassName:
     tls:
       ## @param api.ingress.tls.enabled Whether to enable TLS for the ingress. All other settings in this section will be ignored when this is set to `false`.
       enabled: true
       ## @param api.ingress.tls.selfSignedCert Whether to generate a self-signed certificate for use with the API server's Ingress resource. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-api-ingress-cert` **must** be provided in the same namespace as Kargo.
-      selfSignedCert: false
+      selfSignedCert: true
 
   service:
     ## @param api.service.type If you're not going to use an ingress controller, you may want to change this value to `LoadBalancer` for production deployments. If running locally, you may want to change it to `NodePort` OR leave it as `ClusterIP` and use `kubectl port-forward` to map a port on the local network interface to the service.
@@ -251,7 +248,7 @@ webhooksServer:
 
   tls:
     ## @param webhooksServer.tls.selfSignedCert  Whether to generate a self-signed certificate for the controller's built-in webhook server. If `true`, `cert-manager` CRDs **must** be present in the cluster. Kargo will create and use its own namespaced issuer. If `false`, a cert secret named `kargo-webhooks-server-cert` **must** be provided in the same namespace as Kargo. There is no provision for webhooks without TLS.
-    selfSignedCert: false
+    selfSignedCert: true
   ## @param webhooksServer.resources Resources limits and requests for the webhooks server containers.
   resources: {}
     # limits:
