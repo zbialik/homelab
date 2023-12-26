@@ -1,6 +1,0 @@
-kind: Kustomization
-namespace: kube-system
-commonLabels:
-  app.zb/name: kube-system-service-monitors
-resources:
-- kubelet.yaml

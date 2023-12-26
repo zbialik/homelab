@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kargo-apps
+  name: kargo
   namespace: argocd
 spec:
   generators:
   - git:
       repoURL: https://github.com/zbialik/homelab.git
-      revision: HEAD
+      revision: proto_kargo
       directories:
-      - path: k8s/kargo/*
+      - path: k8s/*/*/*/kargo
   template:
     metadata:
-      name: '{{path[1]}}-{{path[2]}}'
+      name: 'kargo-{{path[3]}}'
     spec:
       project: default
       syncPolicy:
@@ -24,43 +24,11 @@ spec:
         - Replace=true
       source:
         repoURL: https://github.com/zbialik/homelab.git
-        targetRevision: HEAD
+        targetRevision: proto_kargo
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: 'kargo-homelab'
----
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: kustomize-apps
-  namespace: argocd
-spec:
-  generators:
-  - git:
-      repoURL: https://github.com/zbialik/homelab.git
-      revision: HEAD
-      directories:
-      - path: k8s/kustomize/*/*
-  template:
-    metadata:
-      name: '{{path[3]}}'
-    spec:
-      project: default
-      syncPolicy:
-        automated:
-          prune: true
-          allowEmpty: true
-          selfHeal: true
-        syncOptions:
-        - Replace=true
-      source:
-        repoURL: https://github.com/zbialik/homelab.git
-        targetRevision: HEAD
-        path: '{{path}}'
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{path[2]}}'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -71,7 +39,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/zbialik/homelab.git
-      revision: HEAD
+      revision: proto_kargo
       directories:
       - path: k8s/helm/*/*
   template:
@@ -86,7 +54,7 @@ spec:
         - Replace=true
       source:
         repoURL: https://github.com/zbialik/homelab.git
-        targetRevision: HEAD
+        targetRevision: proto_kargo
         path: '{{path}}'
         helm:
           valueFiles:
