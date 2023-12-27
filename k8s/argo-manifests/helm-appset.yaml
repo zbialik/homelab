@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/zbialik/homelab.git
+      revision: main
+      directories:
+      - path: k8s/helm/*/*
+  template:
+    metadata:
+      name: '{{path[3]}}'
+      annotations:
+        kargo.akuity.io/authorized-stage: "kargo-homelab:{{path[3]}}-dev"
+    spec:
+      project: default
+      syncPolicy:
+        syncOptions:
+        - Replace=true
+      source:
+        repoURL: https://github.com/zbialik/homelab.git
+        targetRevision: main
+        path: '{{path}}'
+        helm:
+          valueFiles:
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path[2]}}'

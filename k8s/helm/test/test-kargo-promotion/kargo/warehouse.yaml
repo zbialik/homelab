@@ -1,0 +1,10 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: test-kargo-promotion
+spec:
+  subscriptions:
+  - chart:
+      name: test-kargo-promotion
+      registryURL: https://zbialik.github.io/helm-charts
+      semverConstraint: ^0

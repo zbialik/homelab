@@ -1,0 +1,20 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: test-kargo-promotion-dev
+spec:
+  subscriptions:
+    warehouse: test-kargo-promotion
+  promotionMechanisms:
+    gitRepoUpdates:
+    - repoURL: https://github.com/zbialik/homelab.git
+      readBranch: main
+      writeBranch: main
+      helm:
+        charts:
+        - chartPath: k8s/helm/test/test-kargo-promotion
+          name: test-kargo-promotion
+          registryURL: https://zbialik.github.io/helm-charts
+    argoCDAppUpdates:
+    - appName: test-kargo-promotion
+      appNamespace: argocd
