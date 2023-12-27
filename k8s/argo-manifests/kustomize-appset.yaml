@@ -18,10 +18,6 @@ spec:
     spec:
       project: default
       syncPolicy:
-        automated:
-          prune: true
-          allowEmpty: true
-          selfHeal: true
         syncOptions:
         - Replace=true
       source:
