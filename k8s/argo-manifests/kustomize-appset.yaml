@@ -4,6 +4,8 @@ metadata:
   name: kustomize-apps
   namespace: argocd
 spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   generators:
   - git:
       repoURL: https://github.com/zbialik/homelab.git
