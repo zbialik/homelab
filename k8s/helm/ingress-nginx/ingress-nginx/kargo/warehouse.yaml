@@ -1,0 +1,10 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: ingress-nginx
+spec:
+  subscriptions:
+  - chart:
+      name: ingress-nginx
+      registryURL: https://kubernetes.github.io/ingress-nginx
+      semverConstraint: ^4.8.0
