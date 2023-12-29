@@ -4,4 +4,4 @@ commonLabels:
 
 resources:
 - sealed-secret.yaml
-- generated.yaml
+- install.yaml
