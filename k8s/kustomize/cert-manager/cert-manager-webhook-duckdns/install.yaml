@@ -264,7 +264,7 @@ metadata:
     heritage: Helm
 spec:
   secretName: cert-manager-webhook-duckdns-ca
-  duration: 43800h # 5y
+  duration: 43800h0m0s # 5y
   issuerRef:
     name: cert-manager-webhook-duckdns-selfsign
   commonName: "ca.cert-manager-webhook-duckdns.cert-manager"
@@ -284,7 +284,7 @@ metadata:
     heritage: Helm
 spec:
   secretName: cert-manager-webhook-duckdns-webhook-tls
-  duration: 8760h # 1y
+  duration: 8760h0m0s # 1y
   issuerRef:
     name: cert-manager-webhook-duckdns-ca
   dnsNames:
