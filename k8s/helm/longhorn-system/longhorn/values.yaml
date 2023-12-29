@@ -1,0 +1,55 @@
+longhorn:
+  persistence:
+    defaultClassReplicaCount: 0 # setting to 1 since only have 1 worker right now
+
+  helmPreUpgradeCheckerJob:
+    enabled: false
+
+  csi:
+    # setting all replica countsb to 1 since only 1 worker right now
+    attacherReplicaCount: 1
+    provisionerReplicaCount: 1
+    resizerReplicaCount: 1
+    snapshotterReplicaCount: 1
+
+
+  defaultSettings:
+    createDefaultDiskLabeledNodes: true
+    defaultDataPath: /mnt/usb01
+    defaultReplicaCount: 1
+    defaultLonghornStaticStorageClass: longhorn-default
+
+
+  longhornManager:
+    nodeSelector:
+      nodegroup.zb/persistent-data: "true"
+
+  longhornUI:
+    replicas: 1
+
+  longhornConversionWebhook:
+    replicas: 0
+
+  longhornAdmissionWebhook:
+    replicas: 0
+
+  longhornRecoveryBackend:
+    replicas: 1
+
+  ingress:
+    ## Set to true to enable ingress record generation
+    enabled: true
+
+    ## Add ingressClassName to the Ingress
+    ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
+    ingressClassName: nginx
+
+    host: longhorn.zeb17-int.duckdns.org
+
+    ## Set this to true in order to enable TLS on the ingress record
+    tls: true
+
+    ## If TLS is set to true, you must declare what secret will store the key/certificate for TLS
+    tlsSecret: longhorn-cert
+    annotations:
+      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
