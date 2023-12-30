@@ -16,6 +16,11 @@ kargo:
       ingressClassName: nginx
       tls:
         selfSignedCert: false
+  controller:
+    globalCredentials:
+      enabled: true
+      namespaces:
+      - kargo
   webhooksServer:
     tls:
       selfSignedCert: false
