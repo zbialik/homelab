@@ -1,0 +1,5 @@
+kargo:
+  api:
+    adminAccount:
+      password: admin
+      tokenSigningKey: iwishtowashmyirishwristwatch

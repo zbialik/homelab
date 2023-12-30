@@ -1,7 +1,0 @@
-kind: Kustomization
-namespace: kargo
-commonLabels:
-  app.zb/name: kargo
-
-resources:
-- generated.yaml
