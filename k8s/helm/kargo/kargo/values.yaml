@@ -1,5 +1,21 @@
 kargo:
   api:
+    host: kargo.zeb17-int.duckdns.org
     adminAccount:
       password: admin
       tokenSigningKey: iwishtowashmyirishwristwatch
+    tls:
+      enabled: true
+      selfSignedCert: false
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      ingressClassName: nginx
+      tls:
+        selfSignedCert: false
+  webhooksServer:
+    tls:
+      selfSignedCert: false
