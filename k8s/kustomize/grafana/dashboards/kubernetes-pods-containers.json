@@ -20,6 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 9810,
   "graphTooltip": 1,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -736,8 +737,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -841,8 +841,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1400,6 +1399,6 @@
   "timezone": "",
   "title": "Kubernetes Pods/Containers Resources",
   "uid": "ZQnBeRvmz",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }

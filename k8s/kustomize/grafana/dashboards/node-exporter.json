@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 1860,
   "graphTooltip": 1,
-  "id": 4,
+  "id": 2,
   "links": [
     {
       "icon": "external link",
@@ -23817,6 +23817,6 @@
   "timezone": "browser",
   "title": "Node Exporter Full",
   "uid": "c6063e48-6d06-410a-b0fe-ec42e5e07edf",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }

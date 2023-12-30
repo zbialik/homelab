@@ -1,0 +1,50 @@
+grafana:
+  deploymentStrategy:
+    type: Recreate
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+    hosts:
+      - grafana.zeb17-int.duckdns.org
+    tls:
+    - secretName: grafana-cert
+      hosts:
+        - grafana.zeb17-int.duckdns.org
+
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+    requests:
+      cpu: 250m
+      memory: 500Mi
+
+  nodeSelector:
+    nodegroup.zb/persistent-data: 'true'
+
+  persistence:
+    enabled: true
+    size: 50Gi
+  admin:
+    existingSecret: "grafana-admin"
+    userKey: username
+    passwordKey: password
+
+  sidecar:
+    resources:
+      limits:
+        cpu: 100m
+        memory: 250Mi
+      requests:
+        cpu: 10m
+        memory: 100Mi
+
+    dashboards:
+      enabled: true
+      label: grafana.zb/dashboard
+    datasources:
+      enabled: true
+      label: grafana.zb/datasource
