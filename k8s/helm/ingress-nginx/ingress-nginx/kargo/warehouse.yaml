@@ -7,4 +7,4 @@ spec:
   - chart:
       name: ingress-nginx
       registryURL: https://kubernetes.github.io/ingress-nginx
-      semverConstraint: ^4.8.0
+      semverConstraint: ^4.8.0 # most-recent stable 4.x.x version (but less than 5.0.0) 
