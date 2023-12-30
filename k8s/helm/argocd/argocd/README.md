@@ -13,7 +13,6 @@ BCRYPT_PW=`argocd account bcrypt --password <YOUR-PASSWORD-HERE>`
 kubectl create secret generic argocd-secret -n argocd \
     --from-literal=admin.password=${BCRYPT_PW} \
     --from-literal=admin.passwordMtime="$(date +%FT%T%Z)" \
-    --from-literal=server.secretKey="" \
     --from-literal=tls.crt="" \
     --from-literal=tls.key="" \
     --dry-run -o yaml > /tmp/secret.yaml
