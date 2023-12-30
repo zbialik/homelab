@@ -22,10 +22,14 @@ spec:
           selfHeal: true
         syncOptions:
         - Replace=true
+        - CreateNamespace=true
+        managedNamespaceMetadata:
+          labels:
+            kargo.akuity.io/project: "true" # apply kargo project label to created namespace
       source:
         repoURL: https://github.com/zbialik/homelab.git
         targetRevision: main
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'kargo-homelab'
+        namespace: 'kargo-{{path[3]}}' # represents kargo project
