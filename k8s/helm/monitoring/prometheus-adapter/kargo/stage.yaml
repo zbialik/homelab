@@ -12,7 +12,7 @@ spec:
       writeBranch: main
       helm:
         charts:
-        - chartPath: k8s/helm/test/prometheus-adapter
+        - chartPath: k8s/helm/monitoring/prometheus-adapter
           name: prometheus-adapter
           registryURL: https://prometheus-community.github.io/helm-charts
     argoCDAppUpdates:
