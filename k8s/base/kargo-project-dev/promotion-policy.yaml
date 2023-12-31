@@ -1,6 +1,6 @@
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionPolicy
 metadata:
-  name: test-kargo-promotion-dev
-stage: test-kargo-promotion-dev
+  name: dev
+stage: dev
 enableAutoPromotion: true
