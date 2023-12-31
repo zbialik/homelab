@@ -1,0 +1,98 @@
+name: Deploy to GitOps Repo
+
+on:
+  push:
+    paths:
+      - 'k8s/helm/*/**'
+      # - 'k8s/kustomize/*/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.13.1
+
+      - name: Detect Changed Helm Chart Dirs
+        id: changed-helm-apps
+        run: |
+          # Get the list of changed paths
+          CHANGED_PATHS=$(git diff --name-only HEAD^ HEAD)
+
+          # Filter for paths that are exactly four folders deep and prefixed with 'k8s/helm/'
+          CHANGED_DIRS=$(echo "$CHANGED_PATHS" | grep '^k8s/helm/' | awk -F'/' '{print $1"/"$2"/"$3"/"$4}' | uniq)
+          echo "Changed directories: $CHANGED_DIRS"
+
+          # Convert the list to a space-separated string
+          CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
+          echo "Changed directories string: $CHANGED_DIRS_STR"
+
+          # Set the output variable for the next steps
+          echo "::set-output name=changed::$CHANGED_DIRS_STR"
+
+      - name: Template Helm Charts + Commit to GitOps Repo
+        if: steps.changed-helm-apps.outputs.changed != ''
+        run: |
+          # Reading the list of changed charts
+          CHANGED_DIRS=(${{ steps.changed-helm-apps.outputs.changed }})
+
+          # Directory to store the generated manifests
+          MANIFESTS_DIR=./generated-manifests
+          mkdir -p $MANIFESTS_DIR
+
+          # Loop through each changed directory and run helm template
+          for chart_dir in "${CHANGED_DIRS[@]}"; do
+            if [ -d "$chart_dir" ]; then
+              echo "Templating chart in $chart_dir"
+              # Extract chart name
+              CHART_NAME=$(basename $chart_dir)
+              
+              # Extract chart namespace
+              TEMP="${chart_dir%/*}"
+              CHART_NAMESPACE="${TEMP##*/}"
+
+              # Running helm template
+              mkdir -p $MANIFESTS_DIR/$CHART_NAME
+              helm template $CHART_NAME $chart_dir --namespace $CHART_NAMESPACE > "$MANIFESTS_DIR/$CHART_NAME/generated.yaml"
+            else
+              echo "Skipping $chart_dir, not a directory"
+            fi
+          done
+
+      - name: Commit to GitOps Repository
+        if: steps.changed-helm-apps.outputs.changed != ''
+        run: |
+          # Configuration
+          MANIFESTS_DIR="./generated-manifests"
+          GITHUB_WORKFLOW_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          COMMIT_MESSAGE="Update manifests from workflow -- $GITHUB_WORKFLOW_URL"
+
+          # Setup Git Config
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+          # Clone the GitOps repository using the token for authentication
+          echo "Cloning GitOps repository..."
+          git clone https://${{ secrets.GITOPS_TOKEN }}:x-oauth-basic@${GITOPS_REPO#"https://"} gitops
+
+          # Copy the generated manifests to the GitOps repository
+          echo "Copying manifests..."
+          cp -r $MANIFESTS_DIR/* gitops/
+
+          # Commit and Push changes
+          echo "Committing and pushing changes..."
+          cd gitops
+          git add .
+          git commit -m "$COMMIT_MESSAGE"
+          
+          # Push using the token for authentication
+          git push https://${{ secrets.GITOPS_TOKEN }}:x-oauth-basic@${GITOPS_REPO#"https://"} HEAD:main
+        env:
+          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
