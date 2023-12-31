@@ -15,7 +15,7 @@ spec:
       name: '{{path[3]}}'
       annotations:
         # must match kargo-appset destination.namespace + stage defined in manifests
-        kargo.akuity.io/authorized-stage: "kargo-{{path[3]}}:{{path[3]}}-dev" 
+        kargo.akuity.io/authorized-stage: "kargo-{{path[3]}}:dev" 
     spec:
       project: default
       syncPolicy:
