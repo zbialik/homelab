@@ -1,5 +1,4 @@
 kind: Kustomization
-namePrefix: test-kargo-promotion-
 resources: 
 - ../../../../base/kargo-project-dev
 - sealed-secret.yaml
@@ -8,19 +7,11 @@ patches:
 - target:
     group: kargo.akuity.io
     version: v1alpha1
-    kind: PromotionPolicy
-  patch: |-
-    - op: add
-      path: /stage
-      value: test-kargo-promotion-dev
-- target:
-    group: kargo.akuity.io
-    version: v1alpha1
     kind: Stage
   patch: |-
     - op: add
-      path: /spec/subscriptions/warehouse
-      value: test-kargo-promotion-dev
+      path: /spec/promotionMechanisms/argoCDAppUpdates/0/appName
+      value: test-kargo-promotion
     - op: add
       path: /spec/promotionMechanisms/gitRepoUpdates/0/helm
       value:
