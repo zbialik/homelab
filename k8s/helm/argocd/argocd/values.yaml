@@ -45,10 +45,10 @@ argo-cd:
   controller:
     resources:
     limits:
-      cpu: 1
+      cpu: 1.5
       memory: 1Gi
     requests:
-      cpu: 500m
+      cpu: 1
       memory: 768Mi
 
   ## Dex
@@ -128,7 +128,7 @@ argo-cd:
       cpu: 1
       memory: 512Mi
     requests:
-      cpu: 50m
+      cpu: 250m
       memory: 256Mi
 
   ## ApplicationSet controller
@@ -136,10 +136,10 @@ argo-cd:
     # -- Resource limits and requests for the ApplicationSet controller pods.
     resources:
       limits:
-        cpu: 100m
+        cpu: 150m
         memory: 128Mi
       requests:
-        cpu: 50m
+        cpu: 100m
         memory: 128Mi
 
   ## Notifications controller
