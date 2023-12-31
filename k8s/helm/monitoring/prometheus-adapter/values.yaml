@@ -1,7 +1,6 @@
 prometheus-adapter:
   prometheus:
     url: http://prometheus.monitoring.svc
-
   resources:
     requests:
       cpu: 150m
@@ -9,7 +8,6 @@ prometheus-adapter:
     limits:
       cpu: 500m
       memory: 256Mi
-
   rules:
     resource:
       cpu:

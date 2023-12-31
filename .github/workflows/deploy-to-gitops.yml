@@ -3,9 +3,9 @@ name: Deploy to GitOps Repo
 on:
   push:
     branches:
-      - instantiate_gitops_workflow
-    # paths:
-      # - 'k8s/helm/*/**'
+      - main
+    paths:
+      - 'k8s/helm/*/**'
       # - 'k8s/kustomize/*/**'
 
 jobs:
@@ -33,8 +33,7 @@ jobs:
           echo "Changed directories: $CHANGED_DIRS"
 
           # Convert the list to a space-separated string
-          # CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
-          CHANGED_DIRS_STR="k8s/helm/monitoring/node-exporter"
+          CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
           echo "Changed directories string: $CHANGED_DIRS_STR"
 
           # Set the output variable for the next steps
