@@ -95,4 +95,5 @@ jobs:
           # Push using the token for authentication
           git push https://${{ secrets.GITOPS_TOKEN }}:x-oauth-basic@${GITOPS_REPO#"https://"} HEAD:main
         env:
+          GITOPS_REPO: https://github.com/zbialik/gitops.git
           GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
