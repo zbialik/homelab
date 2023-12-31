@@ -1,0 +1,7 @@
+kind: Kustomization
+
+resources: 
+- promotion-policy.yaml
+- stage.yaml
+- warehouse.yaml
+- sealed-secret.yaml

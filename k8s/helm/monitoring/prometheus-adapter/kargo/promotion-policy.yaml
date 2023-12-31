@@ -1,0 +1,6 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionPolicy
+metadata:
+  name: prometheus-adapter-dev
+stage: prometheus-adapter-dev
+enableAutoPromotion: true
