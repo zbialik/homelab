@@ -1,4 +1,3 @@
-# override umbrella chart values
 prometheus-node-exporter:
   fullnameOverride: "node-exporter"
   prometheus:
