@@ -7,4 +7,4 @@ spec:
   - chart:
       name: test-kargo-promotion
       registryURL: https://zbialik.github.io/helm-charts
-      semverConstraint: ^0.1.4 # most-recent stable 0.x.x version (but less than 1.0.0) 
+      semverConstraint: ^1.0.0 # most-recent stable 1.x.x version (but less than 2.0.0) 
