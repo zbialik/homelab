@@ -10,7 +10,7 @@ kind: Secret
 type: Opaque
 metadata:
   name: kargo-gitops-repo-creds
-  namespace: kargo-argocd
+  namespace: kargo-cert-manager
   labels:
     kargo.akuity.io/secret-type: repository
 stringData:
