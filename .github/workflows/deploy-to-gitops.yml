@@ -80,7 +80,7 @@ jobs:
 
           # Clone the GitOps repository using the token for authentication
           echo "Cloning GitOps repository..."
-          git clone https://${{ secrets.GITOPS_TOKEN }}:x-oauth-basic@${GITOPS_REPO#"https://"} gitops
+          git clone https://$GITHUB_ACTOR:${{ secrets.GITOPS_TOKEN }}@${GITOPS_REPO#"https://"} gitops
 
           # Copy the generated manifests to the GitOps repository
           echo "Copying manifests..."
@@ -93,7 +93,7 @@ jobs:
           git commit -m "$COMMIT_MESSAGE"
           
           # Push using the token for authentication
-          git push https://${{ secrets.GITOPS_TOKEN }}:x-oauth-basic@${GITOPS_REPO#"https://"} HEAD:main
+          git push https://$GITHUB_ACTOR:${{ secrets.GITOPS_TOKEN }}@${GITOPS_REPO#"https://"} HEAD:main
         env:
           GITOPS_REPO: https://github.com/zbialik/gitops.git
           GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
