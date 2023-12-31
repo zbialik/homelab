@@ -1,6 +1,6 @@
 dependencies:
 - name: test-kargo-promotion
   repository: https://zbialik.github.io/helm-charts
-  version: 0.1.7
-digest: sha256:5943f8804dd891f9270cf1d474d37ed42e5e97c75331cf498dd004ca28ff1f85
-generated: "2023-12-31T00:14:57.664716675Z"
+  version: 0.2.1
+digest: sha256:55cc7938eda8bbcb1e60da94e034380b26b1279f142137452efc52232dc762a9
+generated: "2023-12-31T01:15:11.057375523Z"
