@@ -17,10 +17,11 @@ kargo:
       tls:
         selfSignedCert: false
   controller:
-    globalCredentials:
-      enabled: true
-      namespaces:
-      - kargo
+    # I don't think this works even though this was implemented: https://github.com/akuity/kargo/pull/1041
+    # globalCredentials:
+    #   enabled: true
+    #   namespaces:
+    #   - kargo
   webhooksServer:
     tls:
       selfSignedCert: false
