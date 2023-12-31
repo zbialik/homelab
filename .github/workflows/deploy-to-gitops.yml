@@ -88,9 +88,17 @@ jobs:
           echo "Copying manifests..."
           cp -r $MANIFESTS_DIR/* gitops/
 
+          # Check for changes
+          echo "Checking for changes..."
+          cd gitops
+          git status
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit, exiting gracefully."
+            exit 0
+          fi
+
           # Commit and Push changes
           echo "Committing and pushing changes..."
-          cd gitops
           git add .
           git commit -m "$COMMIT_MESSAGE"
           
