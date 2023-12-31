@@ -1,6 +1,0 @@
-apiVersion: kargo.akuity.io/v1alpha1
-kind: PromotionPolicy
-metadata:
-  name: node-exporter-dev
-stage: node-exporter-dev
-enableAutoPromotion: true
