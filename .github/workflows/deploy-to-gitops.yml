@@ -2,8 +2,10 @@ name: Deploy to GitOps Repo
 
 on:
   push:
-    paths:
-      - 'k8s/helm/*/**'
+    branches:
+      - instantiate_gitops_workflow
+    # paths:
+      # - 'k8s/helm/*/**'
       # - 'k8s/kustomize/*/**'
 
 jobs:
@@ -31,7 +33,8 @@ jobs:
           echo "Changed directories: $CHANGED_DIRS"
 
           # Convert the list to a space-separated string
-          CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
+          # CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
+          CHANGED_DIRS_STR="k8s/helm/monitoring/node-exporter"
           echo "Changed directories string: $CHANGED_DIRS_STR"
 
           # Set the output variable for the next steps
@@ -74,12 +77,9 @@ jobs:
           GITHUB_WORKFLOW_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
           COMMIT_MESSAGE="Update manifests from workflow -- $GITHUB_WORKFLOW_URL"
 
-          # Setup Git Config
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
           # Clone the GitOps repository using the token for authentication
           echo "Cloning GitOps repository..."
+          echo "GITHUB_ACTOR is $GITHUB_ACTOR"
           git clone https://$GITHUB_ACTOR:${{ secrets.GITOPS_TOKEN }}@${GITOPS_REPO#"https://"} gitops
 
           # Copy the generated manifests to the GitOps repository
