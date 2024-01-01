@@ -92,7 +92,7 @@ jobs:
             if [ -d "$kustomize_dir" ]; then
               echo "Templating kustomize app in $kustomize_dir"
               # Extract app name
-              APP_NAME=$(basename $chart_dir)
+              APP_NAME=$(basename $kustomize_dir)
 
               # Running kustomize build
               mkdir -p $MANIFESTS_DIR/$APP_NAME
