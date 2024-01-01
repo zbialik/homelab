@@ -10,6 +10,7 @@ metallb:
         cpu: 500m
         memory: 128Mi
     priorityClassName: "system-cluster-critical"
+
   # speaker contains configuration specific to the MetalLB speaker
   # daemonset.
   speaker:
