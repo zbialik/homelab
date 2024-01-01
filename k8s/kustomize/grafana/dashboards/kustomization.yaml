@@ -14,3 +14,4 @@ configMapGenerator:
 - name: node-exporter
   files:
   - node-exporter.json
+

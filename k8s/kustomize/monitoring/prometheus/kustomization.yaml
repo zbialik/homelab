@@ -9,3 +9,4 @@ resources:
 - rbac.yaml
 - service.yaml
 - servicemonitor.yaml
+
