@@ -3,10 +3,11 @@ name: Deploy to GitOps Repo
 on:
   push:
     branches:
-      - main
+      # - main
+      - add_kustomize_workflow
     paths:
       - 'k8s/helm/*/**'
-      # - 'k8s/kustomize/*/**'
+      - 'k8s/kustomize/*/**'
 
 jobs:
   deploy:
@@ -22,54 +23,89 @@ jobs:
         with:
           version: v3.13.1
 
-      - name: Detect Changed Helm Chart Dirs
-        id: changed-helm-apps
+      - name: Setup Kustomize
+        uses: multani/action-setup-kustomize@v1
+        with:
+          version: 5.1.1
+
+      - name: Detect Changed App Dirs
+        id: changed-apps
         run: |
           # Get the list of changed paths
           CHANGED_PATHS=$(git diff --name-only HEAD^ HEAD)
 
-          # Filter for paths that are exactly four folders deep and prefixed with 'k8s/helm/'
-          CHANGED_DIRS=$(echo "$CHANGED_PATHS" | grep '^k8s/helm/' | awk -F'/' '{print $1"/"$2"/"$3"/"$4}' | uniq)
-          echo "Changed directories: $CHANGED_DIRS"
+          # Filter for paths that are exactly four folders deep and prefixed with 'k8s/helm/' and 'k8s/kustomize/'
+          CHANGED_KUSTOMIZE_DIRS=$(echo "$CHANGED_PATHS" | grep '^k8s/kustomize/' | awk -F'/' '{print $1"/"$2"/"$3"/"$4}' | uniq)
+          CHANGED_HELM_DIRS=$(echo "$CHANGED_PATHS" | grep '^k8s/helm/' | awk -F'/' '{print $1"/"$2"/"$3"/"$4}' | uniq)
 
           # Convert the list to a space-separated string
-          CHANGED_DIRS_STR=$(echo $CHANGED_DIRS | tr '\n' ' ')
-          echo "Changed directories string: $CHANGED_DIRS_STR"
+          CHANGED_HELM_DIRS_STR=$(echo $CHANGED_HELM_DIRS | tr '\n' ' ')
+          CHANGED_KUSTOMIZE_DIRS_STR=$(echo $CHANGED_KUSTOMIZE_DIRS | tr '\n' ' ')
+          echo "Changed helm directories string: $CHANGED_HELM_DIRS_STR"
+          echo "Changed kustomize directories string: $CHANGED_KUSTOMIZE_DIRS_STR"
 
           # Set the output variable for the next steps
-          echo "::set-output name=changed::$CHANGED_DIRS_STR"
+          echo "::set-output name=changed-helm::$CHANGED_HELM_DIRS_STR"
+          echo "::set-output name=changed-kustomize::$CHANGED_KUSTOMIZE_DIRS_STR"
 
-      - name: Template Helm Charts + Commit to GitOps Repo
-        if: steps.changed-helm-apps.outputs.changed != ''
+      - name: Template Helm App Manifests
+        if: steps.changed-apps.outputs.changed-helm != ''
         run: |
           # Reading the list of changed charts
-          CHANGED_DIRS=(${{ steps.changed-helm-apps.outputs.changed }})
+          CHANGED_HELM_DIRS=(${{ steps.changed-apps.outputs.changed-helm }})
 
           # Directory to store the generated manifests
           MANIFESTS_DIR=./generated-manifests
           mkdir -p $MANIFESTS_DIR
 
           # Loop through each changed directory and run helm template
-          for chart_dir in "${CHANGED_DIRS[@]}"; do
+          for chart_dir in "${CHANGED_HELM_DIRS[@]}"; do
             if [ -d "$chart_dir" ]; then
               echo "Templating chart in $chart_dir"
-              # Extract chart name
-              CHART_NAME=$(basename $chart_dir)
+              # Extract app name
+              APP_NAME=$(basename $chart_dir)
               
               # Extract chart namespace
               TEMP="${chart_dir%/*}"
-              CHART_NAMESPACE="${TEMP##*/}"
+              APP_NAMESPACE="${TEMP##*/}"
 
               # Running helm template
-              mkdir -p $MANIFESTS_DIR/$CHART_NAME
-              helm template $CHART_NAME $chart_dir --namespace $CHART_NAMESPACE > "$MANIFESTS_DIR/$CHART_NAME/generated.yaml"
+              mkdir -p $MANIFESTS_DIR/$APP_NAME
+              helm template $APP_NAME $chart_dir --namespace $APP_NAMESPACE > "$MANIFESTS_DIR/$APP_NAME/generated.yaml"
             else
               echo "Skipping $chart_dir, not a directory"
             fi
           done
 
+      - name: Template Kustomize App Manifests
+        if: steps.changed-apps.outputs.changed-kustomize != ''
+        run: |
+          # Reading the list of changed charts
+          CHANGED_KUSTOMIZE_DIRS=(${{ steps.changed-apps.outputs.changed-kustomize }})
+
+          # Directory to store the generated manifests
+          MANIFESTS_DIR=./generated-manifests
+          mkdir -p $MANIFESTS_DIR
+
+          # Loop through each changed directory and run helm template
+          for kustomize_dir in "${CHANGED_KUSTOMIZE_DIRS[@]}"; do
+            if [ -d "$kustomize_dir" ]; then
+              echo "Templating kustomize app in $kustomize_dir"
+              # Extract app name
+              APP_NAME=$(basename $chart_dir)
+
+              # Running kustomize build
+              mkdir -p $MANIFESTS_DIR/$APP_NAME
+              kustomize build $kustomize_dir > "$MANIFESTS_DIR/$APP_NAME/generated.yaml"
+            else
+              echo "Skipping $kustomize_dir, not a directory"
+            fi
+          done
+
       - name: Commit to GitOps Repository
-        if: steps.changed-helm-apps.outputs.changed != ''
+        if: |
+          steps.changed-apps.outputs.changed-helm != ''
+            || steps.changed-apps.outputs.changed-kustomize != ''
         run: |
           # Configuration
           MANIFESTS_DIR="./generated-manifests"
