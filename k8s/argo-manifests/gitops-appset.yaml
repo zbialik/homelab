@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/zbialik/gitops.git
       revision: main
       directories:
-      - path: "*/*"
+      - path: "*"
   template:
     metadata:
       name: '{{path[0]}}'
