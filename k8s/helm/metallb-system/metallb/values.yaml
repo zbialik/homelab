@@ -22,3 +22,4 @@ metallb:
         cpu: 250m
         memory: 128Mi
     priorityClassName: "system-cluster-critical"
+

@@ -9,3 +9,4 @@ kubectl create secret generic grafana-admin -n grafana \
     --dry-run -o yaml > /tmp/secret.yaml
 kubeseal -f /tmp/secret.yaml -w sealed-secret.yaml
 ```
+
