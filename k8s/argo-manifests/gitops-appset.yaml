@@ -7,7 +7,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/zbialik/gitops.git
-      revision: main
+      revision: homelab
       directories:
       - path: "*"
   template:
@@ -27,7 +27,7 @@ spec:
         - Replace=true
       source:
         repoURL: https://github.com/zbialik/gitops.git
-        targetRevision: main
+        targetRevision: homelab
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
