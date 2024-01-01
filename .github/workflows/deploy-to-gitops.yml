@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'k8s/helm/*/**'
-      # - 'k8s/kustomize/*/**'
+      - 'k8s/kustomize/*/**'
 
 jobs:
   deploy:
@@ -62,7 +62,7 @@ jobs:
 
               # Running helm template
               mkdir -p $MANIFESTS_DIR/$CHART_NAME
-              helm template $CHART_NAME $chart_dir --namespace $CHART_NAMESPACE > "$MANIFESTS_DIR/$CHART_NAME/generated.yaml"
+              helm template $CHART_NAME $chart_dir --namespace $CHART_NAMESPACE --api-versions apiregistration.k8s.io/v1 > "$MANIFESTS_DIR/$CHART_NAME/generated.yaml"
             else
               echo "Skipping $chart_dir, not a directory"
             fi

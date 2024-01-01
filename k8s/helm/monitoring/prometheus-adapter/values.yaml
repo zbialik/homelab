@@ -51,3 +51,4 @@ prometheus-adapter:
               resource: pod
         containerLabel: container
       window: 3m
+
