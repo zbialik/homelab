@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kustomize-apps
+  name: gitops-apps
   namespace: argocd
 spec:
   syncPolicy:
     preserveResourcesOnDeletion: true
   generators:
   - git:
-      repoURL: https://github.com/zbialik/homelab.git
+      repoURL: https://github.com/zbialik/gitops.git
       revision: main
       directories:
-      - path: k8s/kustomize/*/*
+      - path: "*/*"
   template:
     metadata:
-      name: '{{path[3]}}'
+      name: '{{path[0]}}'
       annotations:
         # must match kargo-appset destination.namespace + stage defined in manifests
-        kargo.akuity.io/authorized-stage: "kargo-{{path[3]}}:dev" 
+        kargo.akuity.io/authorized-stage: "kargo-{{path[0]}}:dev"
     spec:
       project: default
       syncPolicy:
@@ -28,9 +28,9 @@ spec:
         syncOptions:
         - Replace=true
       source:
-        repoURL: https://github.com/zbialik/homelab.git
+        repoURL: https://github.com/zbialik/gitops.git
         targetRevision: main
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path[2]}}'
+        namespace: 'default' # should be overridden in generated.yaml

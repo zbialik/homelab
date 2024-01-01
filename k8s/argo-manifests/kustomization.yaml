@@ -2,6 +2,4 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- helm-appset.yaml
 - kargo-appset.yaml
-- kustomize-appset.yaml
