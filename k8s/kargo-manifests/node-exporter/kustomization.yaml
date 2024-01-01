@@ -1,0 +1,33 @@
+kind: Kustomization
+resources: 
+- ../base
+- sealed-secret.yaml
+
+patches:
+- target:
+    group: kargo.akuity.io
+    version: v1alpha1
+    kind: Stage
+  patch: |-
+    - op: add
+      path: /spec/promotionMechanisms/argoCDAppUpdates/0/appName
+      value: node-exporter
+    - op: add
+      path: /spec/promotionMechanisms/gitRepoUpdates/0/helm
+      value:
+        charts:
+        - chartPath: k8s/helm/monitoring/node-exporter
+          name: prometheus-node-exporter
+          registryURL: https://prometheus-community.github.io/helm-charts
+- target:
+    group: kargo.akuity.io
+    version: v1alpha1
+    kind: Warehouse
+  patch: |-
+    - op: add
+      path: /spec/subscriptions
+      value:
+      - chart:
+          name: prometheus-node-exporter
+          registryURL: https://prometheus-community.github.io/helm-charts
+          semverConstraint: ^4.21.0 # most-recent stable 4.x.x version (but less than 5.0.0) 

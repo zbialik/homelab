@@ -9,10 +9,12 @@ spec:
       repoURL: https://github.com/zbialik/homelab.git
       revision: main
       directories:
-      - path: k8s/*/*/*/kargo
+      - path: k8s/kargo-manifests/*
+      - path: k8s/kargo-manifests/base
+        exclude: true
   template:
     metadata:
-      name: 'kargo-{{path[3]}}'
+      name: 'kargo-{{path[2]}}'
     spec:
       project: default
       syncPolicy:
@@ -32,4 +34,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'kargo-{{path[3]}}' # represents kargo project
+        namespace: 'kargo-{{path[2]}}' # represents kargo project

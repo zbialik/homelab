@@ -1,0 +1,33 @@
+kind: Kustomization
+resources: 
+- ../base
+- sealed-secret.yaml
+
+patches:
+- target:
+    group: kargo.akuity.io
+    version: v1alpha1
+    kind: Stage
+  patch: |-
+    - op: add
+      path: /spec/promotionMechanisms/argoCDAppUpdates/0/appName
+      value: cert-manager
+    - op: add
+      path: /spec/promotionMechanisms/gitRepoUpdates/0/helm
+      value:
+        charts:
+        - chartPath: k8s/helm/cert-manager/cert-manager
+          name: cert-manager
+          registryURL: https://charts.jetstack.io
+- target:
+    group: kargo.akuity.io
+    version: v1alpha1
+    kind: Warehouse
+  patch: |-
+    - op: add
+      path: /spec/subscriptions
+      value:
+      - chart:
+          name: cert-manager
+          registryURL: "https://charts.jetstack.io"
+          semverConstraint: ^v1.13.3 # most-recent stable v1 version (but less than v2) 
