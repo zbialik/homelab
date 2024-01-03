@@ -25,3 +25,4 @@ kargo:
   webhooksServer:
     tls:
       selfSignedCert: false
+
