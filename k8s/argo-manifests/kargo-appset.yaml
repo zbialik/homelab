@@ -23,7 +23,6 @@ spec:
           allowEmpty: true
           selfHeal: true
         syncOptions:
-        - Replace=true
         - CreateNamespace=true
         managedNamespaceMetadata:
           labels:
