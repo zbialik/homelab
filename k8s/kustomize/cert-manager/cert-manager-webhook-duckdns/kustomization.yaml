@@ -1,7 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app.zb/name: cert-manager-webhook-duckdns
-
-resources:
-- sealed-secret.yaml
-- install.yaml

@@ -1,8 +1,0 @@
-apiVersion: v2
-name: test-kargo-promotion
-type: application
-version: 0.1.0
-dependencies:
-  - name: "test-kargo-promotion"
-    version: 1.0.1
-    repository: "https://zbialik.github.io/helm-charts"
