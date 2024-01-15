@@ -11,5 +11,5 @@ spec:
     - repoURL: https://github.com/zbialik/gitops.git
       pullRequest: 
         github: {}
-      readBranch: homelab-staging
+      readBranch: homelab
       writeBranch: homelab
