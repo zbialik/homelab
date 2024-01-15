@@ -4,3 +4,4 @@ resources:
 - sealed-secret.yaml
 - overlays/node-exporter
 - overlays/test-kargo-promotion
+- overlays/bases/staging

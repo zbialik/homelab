@@ -2,7 +2,6 @@ kind: Kustomization
 namePrefix: test-kargo-promotion-
 resources: 
 - ../bases/dev
-- ../bases/staging
 
 patches:
 - target:
@@ -13,24 +12,6 @@ patches:
   patch: |-
     - op: add
       path: /stage
-      value: test-kargo-promotion-dev
-- target:
-    group: kargo.akuity.io
-    version: v1alpha1
-    kind: PromotionPolicy
-    name: staging
-  patch: |-
-    - op: add
-      path: /stage
-      value: test-kargo-promotion-staging
-- target:
-    group: kargo.akuity.io
-    version: v1alpha1
-    kind: Stage
-    name: staging
-  patch: |-
-    - op: add
-      path: /spec/subscriptions/upstreamStages/0/name
       value: test-kargo-promotion-dev
 - target:
     group: kargo.akuity.io
