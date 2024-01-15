@@ -1,6 +1,6 @@
 kind: Kustomization
 
-resources: 
-- promotion-policy.yaml
-- stage.yaml
-- warehouse.yaml
+resources:
+- sealed-secret.yaml
+- overlays/node-exporter
+- overlays/test-kargo-promotion
