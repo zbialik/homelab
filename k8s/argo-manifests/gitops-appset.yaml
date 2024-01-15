@@ -14,8 +14,8 @@ spec:
     metadata:
       name: '{{path[0]}}'
       annotations:
-        # must match kargo-appset destination.namespace + stage defined in manifests
-        kargo.akuity.io/authorized-stage: "kargo-{{path[0]}}:dev"
+        # must match kargo-homelab Stage
+        kargo.akuity.io/authorized-stage: "kargo-homelab:{{path[0]}}-dev"
     spec:
       project: default
       syncPolicy:
