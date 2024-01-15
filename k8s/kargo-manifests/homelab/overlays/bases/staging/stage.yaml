@@ -4,7 +4,7 @@ metadata:
   name: staging
 spec:
   subscriptions:
-    warehouse: staging
+    upstreamStages: dev
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/zbialik/gitops.git
