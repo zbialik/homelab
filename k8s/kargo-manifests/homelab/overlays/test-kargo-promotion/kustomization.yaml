@@ -9,10 +9,20 @@ patches:
     group: kargo.akuity.io
     version: v1alpha1
     kind: PromotionPolicy
+    name: dev
   patch: |-
     - op: add
       path: /stage
       value: test-kargo-promotion-dev
+- target:
+    group: kargo.akuity.io
+    version: v1alpha1
+    kind: PromotionPolicy
+    name: staging
+  patch: |-
+    - op: add
+      path: /stage
+      value: test-kargo-promotion-staging
 - target:
     group: kargo.akuity.io
     version: v1alpha1
