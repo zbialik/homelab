@@ -1,0 +1,9 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: staging
+spec:
+  subscriptions:
+    git:
+      repoURL: https://github.com/zbialik/gitops.git
+      branch: homelab-staging
