@@ -7,7 +7,7 @@ spec:
     warehouse: dev
   promotionMechanisms:
     gitRepoUpdates:
-    - repoURL: https://github.com/zbialik/homelab.git
+    - repoURL: https://github.com/zbialik/gitops.git
       readBranch: main
       writeBranch: main
       # helm:
