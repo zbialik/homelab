@@ -4,6 +4,6 @@ metadata:
   name: staging
 spec:
   subscriptions:
-    git:
+  - git:
       repoURL: https://github.com/zbialik/gitops.git
       branch: homelab-staging
