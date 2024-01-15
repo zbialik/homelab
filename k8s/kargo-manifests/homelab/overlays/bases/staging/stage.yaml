@@ -11,6 +11,3 @@ spec:
       pullRequest: {}
       readBranch: homelab-staging
       writeBranch: homelab
-    argoCDAppUpdates:
-    - appName: placeholder
-      appNamespace: argocd
