@@ -8,6 +8,7 @@ spec:
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/zbialik/gitops.git
-      pullRequest: {}
+      pullRequest: 
+        github: {}
       readBranch: homelab-staging
       writeBranch: homelab
