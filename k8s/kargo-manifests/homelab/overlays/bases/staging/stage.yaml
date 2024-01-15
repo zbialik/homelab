@@ -5,7 +5,7 @@ metadata:
 spec:
   subscriptions:
     upstreamStages: 
-      name: dev
+    - name: dev
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/zbialik/gitops.git

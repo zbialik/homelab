@@ -30,7 +30,7 @@ patches:
     name: staging
   patch: |-
     - op: add
-      path: /spec/subscriptions/upstreamStages/name
+      path: /spec/subscriptions/upstreamStages/0/name
       value: test-kargo-promotion-dev
 - target:
     group: kargo.akuity.io
