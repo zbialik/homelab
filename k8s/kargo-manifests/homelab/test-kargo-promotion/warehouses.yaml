@@ -8,13 +8,13 @@ spec:
       name: test-kargo-promotion
       registryURL: https://zbialik.github.io/helm-charts
       semverConstraint: ^1.0.0 # most-recent stable 1.x.x version (but less than 2.0.0) 
----
-apiVersion: kargo.akuity.io/v1alpha1
-kind: Warehouse
-metadata:
-  name: test-kargo-promotion-staging
-spec:
-  subscriptions:
-  - git:
-      branch: homelab-staging
-      repoURL: https://github.com/zbialik/gitops.git
+# ---
+# apiVersion: kargo.akuity.io/v1alpha1
+# kind: Warehouse
+# metadata:
+#   name: test-kargo-promotion-staging
+# spec:
+#   subscriptions:
+#   - git:
+#       branch: homelab-staging
+#       repoURL: https://github.com/zbialik/gitops.git
