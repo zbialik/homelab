@@ -15,7 +15,7 @@ spec:
       name: '{{path[0]}}'
       annotations:
         # must match kargo-homelab Stage
-        kargo.akuity.io/authorized-stage: "kargo-homelab:{{path[0]}}-dev"
+        kargo.akuity.io/authorized-stage: "kargo-homelab:{{path[0]}}-staging"
     spec:
       project: default
       syncPolicy:
