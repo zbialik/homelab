@@ -2,4 +2,4 @@ kind: Kustomization
 
 resources:
 - sealed-secret.yaml
-- test-kargo-promotion
+# - test-kargo-promotion

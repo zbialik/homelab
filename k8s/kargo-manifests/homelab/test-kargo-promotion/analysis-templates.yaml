@@ -18,5 +18,5 @@ spec:
                 image: alpine:latest
                 command:
                 - sleep
-                - "300"
+                - "120" # temp sleep to prevent upgrade until CI finishes generation
               restartPolicy: Never

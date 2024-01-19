@@ -35,6 +35,5 @@ spec:
       repoURL: https://github.com/zbialik/gitops.git
       writeBranch: homelab
   subscriptions:
-    # warehouse: test-kargo-promotion-staging
     upstreamStages:
     - name: test-kargo-promotion-pre-generation
