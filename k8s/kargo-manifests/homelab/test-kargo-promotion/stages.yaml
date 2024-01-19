@@ -4,6 +4,9 @@ metadata:
   name: test-kargo-promotion-pre-generation
   namespace: kargo-homelab
 spec:
+  verification:
+    analysisTemplates:
+    - name: verify-ci-complete
   promotionMechanisms:
     gitRepoUpdates:
     - helm:
@@ -32,4 +35,6 @@ spec:
       repoURL: https://github.com/zbialik/gitops.git
       writeBranch: homelab
   subscriptions:
-    warehouse: test-kargo-promotion-staging
+    # warehouse: test-kargo-promotion-staging
+    upstreamStages:
+    - name: test-kargo-promotion-pre-generation

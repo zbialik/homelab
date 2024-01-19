@@ -1,5 +1,6 @@
 kind: Kustomization
 resources: 
+- analysis-templates.yaml
 - warehouses.yaml
 - stages.yaml
 - promotion-policies.yaml
