@@ -4,10 +4,11 @@ metadata:
   name: test-kargo-promotion-pre-generation
 stage: test-kargo-promotion-pre-generation
 enableAutoPromotion: true
----
-apiVersion: kargo.akuity.io/v1alpha1
-kind: PromotionPolicy
-metadata:
-  name: test-kargo-promotion-staging
-stage: test-kargo-promotion-staging
-enableAutoPromotion: true
+# Commented out to enforce upgrades through Kargo UI
+# ---
+# apiVersion: kargo.akuity.io/v1alpha1
+# kind: PromotionPolicy
+# metadata:
+#   name: test-kargo-promotion-staging
+# stage: test-kargo-promotion-staging
+# enableAutoPromotion: true

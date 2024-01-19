@@ -28,9 +28,7 @@ spec:
     - appName: test-kargo-promotion
       appNamespace: argocd
     gitRepoUpdates:
-    - pullRequest:
-        github: {}
-      readBranch: homelab-staging
+    - readBranch: homelab-staging
       repoURL: https://github.com/zbialik/gitops.git
       writeBranch: homelab
   subscriptions:
