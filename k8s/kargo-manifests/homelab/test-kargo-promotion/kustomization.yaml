@@ -1,0 +1,5 @@
+kind: Kustomization
+resources: 
+- warehouses.yaml
+- stages.yaml
+- promotion-policies.yaml
