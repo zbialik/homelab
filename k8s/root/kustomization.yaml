@@ -1,0 +1,7 @@
+kind: Kustomization
+namespace: argocd
+commonLabels:
+  app.zb/name: root
+
+resources:
+- apps.yaml
