@@ -4,6 +4,8 @@ metadata:
   name: gitops-apps
   namespace: argocd
 spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   generators:
   - git:
       repoURL: https://github.com/zbialik/gitops.git
