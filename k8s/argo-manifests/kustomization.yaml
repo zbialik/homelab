@@ -1,6 +1,6 @@
 kind: Kustomization
 namespace: argocd
 
-resources:
-- gitops-appset.yaml
-- kargo-appset.yaml
+resources: []
+# - gitops-appset.yaml
+# - kargo-appset.yaml
