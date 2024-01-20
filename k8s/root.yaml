@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: k8s/argo-manifests
+    path: k8s/root
     repoURL: https://github.com/zbialik/homelab.git
     targetRevision: main
   syncPolicy:

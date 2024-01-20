@@ -1,0 +1,6 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: observability-daemonset
+description: Used for daemonsets relied on for observability (e.g. node-exporter and promtail)
+value: 100000000

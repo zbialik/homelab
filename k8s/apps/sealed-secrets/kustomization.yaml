@@ -1,0 +1,7 @@
+kind: Kustomization
+namespace: kube-system
+commonLabels:
+  app.zb/name: sealed-secrets
+
+resources:
+- generated.yaml

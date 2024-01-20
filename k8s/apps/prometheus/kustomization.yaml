@@ -1,0 +1,11 @@
+kind: Kustomization
+namespace: monitoring
+commonLabels:
+  app.zb/name: prometheus
+
+resources:
+- ingress.yaml
+- prometheus.yaml
+- rbac.yaml
+- service.yaml
+- servicemonitor.yaml

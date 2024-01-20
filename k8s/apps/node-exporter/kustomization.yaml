@@ -1,0 +1,6 @@
+kind: Kustomization
+commonLabels:
+  app.zb/name: node-exporter
+
+resources:
+- generated.yaml
