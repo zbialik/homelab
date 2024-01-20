@@ -1,0 +1,16 @@
+kind: Kustomization
+namespace: monitoring
+commonLabels:
+  app.zb/name: prometheus-operator
+
+resources:
+- bundle.yaml
+
+patches:
+- target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+  patch: |-
+    - op: add
+      path: /metadata/annotations/argocd.argoproj.io~1sync-options
+      value: "Replace=true"

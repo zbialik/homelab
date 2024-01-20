@@ -1,0 +1,8 @@
+kind: Kustomization
+namespace: argocd
+commonLabels:
+  app.zb/name: argocd
+
+resources:
+- generated.yaml
+- sealed-secret.yaml

@@ -1,0 +1,26 @@
+kind: Kustomization
+namespace: ingress-nginx
+commonLabels:
+  app.zb/name: ingress-nginx
+
+resources:
+- cert.yaml
+- generated.yaml
+
+patches:
+- target:
+    group: ""
+    kind: Service
+    name: ingress-nginx-controller
+  patch: |-
+    - op: add
+      path: /spec/loadBalancerIP
+      value: 192.168.1.100
+- target:
+    group: apps
+    kind: Deployment
+    name: ingress-nginx-controller
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --default-ssl-certificate=$(POD_NAMESPACE)/wildcard-zeb17-internal
