@@ -29,7 +29,6 @@ spec:
         args:
         - --log.level=info
         - --systemd.collector.enable-restart-count
-        - --systemd.collector.unit-include=.*\.service
         ports:
         - name: metrics
           containerPort: 9558
