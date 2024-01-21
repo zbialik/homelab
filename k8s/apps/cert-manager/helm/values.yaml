@@ -146,11 +146,11 @@ config:
 # See: https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check
 
 # Comma separated string with host and port of the recursive nameservers cert-manager should query
-dns01RecursiveNameservers: ""
+dns01RecursiveNameservers: "8.8.8.8:53,1.1.1.1:53"
 
 # Forces cert-manager to only use the recursive nameservers for verification.
 # Enabling this option could cause the DNS01 self check to take longer due to caching performed by the recursive nameservers
-dns01RecursiveNameserversOnly: false
+dns01RecursiveNameserversOnly: true
 
 # Additional command line flags to pass to cert-manager controller binary.
 # To see all available flags run docker run quay.io/jetstack/cert-manager-controller:<version> --help
