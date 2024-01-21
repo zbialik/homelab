@@ -28,7 +28,9 @@ spec:
           privileged: true
         args:
         - --log.level=info
-        - --systemd.collector.unit-include=containerd.service|kubelet.service
+        - --systemd.collector.enable-restart-count
+        - --systemd.collector.enable-file-descriptor-size
+        - --systemd.collector.unit-include=*.service
         ports:
         - name: metrics
           containerPort: 9558
