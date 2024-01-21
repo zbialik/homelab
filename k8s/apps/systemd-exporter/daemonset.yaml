@@ -28,7 +28,7 @@ spec:
           privileged: true
         args:
         - --log.level=info
-        - --collector.unit-include=containerd.service|kubelet.service
+        - --systemd.collector.unit-include=containerd.service|kubelet.service
         ports:
         - name: metrics
           containerPort: 9558
