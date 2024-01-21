@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: root-kustomize-appset
+  name: root-appset
   namespace: argocd
 spec:
   generators:
@@ -26,9 +26,6 @@ spec:
         repoURL: https://github.com/zbialik/homelab.git
         targetRevision: HEAD
         path: '{{path}}'
-        kustomize:
-          commonLabels:
-            app.zb/name: '{{path.basenameNormalized}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: 'default'
