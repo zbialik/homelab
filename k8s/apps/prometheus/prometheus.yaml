@@ -26,6 +26,7 @@ spec:
         resources:
           requests:
             storage: 100Gi
+  retention: 24hr
   replicas: 1
   shards: 1
   resources:
