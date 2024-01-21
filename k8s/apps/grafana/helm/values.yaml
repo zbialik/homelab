@@ -349,7 +349,7 @@ extraContainerVolumes: []
 persistence:
   type: pvc
   enabled: true
-  storageClassName: longhorn-default
+  # storageClassName: default
   accessModes:
     - ReadWriteOnce
   size: 50Gi

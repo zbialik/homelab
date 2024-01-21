@@ -88,7 +88,6 @@ spec:
   resources:
     requests:
       storage: "50Gi"
-  storageClassName: longhorn-default
 ---
 # Source: grafana/templates/clusterrole.yaml
 kind: ClusterRole
