@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps
+  name: root-kustomize-appset
   namespace: argocd
 spec:
   generators:
@@ -12,7 +12,7 @@ spec:
       - path: k8s/apps/*
   template:
     metadata:
-      name: '{{path[2]}}'
+      name: '{{path.basenameNormalized}}'
     spec:
       project: default
       syncPolicy:
@@ -26,6 +26,9 @@ spec:
         repoURL: https://github.com/zbialik/homelab.git
         targetRevision: HEAD
         path: '{{path}}'
+        kustomize:
+          commonLabels:
+            app.zb/name: '{{path.basenameNormalized}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: 'default'

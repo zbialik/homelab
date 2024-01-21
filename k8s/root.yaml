@@ -11,7 +11,7 @@ spec:
   source:
     path: k8s/root
     repoURL: https://github.com/zbialik/homelab.git
-    targetRevision: main
+    targetRevision: HEAD
   syncPolicy:
     automated:
       allowEmpty: true
