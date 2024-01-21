@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: systemd-exporter
+  labels:
+    app.kubernetes.io/name: systemd-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: systemd-exporter
+  attachMetadata:
+    node: true
+  endpoints:
+    - port: metrics
+      scheme: http
+      scrapeTimeout: 10s
