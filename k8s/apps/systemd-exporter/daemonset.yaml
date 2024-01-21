@@ -29,7 +29,6 @@ spec:
         args:
         - --log.level=info
         - --systemd.collector.enable-restart-count
-        - --systemd.collector.enable-file-descriptor-size
         - --systemd.collector.unit-include=*.service
         ports:
         - name: metrics
