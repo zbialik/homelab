@@ -3,7 +3,6 @@ kind: DaemonSet
 metadata:
   name: cadvisor
   labels:
-    name: cadvisor
     app.kubernetes.io/name: cadvisor
 spec:
   selector:
