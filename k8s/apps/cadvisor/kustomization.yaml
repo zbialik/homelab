@@ -6,4 +6,5 @@ commonLabels:
 resources:
 - daemonset.yaml
 - service.yaml
+- service-account.yaml
 - service-monitor.yaml
