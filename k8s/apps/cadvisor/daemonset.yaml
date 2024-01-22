@@ -20,7 +20,7 @@ spec:
         args:
         # really just want to blacklist /kubepods.slice since those are provided by kubelet out-the-box, 
         # but have to use whitelist
-        - --raw_cgroup_prefix_whitelist="/system.slice"
+        - --raw_cgroup_prefix_whitelist="/system"
         securityContext:
           privileged: true
         resources:
