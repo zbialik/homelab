@@ -17,10 +17,6 @@ spec:
       containers:
       - name: cadvisor
         image: gcr.io/cadvisor/cadvisor:v0.47.2
-        args:
-        # really just want to blacklist /kubepods.slice since those are provided by kubelet out-the-box, 
-        # but have to use whitelist
-        - --raw_cgroup_prefix_whitelist="/system"
         securityContext:
           privileged: true
         resources:
