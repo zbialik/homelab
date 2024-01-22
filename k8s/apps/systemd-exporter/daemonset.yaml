@@ -27,7 +27,7 @@ spec:
         securityContext:
           privileged: true
         args:
-        - --log.level=info
+        - --log.level=debug
         - --systemd.collector.enable-restart-count
         ports:
         - name: metrics
