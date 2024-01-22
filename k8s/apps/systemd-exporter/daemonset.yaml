@@ -27,8 +27,9 @@ spec:
         securityContext:
           privileged: true
         args:
-        - --log.level=debug
+        - --log.level=info
         - --systemd.collector.enable-restart-count
+        - --systemd.collector.unit-include=.*\.service
         ports:
         - name: metrics
           containerPort: 9558
