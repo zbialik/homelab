@@ -1,9 +1,0 @@
-kind: Kustomization
-namespace: gitlab
-commonLabels:
-  app.zb/name: gitlab
-
-resources:
-- deploy.yaml
-- ingress.yaml
-- service.yaml
