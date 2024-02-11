@@ -1,0 +1,6 @@
+kind: Kustomization
+commonLabels:
+  app.zb/name: gitlab
+
+resources:
+- generated.yaml
