@@ -76,7 +76,7 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
   ingress:
-    apiVersion: "v1"
+    apiVersion: "extensions/v1"
     configureCertmanager: false
     useNewIngressForCerts: false
     provider: nginx

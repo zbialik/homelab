@@ -6136,7 +6136,7 @@ spec:
             cpu: 50m
 ---
 # Source: gitlab/charts/gitlab/charts/kas/templates/ingress.yaml
-apiVersion: v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: gitlab-kas
@@ -6174,7 +6174,7 @@ spec:
       secretName: gitlab-kas-cert
 ---
 # Source: gitlab/charts/gitlab/charts/webservice/templates/ingress.yaml
-apiVersion: v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: gitlab-webservice-default
@@ -6211,7 +6211,7 @@ spec:
       secretName: gitlab-webservice-cert
 ---
 # Source: gitlab/charts/minio/templates/ingress.yaml
-apiVersion: v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: gitlab-minio
@@ -6247,7 +6247,7 @@ spec:
       secretName: gitlab-minio-cert
 ---
 # Source: gitlab/charts/registry/templates/ingress.yaml
-apiVersion: v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: gitlab-registry
@@ -6657,7 +6657,7 @@ subjects:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gitlab-webservice-test-runner-q8aie
+  name: gitlab-webservice-test-runner-f5sg1
   namespace: gitlab
   annotations:
     "helm.sh/hook": test
@@ -6696,7 +6696,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: gitlab-shared-secrets-1-ioj
+  name: gitlab-shared-secrets-1-zbb
   namespace: gitlab
   labels:
     app: gitlab
