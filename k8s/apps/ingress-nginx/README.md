@@ -3,7 +3,7 @@
 ```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
-helm template ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx -f helm/values.yaml --version 4.8.4 > generated.yaml
+helm template ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx -f helm/values.yaml --version 4.8.3 > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
