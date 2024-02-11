@@ -1,6 +1,6 @@
 ---
 # Source: gitlab/charts/gitlab/charts/gitaly/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-gitaly
@@ -19,7 +19,7 @@ spec:
       release: gitlab
 ---
 # Source: gitlab/charts/gitlab/charts/gitlab-shell/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-gitlab-shell
@@ -38,7 +38,7 @@ spec:
       release: gitlab
 ---
 # Source: gitlab/charts/gitlab/charts/kas/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-kas
@@ -57,7 +57,7 @@ spec:
       release: gitlab
 ---
 # Source: gitlab/charts/gitlab/charts/sidekiq/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-sidekiq-all-in-1-v1
@@ -78,7 +78,7 @@ spec:
       queue-pod-name: all-in-1
 ---
 # Source: gitlab/charts/gitlab/charts/webservice/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-webservice-default
@@ -101,7 +101,7 @@ spec:
       gitlab.com/webservice-name: default
 ---
 # Source: gitlab/charts/minio/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-minio-v1
@@ -121,7 +121,7 @@ spec:
       component: app
 ---
 # Source: gitlab/charts/registry/templates/pdb.yaml
-apiVersion: policy/v1beta1
+apiVersion: v1
 kind: PodDisruptionBudget
 metadata:
   name: gitlab-registry-v1
@@ -5149,7 +5149,7 @@ spec:
           medium: "Memory"
 ---
 # Source: gitlab/charts/gitlab/charts/gitlab-shell/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gitlab-gitlab-shell
@@ -5174,7 +5174,7 @@ spec:
         targetAverageValue: 100m
 ---
 # Source: gitlab/charts/gitlab/charts/kas/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gitlab-kas
@@ -5199,7 +5199,7 @@ spec:
         targetAverageValue: 100m
 ---
 # Source: gitlab/charts/gitlab/charts/sidekiq/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gitlab-sidekiq-all-in-1-v2
@@ -5224,7 +5224,7 @@ spec:
         targetAverageValue: 350m
 ---
 # Source: gitlab/charts/gitlab/charts/webservice/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gitlab-webservice-default
@@ -5250,7 +5250,7 @@ spec:
         targetAverageValue: 1
 ---
 # Source: gitlab/charts/registry/templates/hpa.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gitlab-registry
@@ -6111,7 +6111,7 @@ spec:
             cpu: 50m
 ---
 # Source: gitlab/charts/gitlab/charts/kas/templates/ingress.yaml
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Ingress
 metadata:
   name: gitlab-kas
@@ -6149,7 +6149,7 @@ spec:
       secretName: gitlab-kas-cert
 ---
 # Source: gitlab/charts/gitlab/charts/webservice/templates/ingress.yaml
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Ingress
 metadata:
   name: gitlab-webservice-default
@@ -6186,7 +6186,7 @@ spec:
       secretName: gitlab-webservice-cert
 ---
 # Source: gitlab/charts/minio/templates/ingress.yaml
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Ingress
 metadata:
   name: gitlab-minio
@@ -6222,7 +6222,7 @@ spec:
       secretName: gitlab-minio-cert
 ---
 # Source: gitlab/charts/registry/templates/ingress.yaml
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Ingress
 metadata:
   name: gitlab-registry
@@ -6632,7 +6632,7 @@ subjects:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gitlab-webservice-test-runner-m7ipa
+  name: gitlab-webservice-test-runner-ukmbr
   namespace: gitlab
   annotations:
     "helm.sh/hook": test
@@ -6671,7 +6671,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: gitlab-shared-secrets-1-jxe
+  name: gitlab-shared-secrets-1-hzf
   namespace: gitlab
   labels:
     app: gitlab

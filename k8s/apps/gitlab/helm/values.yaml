@@ -76,7 +76,7 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
   ingress:
-    apiVersion: ""
+    apiVersion: "v1"
     configureCertmanager: false
     useNewIngressForCerts: false
     provider: nginx
@@ -92,7 +92,7 @@ global:
 
   # Override the API version to use for HorizontalPodAutoscaler
   hpa:
-    apiVersion: ""
+    apiVersion: "v2"
 
   # Enable KEDA globally (https://keda.sh/)
   keda:
@@ -100,7 +100,7 @@ global:
 
   # Override the API version to use for PodDisruptionBudget
   pdb:
-    apiVersion: ""
+    apiVersion: "v1"
 
   # Override the API version to use for CronJob
   batch:
