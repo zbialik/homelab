@@ -6136,7 +6136,7 @@ spec:
             cpu: 50m
 ---
 # Source: gitlab/charts/gitlab/charts/kas/templates/ingress.yaml
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-kas
@@ -6148,33 +6148,39 @@ metadata:
     heritage: Helm
     
   annotations:
-    kubernetes.io/ingress.class: "gitlab-nginx"
+    
     kubernetes.io/ingress.provider: "nginx"
     nginx.ingress.kubernetes.io/proxy-buffering: "off"
     nginx.ingress.kubernetes.io/custom-http-errors: ""
     
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
 spec:
-  
+  ingressClassName: "gitlab-nginx"
   rules:
     - host: kas-gitlab.zeb17-int.duckdns.org
       http:
         paths:
           - path: "/k8s-proxy/"
+            pathType: Prefix
             backend:
-              serviceName: gitlab-kas
-              servicePort: 8154
+              service:
+                name: gitlab-kas
+                port:
+                  number: 8154
           - path: "/"
+            pathType: Prefix
             backend:
-              serviceName: gitlab-kas
-              servicePort: 8150
+              service:
+                name: gitlab-kas
+                port:
+                  number: 8150
   tls:
     - hosts:
       - kas-gitlab.zeb17-int.duckdns.org
       secretName: gitlab-kas-cert
 ---
 # Source: gitlab/charts/gitlab/charts/webservice/templates/ingress.yaml
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-webservice-default
@@ -6187,7 +6193,7 @@ metadata:
     gitlab.com/webservice-name: default
     
   annotations:
-    kubernetes.io/ingress.class: "gitlab-nginx"
+    
     kubernetes.io/ingress.provider: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "512m"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
@@ -6196,22 +6202,25 @@ metadata:
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
     nginx.ingress.kubernetes.io/service-upstream: "true"
 spec:
-  
+  ingressClassName: "gitlab-nginx"
   rules:
     - host: gitlab.zeb17-int.duckdns.org
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: gitlab-webservice-default
-              servicePort: 8181
+              service:
+                  name: gitlab-webservice-default
+                  port:
+                    number: 8181
   tls:
     - hosts:
       - gitlab.zeb17-int.duckdns.org
       secretName: gitlab-webservice-cert
 ---
 # Source: gitlab/charts/minio/templates/ingress.yaml
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-minio
@@ -6223,7 +6232,7 @@ metadata:
     heritage: Helm
     
   annotations:
-    kubernetes.io/ingress.class: "gitlab-nginx"
+    
     kubernetes.io/ingress.provider: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "900"
@@ -6232,22 +6241,25 @@ metadata:
     
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
 spec:
-  
+  ingressClassName: "gitlab-nginx"
   rules:
     - host: minio-gitlab.zeb17-int.duckdns.org
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: gitlab-minio-svc
-              servicePort: 9000
+              service:
+                  name: gitlab-minio-svc
+                  port:
+                    number: 9000
   tls:
     - hosts:
       - minio-gitlab.zeb17-int.duckdns.org
       secretName: gitlab-minio-cert
 ---
 # Source: gitlab/charts/registry/templates/ingress.yaml
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-registry
@@ -6259,7 +6271,7 @@ metadata:
     heritage: Helm
     
   annotations:
-    kubernetes.io/ingress.class: "gitlab-nginx"
+    
     kubernetes.io/ingress.provider: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "900"
@@ -6268,15 +6280,18 @@ metadata:
     
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
 spec:
-  
+  ingressClassName: "gitlab-nginx"
   rules:
     - host: registry-gitlab.zeb17-int.duckdns.org
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: gitlab-registry
-              servicePort: 5000
+              service:
+                name: gitlab-registry
+                port:
+                  number:  5000
   tls:
     - hosts:
       - registry-gitlab.zeb17-int.duckdns.org
@@ -6657,7 +6672,7 @@ subjects:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gitlab-webservice-test-runner-f5sg1
+  name: gitlab-webservice-test-runner-sslgp
   namespace: gitlab
   annotations:
     "helm.sh/hook": test
@@ -6696,7 +6711,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: gitlab-shared-secrets-1-zbb
+  name: gitlab-shared-secrets-1-e5k
   namespace: gitlab
   labels:
     app: gitlab
