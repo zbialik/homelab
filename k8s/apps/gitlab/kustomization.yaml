@@ -2,5 +2,5 @@ kind: Kustomization
 commonLabels:
   app.zb/name: gitlab
 
-resources:
-- generated.yaml
+resources: []
+# - deploy.yaml
