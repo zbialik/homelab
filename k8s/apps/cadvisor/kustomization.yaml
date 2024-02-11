@@ -3,8 +3,8 @@ namespace: monitoring
 commonLabels:
   app.zb/name: cadvisor
 
-resources:
-- daemonset.yaml
-- service.yaml
-- service-account.yaml
-- service-monitor.yaml
+resources: []
+# - daemonset.yaml
+# - service.yaml
+# - service-account.yaml
+# - service-monitor.yaml
