@@ -5,9 +5,15 @@ commonLabels:
 
 resources:
 - cert.yaml
-- generated.yaml
+- deploy.yaml
 
 patches:
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: ingress-nginx
 - target:
     group: ""
     kind: Service
