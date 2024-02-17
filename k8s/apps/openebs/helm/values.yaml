@@ -245,7 +245,7 @@ snapshotOperator:
 # `ndmOperator.enabled: false` and enable it as dependency chart. If you are using
 # custom configuration then update those configuration under `openebs-ndm` key.
 ndm:
-  enabled: false
+  enabled: true
   image: "openebs/node-disk-manager"
   imageTag: "2.1.0"
   sparse:
@@ -258,11 +258,12 @@ ndm:
     enableVendorFilter: true
     excludeVendors: "CLOUDBYT,OpenEBS"
     enablePathFilter: true
-    includePaths: ""
+    includePaths: "/dev/sda"
     excludePaths: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/dm-,/dev/md,/dev/rbd,/dev/zd"
   probes:
     enableSeachest: false
-  nodeSelector: {}
+  nodeSelector:
+    nodegroup.zb/persistent-data: "true"
   tolerations: []
   healthCheck:
     initialDelaySeconds: 30
