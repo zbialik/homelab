@@ -3,4 +3,4 @@ commonLabels:
   app.zb/name: openebs
 
 resources:
-- generated.yaml
+- openebs
