@@ -4213,7 +4213,7 @@ data:
         name: path filter
         state: true
         include: "/dev/sda"
-        exclude: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/dm-,/dev/md,/dev/rbd,/dev/zd"
+        exclude: ""
 ---
 # Source: openebs/templates/localprovisioner/device-class.yaml
 # The second operand in the AND operation can be removed

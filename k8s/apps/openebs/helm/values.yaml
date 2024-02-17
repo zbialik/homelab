@@ -259,7 +259,7 @@ ndm:
     excludeVendors: "CLOUDBYT,OpenEBS"
     enablePathFilter: true
     includePaths: "/dev/sda"
-    excludePaths: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/dm-,/dev/md,/dev/rbd,/dev/zd"
+    excludePaths: ""
   probes:
     enableSeachest: false
   nodeSelector:
