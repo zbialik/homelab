@@ -2,27 +2,28 @@
 - name: Configure Ext4 filesystem on USB block device
   hosts: storage_node
   become: yes
-  tasks:
-    - name: Ensure e2fsprogs is installed
-      ansible.builtin.package:
-        name: e2fsprogs
-        state: present
+  tasks: []
+  # TODO: modify/remove playbook for OpenEBS
+    # - name: Ensure e2fsprogs is installed
+    #   ansible.builtin.package:
+    #     name: e2fsprogs
+    #     state: present
 
-    - name: Create Ext4 filesystem on /dev/sda
-      ansible.builtin.filesystem:
-        fstype: ext4
-        dev: /dev/sda
+    # - name: Create Ext4 filesystem on /dev/sda
+    #   ansible.builtin.filesystem:
+    #     fstype: ext4
+    #     dev: /dev/sda
 
 
-    - name: Create mount point directory /mnt/usb01
-      ansible.builtin.file:
-        path: /mnt/usb01
-        state: directory
-        mode: 0775
+    # - name: Create mount point directory /mnt/usb01
+    #   ansible.builtin.file:
+    #     path: /mnt/usb01
+    #     state: directory
+    #     mode: 0775
 
-    - name: Mount /dev/sda to /mnt/usb01
-      ansible.builtin.mount:
-        path: /mnt/usb01
-        src: /dev/sda
-        fstype: ext4
-        state: mounted
+    # - name: Mount /dev/sda to /mnt/usb01
+    #   ansible.builtin.mount:
+    #     path: /mnt/usb01
+    #     src: /dev/sda
+    #     fstype: ext4
+    #     state: mounted
