@@ -6153,6 +6153,74 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 60
 ---
+# Source: openebs/templates/ndm/deployment-ndm-operator.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openebs-ndm-operator
+  labels:
+    app: openebs
+    chart: openebs-3.10.0
+    release: openebs
+    heritage: Helm
+    component: ndm-operator
+    openebs.io/component-name: ndm-operator
+    openebs.io/version: 3.10.0
+    name: ndm-operator
+spec:
+  replicas: 1
+  strategy:
+    type: "Recreate"
+    rollingUpdate: null
+  selector:
+    matchLabels:
+      app: openebs
+      release: openebs
+  template:
+    metadata:
+      labels:
+        app: openebs
+        release: openebs
+        component: ndm-operator
+        name: ndm-operator
+        openebs.io/component-name: ndm-operator
+        openebs.io/version: 3.10.0
+    spec:
+      serviceAccountName: openebs
+      containers:
+      - name: openebs-ndm-operator
+        image: "openebs/node-disk-operator:2.1.0"
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8585
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8585
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
+        - name: OPERATOR_NAME
+          value: "node-disk-operator"
+        - name: CLEANUP_JOB_IMAGE
+          value: "openebs/linux-utils:3.5.0"
+---
 # Source: openebs/charts/cstor/templates/csi-controller.yaml
 kind: StatefulSet
 apiVersion: apps/v1
