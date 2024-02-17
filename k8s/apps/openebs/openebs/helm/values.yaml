@@ -245,7 +245,7 @@ snapshotOperator:
 # `ndmOperator.enabled: false` and enable it as dependency chart. If you are using
 # custom configuration then update those configuration under `openebs-ndm` key.
 ndm:
-  enabled: true
+  enabled: false
   image: "openebs/node-disk-manager"
   imageTag: "2.1.0"
   sparse:
@@ -281,7 +281,7 @@ ndm:
 # `ndmOperator.enabled: false` and enable it as dependency chart. If you are using
 # custom configuration then update those configuration under `openebs-ndm` key.
 ndmOperator:
-  enabled: true
+  enabled: false
   image: "openebs/node-disk-operator"
   imageTag: "2.1.0"
   replicas: 1
