@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cilium-hubble
+  namespace: "kube-system"
+  annotations:
+    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "cilium-hubble.zeb17-int.duckdns.org"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hubble-ui
+                port:
+                  number: 80
+  tls:
+    - hosts:
+      - cilium-hubble.zeb17-int.duckdns.org
+      secretName: cilium-hubble-cert
