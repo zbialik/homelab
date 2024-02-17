@@ -1,4 +1,5 @@
 kind: Kustomization
+namespace: openebs
 commonLabels:
   app.zb/name: openebs
 
