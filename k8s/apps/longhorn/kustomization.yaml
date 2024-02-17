@@ -1,7 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app.zb/name: longhorn
-
-resources:
-- generated.yaml
-- storage-class.yaml
