@@ -1,0 +1,206 @@
+---
+# Source: openebs-monitoring/templates/podmonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: openebs-cstor
+  namespace: openebs
+  labels:
+    app: openebs-cStor
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app: cstor-pool
+  namespaceSelector:
+    any: true
+  podMetricsEndpoints:
+    - targetPort: 9500
+      path: /metrics
+      relabelings:
+        - action: keep
+          regex: pool_exporter_prometheus
+          sourceLabels:
+          - __meta_kubernetes_pod_annotation_openebs_io_monitoring
+        - action: replace
+          separator: ' '
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_storage_pool_claim
+          - __meta_kubernetes_pod_label_openebs_io_cstor_pool_cluster
+          targetLabel: storage_pool_claim
+        - action: replace
+          separator: ' '
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_cstor_pool
+          - __meta_kubernetes_pod_label_openebs_io_cstor_pool_instance
+          targetLabel: cstor_pool
+        - action: replace
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: ${1}:${2}
+          sourceLabels:
+          - __address__
+          - __meta_kubernetes_pod_annotation_prometheus_io_port
+          targetLabel: __address__
+---
+# Source: openebs-monitoring/templates/servicemonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-cstor
+  namespace: openebs
+  labels:
+    app: openebs-cStor
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      openebs.io/cas-type: cstor
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: exporter
+      path: /metrics
+      relabelings:
+        - action: keep
+          regex: volume_exporter_prometheus
+          sourceLabels:
+          - __meta_kubernetes_pod_label_monitoring
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_vsm
+          targetLabel: openebs_pv
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_persistent_volume
+          targetLabel: openebs_pv
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_persistent_volume_claim
+          targetLabel: openebs_pvc
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_endpoints_label_openebs_io_cas_type
+          targetLabel: openebs_cas_type
+---
+# Source: openebs-monitoring/templates/servicemonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-devicelocalpv
+  namespace: openebs
+  labels:
+    app: openebs-deviceLocalPV
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      name: openebs-device-node
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: metrics
+      path: /metrics
+---
+# Source: openebs-monitoring/templates/servicemonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-jiva
+  namespace: openebs
+  labels:
+    app: openebs-jiva
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      openebs.io/cas-type: jiva
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: exporter
+      path: /metrics
+      relabelings:
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_vsm
+          targetLabel: openebs_pv
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_persistent_volume
+          targetLabel: openebs_pv
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_pod_label_openebs_io_persistent_volume_claim
+          targetLabel: openebs_pvc
+        - action: replace
+          sourceLabels:
+          - __meta_kubernetes_endpoints_label_openebs_io_cas_type
+          targetLabel: openebs_cas_type
+---
+# Source: openebs-monitoring/templates/servicemonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-lvmlocalpv
+  namespace: openebs
+  labels:
+    app: openebs-lvmLocalPV
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      name: openebs-lvm-node
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: metrics
+      path: /metrics
+---
+# Source: openebs-monitoring/templates/servicemonitors.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-ndm
+  namespace: openebs
+  labels:
+    app: openebs-ndm
+    helm.sh/chart: openebs-monitoring-0.4.13
+    app.kubernetes.io/name: openebs
+    app.kubernetes.io/instance: openebs
+    release: "openebs"
+    app.kubernetes.io/version: "2.12.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app: openebs-ndm-exporter
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: metrics
+      path: /metrics
