@@ -3,4 +3,5 @@ namespace: kube-system
 commonLabels:
   app.zb/name: kube-system-service-monitors
 resources:
+- apiserver.yaml
 - kubelet.yaml
