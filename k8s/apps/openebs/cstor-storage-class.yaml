@@ -1,21 +1,21 @@
 apiVersion: cstor.openebs.io/v1
 kind: CStorVolumePolicy
 metadata:
- name: csi-volume-policy
- namespace: openebs
+  name: csi-volume-policy
+  namespace: openebs
 spec:
- provision:
-   replicaAffinity: true
+  provision:
+    replicaAffinity: true
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
- name: cstor-csi-disk
+  name: cstor-csi-disk
 provisioner: cstor.csi.openebs.io
 allowVolumeExpansion: true
 volumeBindingMode: WaitForFirstConsumer
 parameters:
- replicaCount: "1"
- cstorPoolCluster: "cstor-disk-pool"
- cas-type: "cstor"
- cstorVolumePolicy: "csi-volume-policy" # policy created with replicaAffinity set to true
+  replicaCount: "1"
+  cstorPoolCluster: "cstor-disk-pool"
+  cas-type: "cstor"
+  cstorVolumePolicy: "csi-volume-policy" # policy created with replicaAffinity set to true
