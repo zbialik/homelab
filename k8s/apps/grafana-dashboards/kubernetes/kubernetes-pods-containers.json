@@ -24,120 +24,134 @@
   "liveNow": false,
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 12,
-      "panels": [],
-      "title": "Node Resource Allocations",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$source"
-      },
-      "description": "allocatable cpu and memory resources for $node",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "green",
-            "mode": "fixed"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "cores"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "/.*Memory/"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "bytes"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 0,
-        "y": 1
-      },
-      "id": 21,
-      "maxPerRow": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.2.2",
-      "repeat": "node",
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max(kube_node_status_allocatable{resource=\"cpu\",node=\"$node\"})",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Allocatable CPU",
-          "range": false,
-          "refId": "A",
-          "useBackend": false
-        },
+      "id": 28,
+      "panels": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "$source"
           },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max(kube_node_status_allocatable{resource=\"memory\",node=\"$node\"})",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Allocatable Memory",
-          "range": false,
-          "refId": "B"
+          "description": "allocatable cpu and memory resources for $node",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "green",
+                "mode": "fixed"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "cores"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": "/.*Memory/"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "bytes"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 8,
+            "x": 0,
+            "y": 1
+          },
+          "id": 21,
+          "maxPerRow": 4,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "value",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.2.2",
+          "repeat": "node",
+          "repeatDirection": "h",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "max(kube_node_status_allocatable{resource=\"cpu\",node=\"$node\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "Allocatable CPU",
+              "range": false,
+              "refId": "A",
+              "useBackend": false
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$source"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "max(kube_node_status_allocatable{resource=\"memory\",node=\"$node\"})",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Allocatable Memory",
+              "range": false,
+              "refId": "B"
+            }
+          ],
+          "title": "$node allocatable",
+          "type": "stat"
         }
       ],
-      "title": "$node allocatable",
-      "type": "stat"
+      "title": "Node Allocatable Resources",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 12,
+      "panels": [],
+      "title": "Node Remaining Resources",
+      "type": "row"
     },
     {
       "datasource": {
@@ -182,7 +196,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 4
+        "y": 2
       },
       "id": 16,
       "maxPerRow": 4,
@@ -278,7 +292,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 7
+        "y": 5
       },
       "id": 13,
       "options": {
@@ -339,7 +353,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 10
       },
       "id": 7,
       "title": "CPU",
@@ -409,7 +423,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 11
       },
       "id": 2,
       "links": [],
@@ -511,7 +525,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 11
       },
       "id": 4,
       "links": [],
@@ -636,7 +650,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 16
       },
       "id": 5,
       "links": [],
@@ -682,7 +696,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 21
       },
       "id": 8,
       "panels": [],
@@ -753,7 +767,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 22
       },
       "id": 1,
       "links": [],
@@ -854,7 +868,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 22
       },
       "id": 6,
       "links": [],
@@ -953,7 +967,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 27
       },
       "id": 10,
       "links": [],
@@ -999,7 +1013,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 32
       },
       "id": 9,
       "panels": [],
@@ -1069,7 +1083,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 33
       },
       "id": 3,
       "links": [],
@@ -1170,7 +1184,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 33
       },
       "id": 11,
       "links": [],
