@@ -8,7 +8,7 @@ spec:
     cluster: homelab
     prom_shard: "$(SHARD)"
   nodeSelector:
-    nodegroup.zb/persistent-data: 'true'
+    nodegroup.zb/persistent-data: "true"
   podMetadata:
     labels:
       prometheus: main

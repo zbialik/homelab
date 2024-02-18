@@ -6,12 +6,12 @@ commonLabels:
 
 resources:
 - sealed-secret.yaml
-# - generated.yaml
+- generated.yaml
 
 configMapGenerator:
-  - name: grafana-provisioning-datasources
-    options:
-      labels:
-        grafana.zb/datasource: ""
-    files:
-      - files/datasources.yaml
+- name: grafana-provisioning-datasources
+  options:
+    labels:
+      grafana.zb/datasource: ""
+  files:
+  - files/datasources.yaml
