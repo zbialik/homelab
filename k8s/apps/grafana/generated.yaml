@@ -256,6 +256,8 @@ spec:
               value: "/tmp/dashboards"
             - name: RESOURCE
               value: "both"
+            - name: FOLDER_ANNOTATION
+              value: "grafana_dashboard_folder"
             - name: REQ_USERNAME
               valueFrom:
                 secretKeyRef:

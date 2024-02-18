@@ -1,0 +1,21 @@
+kind: Kustomization
+
+commonAnnotations:
+  grafana_dashboard_folder: openebs
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: cstor-overview
+  files:
+  - cstor-overview.json
+- name: cstor-pool
+  files:
+  - cstor-pool.json
+- name: cstor-volume-replica
+  files:
+  - cstor-volume-replica.json
+- name: cstor-volume
+  files:
+  - cstor-volume.json
