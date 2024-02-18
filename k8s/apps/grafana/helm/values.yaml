@@ -902,7 +902,7 @@ sidecar:
     # ignoreAlreadyProcessed: true
     SCProvider: true
     # label that the configmaps with dashboards are marked with
-    label: grafana_dashboard
+    label: grafana.zb/dashboard
     # value of label that the configmaps with dashboards are set to
     labelValue: ""
     # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.

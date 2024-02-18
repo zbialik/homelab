@@ -5,7 +5,7 @@ commonAnnotations:
 
 commonLabels:
   app.zb/name: dashboards
-  grafana_dashboard: 'true'
+  grafana.zb/dashboard: 'true'
 
 resources:
 - kubernetes
