@@ -257,7 +257,7 @@ spec:
             - name: RESOURCE
               value: "both"
             - name: FOLDER_ANNOTATION
-              value: "grafana_dashboard_folder"
+              value: "grafana.zb/folder"
             - name: REQ_USERNAME
               valueFrom:
                 secretKeyRef:

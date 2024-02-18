@@ -1,7 +1,7 @@
 kind: Kustomization
 
 commonAnnotations:
-  grafana_dashboard_folder: kubernetes
+  grafana.zb/folder: kubernetes
 
 generatorOptions:
   disableNameSuffixHash: true

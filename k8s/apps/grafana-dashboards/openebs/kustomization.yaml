@@ -1,7 +1,7 @@
 kind: Kustomization
 
 commonAnnotations:
-  grafana_dashboard_folder: openebs
+  grafana.zb/folder: openebs
 
 generatorOptions:
   disableNameSuffixHash: true
