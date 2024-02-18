@@ -18,6 +18,8 @@ spec:
     runAsGroup: 65534
     runAsUser: 65534
   serviceAccountName: prometheus
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector: {}
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   storage:
