@@ -18,4 +18,4 @@ parameters:
  replicaCount: "1"
  cstorPoolCluster: "cstor-disk-pool"
  cas-type: "cstor"
- cstorVolumePolicy: "csi-volume-policy" // policy created with replicaAffinity set to true
+ cstorVolumePolicy: "csi-volume-policy" # policy created with replicaAffinity set to true
