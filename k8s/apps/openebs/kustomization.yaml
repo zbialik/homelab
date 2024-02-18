@@ -5,5 +5,5 @@ commonLabels:
 
 resources:
 - generated.yaml
-# - cstor-storage-class.yaml
-# - cstor-storage-pool-cluster.yaml
+- cstor-storage-class.yaml
+- cstor-storage-pool-cluster.yaml
