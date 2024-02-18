@@ -1,5 +1,8 @@
 kind: Kustomization
 namespace: grafana
+commonAnnotations:
+  argocd.argoproj.io/sync-options: Replace=true
+
 commonLabels:
   app.zb/name: dashboards
   grafana_dashboard: 'true'
