@@ -1,7 +1,0 @@
-kind: Kustomization
-namespace: monitoring
-commonLabels:
-  app.zb/name: prometheus-adapter
-
-resources:
-- generated.yaml
