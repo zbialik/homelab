@@ -3,8 +3,8 @@ namespace: openebs
 commonLabels:
   app.zb/name: openebs
 
-resources:
-- generated.yaml
+resources: []
+# - generated.yaml
 # - cstor-storage-class.yaml
 # - cstor-storage-pool-cluster.yaml
 # - monitoring
