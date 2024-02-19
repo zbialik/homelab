@@ -4,4 +4,4 @@ commonLabels:
 
 resources:
 - generated.yaml
-- ceph-cluster.yaml
+# - ceph-cluster.yaml

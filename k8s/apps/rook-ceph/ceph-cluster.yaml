@@ -26,10 +26,11 @@ spec:
     enabled: true
   crashCollector:
     disable: true
+  skipUpgradeChecks: true
   storage:
     useAllNodes: false
     useAllDevices: false
-    deviceFilter: /dev/sda
+    deviceFilter: sda
   monitoring:
     enabled: false
   healthCheck:
