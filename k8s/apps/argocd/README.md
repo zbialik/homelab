@@ -8,25 +8,26 @@ helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 ```
 
+## Chart upgrades
+
+1. Get latest chart version like so:
+    ```bash
+    helm repo update
+    helm search repo argo/argo-cd
+    ```
+1. Update `helm/CHART_VERSION` with new chart version
+1. Update `helm/default.yaml` 
+    ```bash
+    helm show values argo/argo-cd --version $(cat helm/CHART_VERSION) > helm/default.yaml
+    ```
+
 ## Generate manifests
 
-```
+```bash
 helm template \
     argocd argo/argo-cd \
     -n argocd \
     -f helm/values.yaml --version $(cat helm/CHART_VERSION) --include-crds > generated.yaml
-```
-
-## Update `helm/values.yaml` with changes from chart upgrade
-
-Get latest chart version like so:
-```bash
-helm repo update
-helm search repo argo/argo-cd
-```
-
-```bash
-../../update_helm_values.sh argo/argo-cd TARGET_CHART_VERSION
 ```
 
 ## Update admin password
