@@ -1,5 +1,4 @@
 kind: Kustomization
-namespace: rook
 commonLabels:
   app.zb/name: rook
 
