@@ -14,14 +14,6 @@ spec:
   mgr:
     count: 1
     allowMultiplePerNode: true
-  placement:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: "nodegroup.zb/persistent-data"
-            operator: Equal
-            value: "true"
   dashboard:
     enabled: true
   crashCollector:
@@ -30,7 +22,10 @@ spec:
   storage:
     useAllNodes: false
     useAllDevices: false
-    deviceFilter: sda
+    nodes:
+    - name: rpi03
+      devices:
+      - sda
   monitoring:
     enabled: false
   healthCheck:
