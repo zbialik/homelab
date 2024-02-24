@@ -3,6 +3,6 @@ namespace: jhu
 commonLabels:
   app.zb/name: jhu-devops
 
-resources:
-- gitlab
+resources: []
+# - gitlab
 # - jenkins
