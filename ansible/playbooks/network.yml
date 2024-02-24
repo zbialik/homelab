@@ -1,0 +1,41 @@
+---
+- name: Configure network interface metrics on Raspberry Pi using systemd-networkd
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create or modify .network file for eth0 with desired metric
+      copy:
+        dest: /etc/systemd/network/10-eth0.network
+        content: |
+          [Match]
+          Name=eth0
+          
+          [Network]
+          DHCP=yes
+          
+          [DHCP]
+          RouteMetric=200
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Create or modify .network file for wlan0 with desired metric
+      copy:
+        dest: /etc/systemd/network/20-wlan0.network
+        content: |
+          [Match]
+          Name=wlan0
+          
+          [Network]
+          DHCP=yes
+          
+          [DHCP]
+          RouteMetric=300
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload systemd-networkd to apply changes
+      systemd:
+        name: systemd-networkd
+        state: restarted
