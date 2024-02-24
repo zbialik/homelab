@@ -3,13 +3,13 @@ namespace: kube-system
 commonLabels:
   app.zb/name: kube-state-metrics
 
-resources:
-- serviceaccount.yaml
-- clusterrole.yaml
-- clusterrolebinding.yaml
-- deployment.yaml
-- service.yaml
-- servicemonitor.yaml
+resources: []
+# - serviceaccount.yaml
+# - clusterrole.yaml
+# - clusterrolebinding.yaml
+# - deployment.yaml
+# - service.yaml
+# - servicemonitor.yaml
 
 images:
 - name: kube-state-metrics
