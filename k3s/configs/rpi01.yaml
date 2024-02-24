@@ -1,0 +1,7 @@
+write-kubeconfig: /home/zbialik/.kube/config
+write-kubeconfig-mode: "0644"
+tls-san:
+  - "rpi01"
+node-taint:
+  - node-role.kubernetes.io/control-plane:NoSchedule
+cluster-init: true
