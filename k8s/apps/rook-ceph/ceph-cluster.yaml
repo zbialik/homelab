@@ -25,7 +25,7 @@ spec:
     nodes:
     - name: rpi03
       devices:
-      - sda
+      - name: sda
   monitoring:
     enabled: false
   healthCheck:
