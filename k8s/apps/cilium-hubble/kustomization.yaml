@@ -1,8 +1,0 @@
-kind: Kustomization
-namespace: kube-system
-commonLabels:
-  app.kubernetes.io/name: cilium-hubble
-  app.zb/name: cilium-hubble
-
-resources:
-- ingress.yaml

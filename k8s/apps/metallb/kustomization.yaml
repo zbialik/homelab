@@ -1,8 +1,0 @@
-kind: Kustomization
-namespace: metallb-system
-commonLabels:
-  app.zb/name: metallb
-
-resources:
-- generated.yaml
-- confs.yaml
