@@ -3,7 +3,8 @@
 ## Case 1: have sealedsecret private key saved locally (from prev install)
 
 ```bash
-kubectl apply -f k8s/apps/sealed-secrets/secret.yaml
+kubectl apply -R -f k8s/apps/namespaces
+kubectl create -f k8s/apps/sealed-secrets/secret.yaml
 kubectl apply -k k8s/apps/sealed-secrets
 kubectl apply -k k8s/apps/argocd
 kubectl apply -f k8s/root.yaml

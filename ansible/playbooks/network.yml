@@ -1,41 +1,35 @@
 ---
-- name: Configure network interface metrics on Raspberry Pi using systemd-networkd
+- name: Configure eth0 for raspberry pi to get IP from DHCP
   hosts: all
   become: yes
   tasks:
-    - name: Create or modify .network file for eth0 with desired metric
+    - name: Create or modify 99-disable-network-config.cfg to prevent override on reboot
       copy:
-        dest: /etc/systemd/network/10-eth0.network
+        dest: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
         content: |
-          [Match]
-          Name=eth0
-          
-          [Network]
-          DHCP=yes
-          
-          [DHCP]
-          RouteMetric=200
+          network: {config: disabled}
         owner: root
         group: root
         mode: '0644'
-
-    - name: Create or modify .network file for wlan0 with desired metric
+    - name: Modify 50-cloud-init.yml for eth0 config
       copy:
-        dest: /etc/systemd/network/20-wlan0.network
+        dest: /etc/netplan/50-cloud-init.yaml
         content: |
-          [Match]
-          Name=wlan0
-          
-          [Network]
-          DHCP=yes
-          
-          [DHCP]
-          RouteMetric=300
+          network:
+              version: 2
+              renderer: networkd
+              ethernets:
+                  eth0:
+                      dhcp4: true
+              wifis:
+                  wlan0:
+                      access-points:
+                          "Harold's Wifi":
+                              password: "redacted"
+                      dhcp4: true
+                      optional: true
         owner: root
         group: root
         mode: '0644'
-
-    - name: Reload systemd-networkd to apply changes
-      systemd:
-        name: systemd-networkd
-        state: restarted
+    - name: Apply netplan
+      command: sudo netplan apply
