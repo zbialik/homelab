@@ -6,7 +6,7 @@ commonLabels:
 
 resources:
 - sealed-secret.yaml
-# - generated.yaml
+- generated.yaml
 
 configMapGenerator:
 - name: grafana-provisioning-datasources
