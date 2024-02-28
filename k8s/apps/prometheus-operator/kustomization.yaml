@@ -3,8 +3,8 @@ namespace: monitoring
 commonLabels:
   app.zb/name: prometheus-operator
 
-resources: []
-# - bundle.yaml
+resources:
+- bundle.yaml
 
 patches:
 - target:
