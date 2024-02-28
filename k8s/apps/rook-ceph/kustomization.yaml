@@ -6,3 +6,4 @@ commonLabels:
 resources:
 - generated.yaml
 - ceph-cluster.yaml
+- ceph-block-pool.yaml
