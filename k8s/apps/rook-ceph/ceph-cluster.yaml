@@ -8,6 +8,8 @@ spec:
   cephVersion:
     image: quay.io/ceph/ceph:v18
     allowUnsupported: true
+  cleanupPolicy:
+    confirmation: yes-really-destroy-data
   mon:
     count: 1
     allowMultiplePerNode: true
