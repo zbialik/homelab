@@ -406,8 +406,6 @@ spec:
             requests:
               cpu: 250m
               memory: 500Mi
-      nodeSelector:
-        nodegroup.zb/persistent-data: "true"
       volumes:
         - name: config
           configMap:
@@ -514,8 +512,6 @@ metadata:
   namespace: default
 spec:
   serviceAccountName: grafana-test
-  nodeSelector:
-    nodegroup.zb/persistent-data: "true"
   containers:
     - name: grafana-test
       image: "docker.io/bats/bats:v1.4.1"
