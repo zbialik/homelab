@@ -3,7 +3,7 @@ kind: Prometheus
 metadata:
   name: main
 spec:
-  version: v2.48.1
+  version: v2.50.1
   externalLabels:
     cluster: homelab
     prom_shard: "$(SHARD)"
