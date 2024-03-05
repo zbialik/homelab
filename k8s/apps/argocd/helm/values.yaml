@@ -83,12 +83,11 @@ server:
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingressClassName: nginx
-    hosts:
-      - argocd.zeb17-int.duckdns.org
-    tls:
-      - hosts:
-          - argocd.zeb17-int.duckdns.org
-        secretName: argocd-cert
+    hostname: argocd.zeb17-int.duckdns.org
+    tls: true
+    #   - hosts:
+    #       - argocd.zeb17-int.duckdns.org
+    #     secretName: argocd-cert
 
 repoServer:
   resources:
