@@ -3,10 +3,8 @@
 ```
 helm repo add metallb https://metallb.github.io/metallb
 helm repo update
-helm template metallb metallb/metallb -f helm/values.yaml -n metallb-system --version 0.13.12 > generated.yaml
+helm template metallb metallb/metallb -f helm/values.yaml -n metallb-system --version 0.14.3 > generated.yaml
 ```
-
-You'll also need to grab the CRD's separately, which I got from [here](https://doc.traefik.io/traefik/reference/dynamic-configuration/kubernetes-crd/)
 
 ## Notes on Setup
 
