@@ -14,5 +14,5 @@ resources:
 images:
 - name: kube-state-metrics
   newName: registry.k8s.io/kube-state-metrics/kube-state-metrics
-  newTag: v2.10.0
+  newTag: v2.10.1
 
