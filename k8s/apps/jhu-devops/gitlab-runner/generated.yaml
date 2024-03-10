@@ -88,6 +88,7 @@ data:
       [runners.kubernetes]
         namespace = "jhu"
         image = "alpine"
+        helper_image = "gitlab/gitlab-runner-helper:arm64-latest"
   
 
   register-the-runner: |
@@ -205,7 +206,7 @@ spec:
         release: "gitlab-runner"
         heritage: "Helm"
       annotations:
-        checksum/configmap: 9e91e943c8a6b5fc70b1b25898535b051dd99d54e127182d89dd80b564aab96a
+        checksum/configmap: 1956f579a2f9caa5ee3066b77484039d628ddf34ab0050c5fc5ae219efdd9df9
         checksum/secrets: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
     spec:
       securityContext: 

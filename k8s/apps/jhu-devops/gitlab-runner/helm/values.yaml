@@ -4,6 +4,12 @@ rbac:
   create: true
 
 runners:
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        image = "alpine"
+        helper_image = "gitlab/gitlab-runner-helper:arm64-latest"
   secret: gitlab-runner-secret
 
 strategy:
