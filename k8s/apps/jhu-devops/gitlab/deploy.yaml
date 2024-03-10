@@ -29,13 +29,10 @@ spec:
           volumeMounts:
             - name: gitlab
               mountPath: "/etc/gitlab"
-              subPath: /etc/gitlab
             - name: gitlab
               mountPath: "/var/log/gitlab"
-              subPath: /var/log/gitlab
             - name: gitlab
               mountPath: "/var/opt/gitlab"
-              subPath: /var/opt/gitlab
       volumes:
         - name: gitlab
           persistentVolumeClaim:
