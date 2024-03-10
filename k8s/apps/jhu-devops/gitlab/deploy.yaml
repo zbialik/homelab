@@ -28,14 +28,20 @@ spec:
             requests:
               cpu: 1
               memory: 2G
-      #     volumeMounts:
-      #       - name: gitlab
-      #         mountPath: "/etc/gitlab"
-      #       - name: gitlab
-      #         mountPath: "/var/log/gitlab"
-      #       - name: gitlab
-      #         mountPath: "/var/opt/gitlab"
-      # volumes:
-      #   - name: gitlab
-      #     persistentVolumeClaim:
-      #       claimName: gitlab
+          volumeMounts:
+            - name: config
+              mountPath: "/etc/gitlab"
+            - name: log
+              mountPath: "/var/log/gitlab"
+            - name: data
+              mountPath: "/var/opt/gitlab"
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: gitlab-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: gitlab-data
+        - name: log
+          persistentVolumeClaim:
+            claimName: gitlab-log
