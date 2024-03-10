@@ -227,7 +227,7 @@ spec:
         command: ["/usr/bin/dumb-init", "--", "/bin/bash", "/configmaps/entrypoint"]
         env:        
         - name: CI_SERVER_URL
-          value: "http://gitlab.zeb17-int.duckdns.org/"
+          value: "https://gitlab.zeb17-int.duckdns.org/"
         - name: RUNNER_EXECUTOR
           value: "kubernetes"
         - name: REGISTER_LOCKED

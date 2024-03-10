@@ -1,4 +1,4 @@
-gitlabUrl: http://gitlab.zeb17-int.duckdns.org/
+gitlabUrl: https://gitlab.zeb17-int.duckdns.org/
 
 rbac:
   create: true
