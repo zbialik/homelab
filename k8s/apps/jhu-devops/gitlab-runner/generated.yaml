@@ -195,6 +195,8 @@ spec:
   selector:
     matchLabels:
       app: gitlab-runner
+  strategy: 
+    type: Recreate
   template:
     metadata:
       labels:
@@ -227,7 +229,7 @@ spec:
         command: ["/usr/bin/dumb-init", "--", "/bin/bash", "/configmaps/entrypoint"]
         env:        
         - name: CI_SERVER_URL
-          value: "https://gitlab.zeb17-int.duckdns.org/"
+          value: "http://gitlab"
         - name: RUNNER_EXECUTOR
           value: "kubernetes"
         - name: REGISTER_LOCKED

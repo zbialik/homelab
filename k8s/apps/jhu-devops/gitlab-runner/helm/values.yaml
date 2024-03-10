@@ -1,7 +1,10 @@
-gitlabUrl: https://gitlab.zeb17-int.duckdns.org/
+gitlabUrl: http://gitlab
 
 rbac:
   create: true
 
 runners:
   secret: gitlab-runner-secret
+
+strategy:
+  type: Recreate
