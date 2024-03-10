@@ -16,6 +16,7 @@ spec:
       labels:
         app: gitlab
     spec:
+      hostname: gitlab.zeb17-int.duckdns.org
       containers:
         - name: gitlab
           image: zengxs/gitlab:16.7.3-ce.0
@@ -31,13 +32,10 @@ spec:
       #     volumeMounts:
       #       - name: gitlab
       #         mountPath: "/etc/gitlab"
-      #         subPath: gitlab
       #       - name: gitlab
       #         mountPath: "/var/log/gitlab"
-      #         subPath: gitlab
       #       - name: gitlab
       #         mountPath: "/var/opt/gitlab"
-      #         subPath: gitlab
       # volumes:
       #   - name: gitlab
       #     persistentVolumeClaim:
