@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab
+  labels:
+    app: gitlab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: gitlab
+          image: zengxs/gitlab:16.7.3-ce.0
+          ports:
+            - containerPort: 443
+              name: https
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 1
+              memory: 2G
+          volumeMounts:
+            - name: gitlab
+              mountPath: "/etc/gitlab"
+              subPath: /etc/gitlab
+            - name: gitlab
+              mountPath: "/var/log/gitlab"
+              subPath: /var/log/gitlab
+            - name: gitlab
+              mountPath: "/var/opt/gitlab"
+              subPath: /var/opt/gitlab
+      volumes:
+        - name: gitlab
+          persistentVolumeClaim:
+            claimName: gitlab

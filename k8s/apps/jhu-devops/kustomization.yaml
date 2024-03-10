@@ -1,0 +1,6 @@
+kind: Kustomization
+namespace: jhu
+
+resources:
+- gitlab
+# - jenkins

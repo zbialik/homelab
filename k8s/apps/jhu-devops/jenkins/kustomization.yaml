@@ -1,0 +1,8 @@
+kind: Kustomization
+commonLabels:
+  app.zb/name: jenkins
+
+resources:
+- deploy.yaml
+- ingress.yaml
+- service.yaml
