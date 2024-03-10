@@ -16,7 +16,6 @@ spec:
       labels:
         app: gitlab
     spec:
-      hostname: gitlab.zeb17-int.duckdns.org
       containers:
         - name: gitlab
           image: zengxs/gitlab:16.7.3-ce.0
