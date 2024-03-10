@@ -19,6 +19,9 @@ spec:
       containers:
         - name: gitlab
           image: zengxs/gitlab:16.7.3-ce.0
+          env:
+          - name: GITLAB_OMNIBUS_CONFIG
+            value: "external_url 'http://gitlab.zeb17-int.duckdns.org'" 
           ports:
             - containerPort: 443
               name: https
