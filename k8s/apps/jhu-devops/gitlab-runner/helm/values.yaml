@@ -1,0 +1,7 @@
+gitlabUrl: http://gitlab.zeb17-int.duckdns.org/
+
+rbac:
+  create: true
+
+runners:
+  secret: gitlab-runner-secret

@@ -3,4 +3,4 @@ namespace: jhu
 
 resources:
 - gitlab
-# - jenkins
+- gitlab-runner
