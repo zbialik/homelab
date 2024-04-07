@@ -12,7 +12,7 @@ metadata:
   namespace: sonarqube
 type: Opaque
 data:
-  postgresql-postgres-password: "QjdSMGRldHhsRA=="
+  postgresql-postgres-password: "ZDJ3aG9QcTdkTA=="
   postgresql-password: "c29uYXJQYXNz"
 ---
 # Source: sonarqube/templates/secret.yaml
@@ -268,7 +268,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: sonarqube-postgresql
-          image: docker.io/bitnami/postgresql:11.14.0-debian-10-r22
+          image: docker.io/bitnami/postgresql:16.2.0-debian-12-r14
           imagePullPolicy: "IfNotPresent"
           resources:
             limits:
