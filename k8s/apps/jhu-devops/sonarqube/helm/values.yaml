@@ -317,7 +317,8 @@ prometheusMonitoring:
 #    - "https://github.com/SonarSource/sonar-ldap/releases/download/2.2-RC3/sonar-ldap-plugin-2.2.0.601.jar"
 #
 plugins:
-  install: []
+  install:
+   - "https://search.maven.org/remotecontent?filepath=com/h3xstream/findsecbugs/findsecbugs-plugin/1.12.0/findsecbugs-plugin-1.12.0.jar"
 
   # For use behind a corporate proxy when downloading plugins
   # httpProxy: ""
