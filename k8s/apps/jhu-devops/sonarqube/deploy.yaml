@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarqube
+  labels:
+    app: sonarqube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarqube
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sonarqube
+    spec:
+      containers:
+        - name: sonarqube
+          image: mwizner/sonarqube:8.7.1-community
+          env:
+          - key: SONAR_JDBC_URL
+            value: jdbc:postgresql://db:5432/sonar
+          - key: SONAR_JDBC_USERNAME
+            value: sonar
+          - key: SONAR_JDBC_PASSWORD
+            value: sonar
+          ports:
+            - containerPort: 9000
+              name: http
+          resources:
+            requests:
+              cpu: 1
+              memory: 2G
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+          volumeMounts:
+            - name: config
+              mountPath: "/etc/sonarqube"
+            - name: log
+              mountPath: "/var/log/sonarqube"
+            - name: data
+              mountPath: "/var/opt/sonarqube"
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: sonarqube-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: sonarqube-data
+        - name: log
+          persistentVolumeClaim:
+            claimName: sonarqube-log
