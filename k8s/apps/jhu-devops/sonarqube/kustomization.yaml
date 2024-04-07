@@ -4,3 +4,15 @@ commonLabels:
 
 resources:
 - generated.yaml
+
+patches:
+- target:
+    kind: StatefulSet
+    name: sonarqube-sonarqube
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe
+      value: {}
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe
+      value: {}
