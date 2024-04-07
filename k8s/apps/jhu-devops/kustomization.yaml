@@ -3,5 +3,5 @@ namespace: jhu
 
 resources:
 - gitlab
-- gitlab-runner
+# - gitlab-runner
 # - sonarqube

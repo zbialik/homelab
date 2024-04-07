@@ -3,7 +3,7 @@ commonLabels:
   app.zb/name: gitlab
 
 resources:
-- deploy.yaml
-- ingress.yaml
+# - deploy.yaml
+# - ingress.yaml
 - pvc.yaml
-- service.yaml
+# - service.yaml
