@@ -29,8 +29,8 @@ OpenShift:
 edition: "community"
 
 image:
-  repository: sonarqube
-  tag: 10.4.1-{{ .Values.edition }}
+  repository: mwizner/sonarqube
+  tag: 9.4.0-{{ .Values.edition }}
   pullPolicy: IfNotPresent
   # If using a private repository, the imagePullSecrets to use
   # pullSecrets:
@@ -92,10 +92,10 @@ nginx:
   enabled: false
 
 ingress:
-  enabled: false
+  enabled: true
   # Used to create an Ingress record.
   hosts:
-    - name: sonarqube.your-org.com
+    - name: sonarqube.zeb17-int.duckdns.org
       # Different clouds or configurations might need /* as the default path
       # path: /
       # For additional control over serviceName and servicePort
@@ -113,11 +113,11 @@ ingress:
   # labels:
   #  traffic-type: external
   #  traffic-type: internal
-  tls: []
+  tls:
   # Secrets must be manually created in the namespace. To generate a self-signed certificate (and private key) and then create the secret in the cluster please refer to official documentation available at https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tls-secrets
-  # - secretName: chart-example-tls
-  #   hosts:
-  #     - chart-example.local
+  - secretName: sonarqube-cert
+    hosts:
+      - sonarqube.zeb17-int.duckdns.org
 
 route:
   enabled: false
@@ -372,7 +372,7 @@ resources:
     memory: 2Gi
 
 persistence:
-  enabled: false
+  enabled: true
   ## Set annotations on pvc
   annotations: {}
 
@@ -388,7 +388,7 @@ persistence:
   ##
   storageClass:
   accessMode: ReadWriteOnce
-  size: 5Gi
+  size: 10Gi
   uid: 1000
   guid: 0
 

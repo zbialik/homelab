@@ -12,7 +12,7 @@ metadata:
   namespace: sonarqube
 type: Opaque
 data:
-  postgresql-postgres-password: "WDFDRVQ2QlE3Tw=="
+  postgresql-postgres-password: "ZTRibXRUMG51Tg=="
   postgresql-password: "c29uYXJQYXNz"
 ---
 # Source: sonarqube/templates/secret.yaml
@@ -55,6 +55,7 @@ metadata:
     heritage: Helm
 data:
   init_fs.sh: |-
+    chown -R 1000:0 /opt/sonarqube
 ---
 # Source: sonarqube/templates/init-sysctl.yaml
 apiVersion: v1
@@ -113,6 +114,24 @@ metadata:
 data:
   SONAR_JDBC_USERNAME: "sonarUser"
   SONAR_JDBC_URL: "jdbc:postgresql://sonarqube-postgresql:5432/sonarDB"
+---
+# Source: sonarqube/templates/pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sonarqube-sonarqube
+  labels:
+    app: sonarqube
+    chart: "sonarqube-10.4.1_2389"
+    release: "sonarqube"
+    heritage: "Helm"
+
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "10Gi"
 ---
 # Source: sonarqube/charts/postgresql/templates/svc-headless.yaml
 apiVersion: v1
@@ -366,7 +385,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: sonarqube
     app.kubernetes.io/component: sonarqube-sonarqube
-    app.kubernetes.io/version: "10.4.1-community"
+    app.kubernetes.io/version: "9.4.0-community"
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -382,7 +401,7 @@ spec:
         release: sonarqube
       annotations:
         checksum/init-sysctl: bb1657dc1fa0ef8812cb203e3311e22846a1ab8c36e46f17633077d40dffe6d4
-        checksum/init-fs: bbb841fbb8fe037e2803a68279d37edfe9c7750d93e6fb29bcf7d1190bac42d0
+        checksum/init-fs: 9ee469a3d43b0e3329b8999e0997b2ee54a5c3ec806e068d6e27f69e330c07d6
         checksum/plugins: 83b9050ea27137256a65ed86e7bdb4ee24341e08ec46765d596894131d8ca0cc
         checksum/config: 82ecfe559f90532e0a3bd0a8194373def3f6151d07476100d7771fba482efcfb
         checksum/secret: 0ec744ca5cd134add59f978c36c06be44d14ad64f80513897fa6544653de33f7
@@ -391,7 +410,7 @@ spec:
         fsGroup: 0
       initContainers:
         - name: "wait-for-db"
-          image: sonarqube:10.4.1-community
+          image: mwizner/sonarqube:9.4.0-community
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
@@ -408,7 +427,7 @@ spec:
           command: ["/bin/bash", "-c"]
           args: ['set -o pipefail;for i in {1..200};do (echo > /dev/tcp/sonarqube-postgresql/5432) && exit 0; sleep 2;done; exit 1']
         - name: init-sysctl
-          image: sonarqube:10.4.1-community
+          image: mwizner/sonarqube:9.4.0-community
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -421,9 +440,46 @@ spec:
           volumeMounts:
             - name: init-sysctl
               mountPath: /tmp/scripts/
+        - name: init-fs
+          image: mwizner/sonarqube:9.4.0-community
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              add:
+              - CHOWN
+              drop:
+              - ALL
+            privileged: false
+            runAsGroup: 0
+            runAsNonRoot: false
+            runAsUser: 0
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            {}
+          command: ["sh",
+            "-e",
+            "/tmp/scripts/init_fs.sh"]
+          volumeMounts:
+            - name: init-fs
+              mountPath: /tmp/scripts/
+            - mountPath: /opt/sonarqube/data
+              name: sonarqube
+              subPath: data
+            - mountPath: /opt/sonarqube/extensions
+              name: sonarqube
+              subPath: extensions
+            - mountPath: /opt/sonarqube/temp
+              name: sonarqube
+              subPath: temp
+            - mountPath: /opt/sonarqube/logs
+              name: sonarqube
+              subPath: logs
+            - mountPath: /tmp
+              name: tmp-dir
       containers:
         - name: sonarqube
-          image: sonarqube:10.4.1-community
+          image: mwizner/sonarqube:9.4.0-community
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -511,6 +567,9 @@ spec:
             - mountPath: /opt/sonarqube/data
               name: sonarqube
               subPath: data
+            - mountPath: /opt/sonarqube/extensions
+              name: sonarqube
+              subPath: extensions
             - mountPath: /opt/sonarqube/temp
               name: sonarqube
               subPath: temp
@@ -540,11 +599,38 @@ spec:
             - key: install_plugins.sh
               path: install_plugins.sh
       - name: sonarqube
-        emptyDir:
-          {}
+        persistentVolumeClaim:
+          claimName: sonarqube-sonarqube
       - name : tmp-dir
         emptyDir:
           {}
+---
+# Source: sonarqube/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarqube-sonarqube
+  labels:
+    app: sonarqube
+    chart: sonarqube-10.4.1_2389
+    release: sonarqube
+    heritage: Helm
+spec:
+  rules:
+  - host: sonarqube.zeb17-int.duckdns.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: sonarqube-sonarqube
+            port:
+              number: 9000
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - sonarqube.zeb17-int.duckdns.org
+      secretName: sonarqube-cert
 ---
 # Source: sonarqube/templates/tests/sonarqube-test.yaml
 apiVersion: v1
@@ -561,7 +647,7 @@ metadata:
 spec:
   containers:
     - name: sonarqube-ui-test
-      image: "sonarqube:10.4.1-community"
+      image: "mwizner/sonarqube:9.4.0-community"
       imagePullPolicy: IfNotPresent
       command: ['wget']
       args: [
