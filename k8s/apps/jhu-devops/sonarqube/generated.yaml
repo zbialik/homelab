@@ -12,7 +12,7 @@ metadata:
   namespace: sonarqube
 type: Opaque
 data:
-  postgresql-postgres-password: "ZDJ3aG9QcTdkTA=="
+  postgresql-postgres-password: "Qzd4RHdDdVRxNw=="
   postgresql-password: "c29uYXJQYXNz"
 ---
 # Source: sonarqube/templates/secret.yaml
@@ -100,9 +100,6 @@ metadata:
     heritage: Helm
 data:
   install_plugins.sh: |-
-      rm -f /opt/sonarqube/extensions/plugins/*
-      cd /opt/sonarqube/extensions/plugins
-      curl   -fsSLO "https://search.maven.org/remotecontent?filepath=com/h3xstream/findsecbugs/findsecbugs-plugin/1.12.0/findsecbugs-plugin-1.12.0.jar"
 ---
 # Source: sonarqube/templates/jdbc-config.yaml
 apiVersion: v1
@@ -405,7 +402,7 @@ spec:
       annotations:
         checksum/init-sysctl: bb1657dc1fa0ef8812cb203e3311e22846a1ab8c36e46f17633077d40dffe6d4
         checksum/init-fs: 9ee469a3d43b0e3329b8999e0997b2ee54a5c3ec806e068d6e27f69e330c07d6
-        checksum/plugins: de9f95c006fc0f97afe6d39a25c14a14ed3372dd30fe9d817348d455312fabbc
+        checksum/plugins: 83b9050ea27137256a65ed86e7bdb4ee24341e08ec46765d596894131d8ca0cc
         checksum/config: 82ecfe559f90532e0a3bd0a8194373def3f6151d07476100d7771fba482efcfb
         checksum/secret: 0ec744ca5cd134add59f978c36c06be44d14ad64f80513897fa6544653de33f7
     spec:      
@@ -480,37 +477,6 @@ spec:
               subPath: logs
             - mountPath: /tmp
               name: tmp-dir
-        - name: install-plugins
-          image: mwizner/sonarqube:9.4.0-community
-          imagePullPolicy: IfNotPresent
-          command: ["sh",
-            "-e",
-            "/tmp/scripts/install_plugins.sh"]
-          volumeMounts:
-            - mountPath: /opt/sonarqube/extensions/plugins
-              name: sonarqube
-              subPath: extensions/plugins
-            - name: install-plugins
-              mountPath: /tmp/scripts/
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-              - ALL
-            runAsGroup: 0
-            runAsNonRoot: true
-            runAsUser: 1000
-            seccompProfile:
-              type: RuntimeDefault
-          resources:
-            {}
-          env:
-            - name: http_proxy
-              value: 
-            - name: https_proxy
-              value: 
-            - name: no_proxy
-              value: 
       containers:
         - name: sonarqube
           image: mwizner/sonarqube:9.4.0-community
