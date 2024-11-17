@@ -435,14 +435,11 @@ metadata:
     app.kubernetes.io/instance: grafana
     app.kubernetes.io/version: "10.2.2"
     app.kubernetes.io/managed-by: Helm
-  annotations:
-    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
       - grafana.zeb17-int.duckdns.org
-      secretName: grafana-cert
   rules:
     - host: grafana.zeb17-int.duckdns.org
       http:

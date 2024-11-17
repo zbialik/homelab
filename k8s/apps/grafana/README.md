@@ -8,9 +8,10 @@ helm repo update
 ## Generate manifests
 
 ```
+VERSION=7.0.17
 helm template grafana grafana/grafana \
     -f helm/values.yaml \
-    --version $(cat helm/CHART_VERSION) > generated.yaml
+    --version $VERSION > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
@@ -18,7 +19,10 @@ helm template grafana grafana/grafana \
 Get latest chart version like so:
 ```bash
 helm repo update
-helm search repo grafana/grafana
+helm search repo grafana/grafana # update VERSION
+helm show values grafana/grafana --version $VERSION > helm/default.yaml
+
+# update helm/values.yaml appropriately + regenerate manifests
 ```
 
 ```bash
