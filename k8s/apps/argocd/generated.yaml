@@ -22980,7 +22980,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v2.10.2"
   annotations:
-    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
@@ -22997,7 +22996,3 @@ spec:
                 name: argocd-server
                 port:
                   number: 443
-  tls:
-    - hosts:
-      - argocd.zeb17-int.duckdns.org
-      secretName: argocd-server-tls

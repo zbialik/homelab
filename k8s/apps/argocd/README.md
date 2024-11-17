@@ -13,21 +13,18 @@ helm repo update
 1. Get latest chart version like so:
     ```bash
     helm repo update
-    helm search repo argo/argo-cd
-    ```
-1. Update `helm/CHART_VERSION` with new chart version
-1. Update `helm/default.yaml` 
-    ```bash
-    helm show values argo/argo-cd --version $(cat helm/CHART_VERSION) > helm/default.yaml
+    helm search repo argo/argo-cd # redefine VERSION
+    helm show values argo/argo-cd --version $VERSION > helm/default.yaml
     ```
 
 ## Generate manifests
 
 ```bash
+VERSION=6.6.0
 helm template \
     argocd argo/argo-cd \
     -n argocd \
-    -f helm/values.yaml --version $(cat helm/CHART_VERSION) --include-crds > generated.yaml
+    -f helm/values.yaml --version $VERSION --include-crds > generated.yaml
 ```
 
 ## Update admin password
