@@ -9,12 +9,13 @@ helm repo update
 ## Generate manifests
 
 ```
+VERSION=v1.13.3
 helm template \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --set installCRDs=true \
-  -f helm/values.yaml --version $(cat helm/CHART_VERSION) > generated.yaml
+  -f helm/values.yaml --version $VERSION > generated.yaml
 ```
 
 ## Update `helm/values.yaml` with changes from chart upgrade
@@ -22,9 +23,8 @@ helm template \
 Get latest chart version like so:
 ```bash
 helm repo update
-helm search repo jetstack/cert-manager
-```
+helm search repo jetstack/cert-manager # redefine VERSION
+helm show values --version $VERSION jetstack/cert-manager > helm/default.yaml
 
-```bash
-../../update_helm_values.sh jetstack/cert-manager TARGET_CHART_VERSION
+# update helm/values.yaml appropriately + regenerate manifests
 ```
