@@ -83,9 +83,9 @@ server:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingressClassName: nginx
     hostname: argocd.zeb17-int.duckdns.org
-    #   - hosts:
-    #       - argocd.zeb17-int.duckdns.org
-    #     secretName: argocd-cert
+    extraTls:
+      - hosts:
+          - argocd.zeb17-int.duckdns.org
 
 repoServer:
   resources:
