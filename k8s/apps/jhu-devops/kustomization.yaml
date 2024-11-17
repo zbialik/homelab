@@ -1,7 +1,0 @@
-kind: Kustomization
-namespace: jhu
-
-resources:
-- gitlab
-# - gitlab-runner
-# - sonarqube

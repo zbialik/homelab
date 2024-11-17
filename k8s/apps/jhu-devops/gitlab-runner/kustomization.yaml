@@ -1,7 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app.zb/name: gitlab-runner
-
-resources:
-- generated.yaml
-- sealed-token.yaml
