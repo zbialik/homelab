@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: prometheus
   annotations:
-    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
@@ -21,4 +20,3 @@ spec:
   tls:
     - hosts:
       - prometheus.zeb17-int.duckdns.org
-      secretName: prometheus-cert

@@ -4,7 +4,7 @@ metadata:
   name: cilium-hubble
   namespace: "kube-system"
   annotations:
-    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
