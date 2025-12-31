@@ -6,5 +6,5 @@ labels:
     app: fantrax-pl-team-manager
 
 resources:
-- deploy.yaml
+# - deploy.yaml
 - sealed-fantrax-cookie.yaml
