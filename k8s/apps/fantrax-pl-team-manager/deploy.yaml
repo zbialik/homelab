@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: fantrax-pl-team-manager
+    app.kubernetes.io/version: v1.1.0
+  name: fantrax-pl-team-manager
+  namespace: fantrax-pl-team-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fantrax-pl-team-manager
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: fantrax-pl-team-manager
+        app.kubernetes.io/version: v1.1.0
+    spec:
+      containers:
+      - image: zach17/fantrax-pl-team-manager:v1.1.0
+        name: fantrax-pl-team-manager
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: LEAGUE_ID
+          value: "o90qdw15mc719reh"
+        - name: TEAM_ID
+          value: "jassfpe6mc719rep"
+        - name: COOKIE_PATH
+          value: "/app/deploy/fantraxloggedin.cookie"
+        volumeMounts:
+        - name: cookie-secret
+          mountPath: /app/deploy
+          readOnly: true
+      volumes:
+      - name: cookie-secret
+        secret:
+          secretName: fantrax-cookie
