@@ -1,7 +1,9 @@
 kind: Kustomization
 namespace: argocd
-commonLabels:
-  app.zb/name: argocd
+labels:
+- includeSelectors: true
+  pairs:
+    app: argocd
 
 resources:
 - generated.yaml

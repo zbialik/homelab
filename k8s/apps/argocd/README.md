@@ -20,7 +20,7 @@ helm repo update
 ## Generate manifests
 
 ```bash
-VERSION=6.6.0
+VERSION=9.2.3
 helm template \
     argocd argo/argo-cd \
     -n argocd \

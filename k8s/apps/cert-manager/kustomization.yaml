@@ -1,6 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app.zb/name: cert-manager
-
-resources:
-- generated.yaml

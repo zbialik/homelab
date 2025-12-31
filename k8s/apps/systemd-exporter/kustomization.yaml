@@ -1,9 +1,0 @@
-kind: Kustomization
-namespace: monitoring
-commonLabels:
-  app.zb/name: systemd-exporter
-
-resources:
-- daemonset.yaml
-- service.yaml
-- service-monitor.yaml

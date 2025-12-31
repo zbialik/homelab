@@ -1,6 +1,0 @@
-kind: Kustomization
-commonLabels:
-  app.zb/name: priority-classes
-
-resources:
-- observability-daemonset.yaml

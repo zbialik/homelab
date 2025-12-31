@@ -1,9 +1,0 @@
-kind: Kustomization
-namespace: rook-ceph
-commonLabels:
-  app.zb/name: rook
-
-resources:
-- generated.yaml
-- ceph-cluster.yaml
-- ceph-block-pool.yaml
