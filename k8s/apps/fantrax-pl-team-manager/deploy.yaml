@@ -16,7 +16,7 @@ spec:
         app.kubernetes.io/name: fantrax-pl-team-manager
     spec:
       containers:
-      - image: zach17/fantrax-pl-team-manager:v1.1.1
+      - image: zach17/fantrax-pl-team-manager:placeholder
         name: fantrax-pl-team-manager
         imagePullPolicy: IfNotPresent
         env:

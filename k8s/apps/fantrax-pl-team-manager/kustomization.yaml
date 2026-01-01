@@ -8,3 +8,7 @@ labels:
 resources:
 - deploy.yaml
 - sealed-fantrax-cookie.yaml
+
+images:
+- name: zach17/fantrax-pl-team-manager
+  newTag: v1.1.2
