@@ -11,4 +11,4 @@ resources:
 
 images:
 - name: zach17/fantrax-pl-team-manager
-  newTag: v1.2.1
+  newTag: v1.2.2
