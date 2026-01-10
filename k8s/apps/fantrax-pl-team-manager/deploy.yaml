@@ -26,6 +26,11 @@ spec:
           value: "jassfpe6mc719rep"
         - name: COOKIE_PATH
           value: "/app/deploy/fantraxloggedin.cookie"
+        - name: THE_ODDS_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: odds-api-key
+              key: odds-api-key
         volumeMounts:
         - name: cookie-secret
           mountPath: /app/deploy

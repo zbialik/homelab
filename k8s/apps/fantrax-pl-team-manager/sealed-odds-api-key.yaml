@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: odds-api-key
+  namespace: fantrax-pl-team-manager
+spec:
+  encryptedData:
+    odds-api-key: AgDQUb9QdK5cB37mPpMdjQibFGyOMNaCDEJK90Tamt43paml/b2qDOjI+CXKnH/12oU5aj22EUIYE6QNjH0w4B+OPQHQKiTl6KVRBVuPRLRo/SSBYJ6K/ucbxhtrTeUUwIHlRrZ6Zh20Xg3+gvZ3R1ToSNy7qjJPYcVBPeTTnw1Qu/d3DRA6erZ5ZEFXD4N1cQV24EMTFSLOd5SDLecshb+UYQGdBE/Zx0jrQiBfTi1vZfcHIuNB2b2WnRJI3ERxsSrBNxv9e+BV4GcoZsPvsellqpGm6ypQpzmJwJ7WYeI9e6Pu/8Z/4uiBZtihjHV/RKcUW5bFbFkdaksgGkkFyFyreQW9d3JRJq8XxJG2esfGcS52R9uismtrxK31ceXOd9o7g+Bqc/zgQLAnPGq6u0B8bv2PcwWvNhndp40ZxGapzHqreed8NhENbT3dn3hE1Nf7EZYHsPVMGabIdmrbG3jQdyD2nV5U05POn0u0vC2+6WuB1Dvd6SZzegLH5cz1kbFroI3Rygn0dzZcgOKDxzgmgFEdhm+uUPdUCD25jUCLsTJDhjedHzKeEtikGE1f66FQ6zUbP2yhnr+knR19hizA0fVzXHlROXxGzaF61qlh9BX8ElmCV/MJYHeaFYzliQgDWUmROQpBInEIB+EkkOkhZ4SaCrotY6wOMwSv80Ovv5jMbYYYKLqMDsMMxDpKYYbcRZhIY6Q5TPVFzDA+0vyqAs5I/VxkL0RL+JwW4NgUWg==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: odds-api-key
+      namespace: fantrax-pl-team-manager
