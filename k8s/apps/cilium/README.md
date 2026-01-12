@@ -14,9 +14,9 @@ helm repo update
 helm search repo cilium/cilium -l
 
 # update version
-VERSION=1.18.5
-helm show values cilium/cilium --version $VERSION > helm/default.yaml
-helm template cilium cilium/cilium --version $VERSION \
+CILIUM_VERSION=1.18.5
+helm show values cilium/cilium --version $CILIUM_VERSION > helm/default.yaml
+helm template cilium cilium/cilium --version $CILIUM_VERSION \
     -n kube-system \
     -f helm/values.yaml > generated.yaml
 ```
