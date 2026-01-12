@@ -1,0 +1,8 @@
+kind: Kustomization
+labels:
+- includeSelectors: true
+  pairs:
+    app: cilium
+
+resources:
+- generated.yaml

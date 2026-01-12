@@ -1,0 +1,5 @@
+l2announcements:
+  enabled: true
+k8sClientRateLimit.qps: 30
+k8sClientRateLimit.burst: 100
+kubeProxyReplacement: true
