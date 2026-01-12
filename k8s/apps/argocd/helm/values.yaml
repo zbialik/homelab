@@ -1,4 +1,6 @@
 configs:
+  cm:
+    timeout.reconciliation: 30s
   repositories:
     zbialik-homelab-repo:
       url: https://github.com/zbialik/homelab.git
