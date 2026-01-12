@@ -1,0 +1,29 @@
+kind: Kustomization
+labels:
+- includeSelectors: true
+  pairs:
+    app: cert-manager-webhook-duckdns
+
+resources:
+- sealed-secret.yaml
+- generated.yaml
+
+patches:
+# only patching to fix argo app sync status
+# TODO: remove patches once bug fixed: https://github.com/argoproj/argo-cd/issues/6008
+- target:
+    group: cert-manager.io
+    kind: Certificate
+    name: cert-manager-webhook-duckdns-ca
+  patch: |-
+    - op: replace
+      path: /spec/duration
+      value: 43800h0m0s
+- target:
+    group: cert-manager.io
+    kind: Certificate
+    name: cert-manager-webhook-duckdns-webhook-tls
+  patch: |-
+    - op: replace
+      path: /spec/duration
+      value: 8760h0m0s
