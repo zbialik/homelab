@@ -18,5 +18,6 @@ TRAEFIK_VERSION=38.0.2
 helm show values traefik/traefik --version $TRAEFIK_VERSION > helm/default.yaml
 helm template traefik traefik/traefik --version $TRAEFIK_VERSION \
     -n traefik \
+     --include-crds \
     -f helm/values.yaml > generated.yaml
 ```
