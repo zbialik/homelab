@@ -14,9 +14,9 @@ helm repo update
 helm search repo traefik/traefik -l
 
 # update version
-VERSION=38.0.2
-helm show values traefik/traefik --version $VERSION > helm/default.yaml
-helm template traefik traefik/traefik --version $VERSION \
+TRAEFIK_VERSION=38.0.2
+helm show values traefik/traefik --version $TRAEFIK_VERSION > helm/default.yaml
+helm template traefik traefik/traefik --version $TRAEFIK_VERSION \
     -n traefik \
     -f helm/values.yaml > generated.yaml
 ```

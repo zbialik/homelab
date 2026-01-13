@@ -290,3 +290,18 @@ metadata:
   name: traefik
 spec:
   controller: traefik.io/ingress-controller
+---
+# Source: traefik/templates/tlsstore.yaml
+apiVersion: traefik.io/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: traefik
+  labels:
+    app.kubernetes.io/name: traefik
+    app.kubernetes.io/instance: traefik-traefik
+    helm.sh/chart: traefik-38.0.2
+    app.kubernetes.io/managed-by: Helm
+spec:
+  defaultCertificate:
+    secretName: wildcard-zeb17-internal

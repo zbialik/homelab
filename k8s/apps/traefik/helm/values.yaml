@@ -1,0 +1,4 @@
+tlsStore:
+  default:
+    defaultCertificate:
+      secretName: wildcard-zeb17-internal

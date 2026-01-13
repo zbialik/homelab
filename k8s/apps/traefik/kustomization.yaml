@@ -6,3 +6,4 @@ labels:
 
 resources:
 - generated.yaml
+- cert.yaml
