@@ -27012,6 +27012,10 @@ spec:
                 name: argocd-server
                 port:
                   number: 443
+  tls:
+    - hosts:
+      - argocd.zeb17-int.duckdns.org
+      secretName: argocd-server-tls
 ---
 # Source: argo-cd/templates/redis-secret-init/serviceaccount.yaml
 apiVersion: v1

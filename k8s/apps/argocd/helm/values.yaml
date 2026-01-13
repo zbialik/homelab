@@ -50,6 +50,7 @@ server:
   ingress:
     enabled: true
     hostname: "argocd.zeb17-int.duckdns.org"
+    tls: true
   resources:
     limits:
       cpu: 1
