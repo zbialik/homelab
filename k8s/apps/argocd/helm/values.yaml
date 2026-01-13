@@ -47,6 +47,9 @@ redis:
       memory: 64Mi
 
 server:
+  ingress:
+    enabled: true
+    hostname: "argocd.zeb17-int.duckdns.org"
   resources:
     limits:
       cpu: 1

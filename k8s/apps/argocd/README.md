@@ -1,30 +1,25 @@
 # ArgoCD
 
-# Updating manifests
+# Install
 
 Add helm repo:
+
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
-helm repo update
 ```
 
-## Chart upgrades
-
-1. Get latest chart version like so:
-    ```bash
-    helm repo update
-    helm search repo argo/argo-cd # redefine VERSION
-    helm show values argo/argo-cd --version $VERSION > helm/default.yaml
-    ```
-
-## Generate manifests
+## Upgrades
 
 ```bash
-VERSION=9.2.3
+helm repo update
+helm search repo argo/argo-cd -l # redefine ARGOCD_VERSION
+
+ARGOCD_VERSION=9.2.3
+helm show values argo/argo-cd --version $ARGOCD_VERSION > helm/default.yaml
 helm template \
     argocd argo/argo-cd \
     -n argocd \
-    -f helm/values.yaml --version $VERSION --include-crds > generated.yaml
+    -f helm/values.yaml --version $ARGOCD_VERSION --include-crds > generated.yaml
 ```
 
 ## Update admin password
