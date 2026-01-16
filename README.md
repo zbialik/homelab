@@ -22,6 +22,7 @@ Update record like so:
 
 ```
 curl -g "https://www.duckdns.org/update/zeb17-int/${DUCKDNS_TOKEN}/192.168.1.100"
+curl -g "https://www.duckdns.org/update?domains=zeb17-int&token=${DUCKDNS_TOKEN}&txt=${TXT_RECORD}$&verbose=true"
 ```
 
 #### External DNS

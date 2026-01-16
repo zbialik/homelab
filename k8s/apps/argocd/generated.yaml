@@ -27000,6 +27000,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v3.2.3"
+  annotations:
+    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
 spec:
   rules:
     - host: argocd.zeb17-int.duckdns.org
