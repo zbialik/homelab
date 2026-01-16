@@ -6,6 +6,7 @@ metadata:
 spec:
   secretName: wildcard-zeb17-internal
   dnsNames:
+  - "zeb17-int.duckdns.org"
   - "*.zeb17-int.duckdns.org"
   issuerRef:
     name: cert-manager-webhook-duckdns-production
