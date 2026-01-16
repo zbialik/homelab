@@ -2,6 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: zeb17-internal
+  namespace: traefik
 spec:
   secretName: wildcard-zeb17-internal
   dnsNames:
