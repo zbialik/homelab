@@ -52,6 +52,8 @@ server:
     annotations: 
       cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+
     hostname: "argocd.zeb17-int.duckdns.org"
     tls: true
   resources:
