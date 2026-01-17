@@ -62,6 +62,7 @@ server:
     enabled: true
     parentRefs:
       - name: traefik-gateway
+        namespace: traefik
     hostnames: 
     - argocd.zeb17-int.duckdns.org
   resources:
