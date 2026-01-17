@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-zeb17-internal-server-cert
+  namespace: traefik
+spec:
+  secretName: argocd-zeb17-internal-server-cert
+  dnsNames:
+  - "argocd.zeb17-int.duckdns.org"
+  issuerRef:
+    name: cert-manager-webhook-duckdns-production
+    group: cert-manager.io
+    kind: ClusterIssuer

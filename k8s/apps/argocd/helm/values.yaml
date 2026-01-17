@@ -58,13 +58,13 @@ server:
   #     traefik.ingress.kubernetes.io/router.entrypoints: websecure
   #   hostname: "argocd.zeb17-int.duckdns.org"
   #   tls: true
-  httproute:
-    enabled: true
-    parentRefs:
-      - name: traefik-gateway
-        namespace: traefik
-    hostnames: 
-    - argocd.zeb17-int.duckdns.org
+  # httproute:
+  #   enabled: true
+  #   parentRefs:
+  #     - name: traefik-gateway
+  #       namespace: traefik
+  #   hostnames: 
+  #   - argocd.zeb17-int.duckdns.org
   resources:
     limits:
       cpu: 1
