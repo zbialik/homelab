@@ -26987,9 +26987,9 @@ spec:
             path: profiler.enabled
       dnsPolicy: ClusterFirst
 ---
-# Source: argo-cd/templates/argocd-server/ingress.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+# Source: argo-cd/templates/argocd-server/httproute.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: argocd-server
   namespace: argocd
@@ -27001,25 +27001,22 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: "v3.2.3"
-  annotations:
-    cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
-    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
+  parentRefs:
+    - name: traefik-gateway
+  hostnames:
+    - argocd.zeb17-int.duckdns.org
   rules:
-    - host: argocd.zeb17-int.duckdns.org
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 443
-  tls:
-    - hosts:
-      - argocd.zeb17-int.duckdns.org
-      secretName: argocd-server-tls
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - group: ''
+          kind: Service
+          name: argocd-server
+          port: 443
+          weight: 1
 ---
 # Source: argo-cd/templates/redis-secret-init/serviceaccount.yaml
 apiVersion: v1

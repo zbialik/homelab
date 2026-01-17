@@ -3,10 +3,6 @@ tlsStore:
     defaultCertificate:
       secretName: wildcard-zeb17-internal
 
-certificatesResolvers:
-  default:
-    acme:
-      email: "zachary.e.bialik@gmail.com"
-      storage: "/data/acme.json"
-      httpChallenge:
-        entryPoint: "web"
+providers:
+  kubernetesGateway:
+    enabled: true
