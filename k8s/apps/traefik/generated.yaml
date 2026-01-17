@@ -18861,6 +18861,10 @@ spec:
           - "--entryPoints.websecure.http.tls=true"
           - "--log.level=INFO"
         
+          - "--certificatesresolvers.default.acme.email=zachary.e.bialik@gmail.com"
+          - "--certificatesresolvers.default.acme.httpChallenge.entryPoint=web"
+          - "--certificatesresolvers.default.acme.storage=/data/acme.json"
+          
         env:
           - name: POD_NAME
             valueFrom:

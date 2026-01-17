@@ -8,3 +8,4 @@ labels:
 resources:
 - generated.yaml
 - sealed-secret.yaml
+- traefik-ingress-route.yaml
