@@ -209,6 +209,7 @@ data:
       - BackgroundScanReport
       - ClusterBackgroundScanReport
       - UpdateRequest
+  server.insecure: "true"
   statusbadge.enabled: "false"
   timeout.hard.reconciliation: 0s
   timeout.reconciliation: 30s
@@ -25447,7 +25448,7 @@ spec:
     metadata:
       annotations:
         checksum/cmd-params: cbd1ca3ab4f2122ec7aab52eba087e9f0b3b8813ea2c1b042c0eed6c961ea467
-        checksum/cm: 4cfd5dc93542af1036fef28824f79bc3ca9bece27e13c83898e01ae78005d803
+        checksum/cm: ae5fce851517c700c7d34e2af1247aee3d5dae4583b5947459739b278aabf871
       labels:
         helm.sh/chart: argo-cd-9.2.3
         app.kubernetes.io/name: argocd-repo-server
@@ -25884,7 +25885,7 @@ spec:
     metadata:
       annotations:
         checksum/cmd-params: cbd1ca3ab4f2122ec7aab52eba087e9f0b3b8813ea2c1b042c0eed6c961ea467
-        checksum/cm: 4cfd5dc93542af1036fef28824f79bc3ca9bece27e13c83898e01ae78005d803
+        checksum/cm: ae5fce851517c700c7d34e2af1247aee3d5dae4583b5947459739b278aabf871
       labels:
         helm.sh/chart: argo-cd-9.2.3
         app.kubernetes.io/name: argocd-server
@@ -26608,7 +26609,7 @@ spec:
     metadata:
       annotations:
         checksum/cmd-params: cbd1ca3ab4f2122ec7aab52eba087e9f0b3b8813ea2c1b042c0eed6c961ea467
-        checksum/cm: 4cfd5dc93542af1036fef28824f79bc3ca9bece27e13c83898e01ae78005d803
+        checksum/cm: ae5fce851517c700c7d34e2af1247aee3d5dae4583b5947459739b278aabf871
       labels:
         helm.sh/chart: argo-cd-9.2.3
         app.kubernetes.io/name: argocd-application-controller
@@ -27003,7 +27004,6 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "cert-manager-webhook-duckdns-production"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
     - host: argocd.zeb17-int.duckdns.org
