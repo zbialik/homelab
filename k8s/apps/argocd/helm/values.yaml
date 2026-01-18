@@ -51,13 +51,12 @@ redis:
       memory: 64Mi
 
 server:
-  # ingress:
-  #   enabled: true
-  #   annotations: 
-  #     cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
-  #     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-  #   hostname: "argocd.zeb17-int.duckdns.org"
-  #   tls: true
+  ingress:
+    enabled: true
+    annotations: 
+      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+    hostname: "argocd.zeb17-int.duckdns.org"
+    tls: true
   # httproute:
   #   enabled: true
   #   parentRefs:

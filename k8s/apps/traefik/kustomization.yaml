@@ -4,6 +4,6 @@ labels:
   pairs:
     app: traefik
 
-resources:
-- generated.yaml
-- cert.yaml
+resources: []
+# - generated.yaml
+# - cert.yaml
