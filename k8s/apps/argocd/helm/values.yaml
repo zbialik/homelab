@@ -53,7 +53,10 @@ redis:
 server:
   ingress:
     enabled: true
-    annotations: 
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
     hostname: "argocd.zeb17-int.duckdns.org"
     tls: true
