@@ -7,8 +7,8 @@ labels:
 
 resources:
 - generated.yaml
-- ceph-cluster.yaml
-- ceph-block-pool.yaml
+# - ceph-cluster.yaml
+# - ceph-block-pool.yaml
 
 patches:
 - target:
