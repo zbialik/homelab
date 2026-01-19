@@ -17,11 +17,11 @@ configs:
 controller:
   resources:
     limits:
-      cpu: 1
+      cpu: 500m
       memory: 1Gi
     requests:
       cpu: 500m
-      memory: 768Mi
+      memory: 1Gi
 
 dex:
   resources:
@@ -45,10 +45,10 @@ redis:
   resources:
     limits:
       cpu: 200m
-      memory: 128Mi
+      memory: 100Mi
     requests:
       cpu: 100m
-      memory: 64Mi
+      memory: 50Mi
 
 server:
   ingress:
@@ -69,20 +69,20 @@ server:
   #   - argocd.zeb17-int.duckdns.org
   resources:
     limits:
-      cpu: 1
-      memory: 256Mi
+      cpu: 250m
+      memory: 200Mi
     requests:
-      cpu: 50m
-      memory: 128Mi
+      cpu: 250m
+      memory: 200Mi
 
 repoServer:
   resources:
     limits:
-      cpu: 1
-      memory: 512Mi
+      cpu: 100m
+      memory: 256Mi
     requests:
-      cpu: 50m
-      memory: 128Mi
+      cpu: 100m
+      memory: 256Mi
 
 applicationSet:
   resources:
@@ -90,7 +90,7 @@ applicationSet:
       cpu: 100m
       memory: 128Mi
     requests:
-      cpu: 50m
+      cpu: 100m
       memory: 128Mi
 
 notifications:

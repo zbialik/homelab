@@ -25352,7 +25352,7 @@ spec:
               cpu: 100m
               memory: 128Mi
             requests:
-              cpu: 50m
+              cpu: 100m
               memory: 128Mi
           securityContext:
             allowPrivilegeEscalation: false
@@ -25774,11 +25774,11 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 1
-            memory: 512Mi
+            cpu: 100m
+            memory: 256Mi
           requests:
-            cpu: 50m
-            memory: 128Mi
+            cpu: 100m
+            memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -25799,11 +25799,11 @@ spec:
         name: copyutil
         resources:
           limits:
-            cpu: 1
-            memory: 512Mi
+            cpu: 100m
+            memory: 256Mi
           requests:
-            cpu: 50m
-            memory: 128Mi
+            cpu: 100m
+            memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -26259,11 +26259,11 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 1
-            memory: 256Mi
+            cpu: 250m
+            memory: 200Mi
           requests:
-            cpu: 50m
-            memory: 128Mi
+            cpu: 250m
+            memory: 200Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -26552,10 +26552,10 @@ spec:
         resources:
           limits:
             cpu: 200m
-            memory: 128Mi
+            memory: 100Mi
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 50Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -26927,11 +26927,11 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 1
+            cpu: 500m
             memory: 1Gi
           requests:
             cpu: 500m
-            memory: 768Mi
+            memory: 1Gi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
