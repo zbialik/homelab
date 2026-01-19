@@ -25774,8 +25774,8 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 200m
-            memory: 512Mi
+            cpu: 1
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 512Mi
@@ -25799,8 +25799,8 @@ spec:
         name: copyutil
         resources:
           limits:
-            cpu: 200m
-            memory: 512Mi
+            cpu: 1
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 512Mi
