@@ -1,9 +1,0 @@
-kind: Kustomization
-labels:
-- includeSelectors: true
-  pairs:
-    app: traefik
-
-resources: []
-# - generated.yaml
-# - cert.yaml

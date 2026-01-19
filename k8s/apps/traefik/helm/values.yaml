@@ -1,8 +1,0 @@
-tlsStore:
-  default:
-    defaultCertificate:
-      secretName: wildcard-zeb17-internal
-
-providers:
-  kubernetesGateway:
-    enabled: true
