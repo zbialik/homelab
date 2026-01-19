@@ -1,0 +1,8 @@
+kind: Kustomization
+namespace: kube-system
+labels:
+  - includeSelectors: true
+    pairs:
+      app: kube-system-service-monitors
+resources:
+- kubelet.yaml

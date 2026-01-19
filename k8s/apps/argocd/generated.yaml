@@ -25774,10 +25774,10 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
           requests:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -25799,10 +25799,10 @@ spec:
         name: copyutil
         resources:
           limits:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
           requests:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
         securityContext:
           allowPrivilegeEscalation: false
