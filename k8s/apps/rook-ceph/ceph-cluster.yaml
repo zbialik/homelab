@@ -5,9 +5,9 @@ metadata:
   namespace: rook-ceph
 spec:
   dataDirHostPath: /var/lib/rook
-  # cephVersion:
-  #   image: quay.io/ceph/ceph:v18
-  #   allowUnsupported: true
+  cephVersion:
+    image: quay.io/ceph/ceph:v20
+    allowUnsupported: true
   # cleanupPolicy:
   #   confirmation: yes-really-destroy-data
   mon:
