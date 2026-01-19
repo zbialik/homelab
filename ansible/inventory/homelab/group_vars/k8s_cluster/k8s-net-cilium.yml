@@ -149,24 +149,24 @@ cilium_l2announcements: false
 
 # Hubble
 ### Enable Hubble without install
-cilium_enable_hubble: true
+# cilium_enable_hubble: true
 ### Enable Hubble-ui
 ### Installed by default when hubble is enabled. To disable set to false
 # cilium_enable_hubble_ui: "{{ cilium_enable_hubble }}"
 ### Enable Hubble Metrics
-cilium_enable_hubble_metrics: true
+# cilium_enable_hubble_metrics: true
 ### if cilium_enable_hubble_metrics: true
-cilium_hubble_metrics:
-- dns
-- drop
-- tcp
-- flow
-- icmp
-- http
+# cilium_hubble_metrics:
+# - dns
+# - drop
+# - tcp
+# - flow
+# - icmp
+# - http
 ### Enable Hubble install
-cilium_hubble_install: true
+# cilium_hubble_install: true
 ### Enable auto generate certs if cilium_hubble_install: true
-cilium_hubble_tls_generate: true
+# cilium_hubble_tls_generate: true
 
 ### Tune cilium_hubble_event_buffer_capacity & cilium_hubble_event_queue_size values to avoid dropping events when hubble is under heavy load
 ### Capacity of Hubble events buffer. The provided value must be one less than an integer power of two and no larger than 65535
