@@ -1,0 +1,11 @@
+kind: Kustomization
+namespace: rook-ceph
+labels: 
+  - includeSelectors: true
+    pairs:
+      app: rook-ceph
+
+resources:
+- generated.yaml
+- ceph-cluster.yaml
+- ceph-block-pool.yaml
