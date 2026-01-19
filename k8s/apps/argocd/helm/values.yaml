@@ -57,16 +57,10 @@ server:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-      cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
     hostname: "argocd.zeb17-int.duckdns.org"
-    tls: true
-  # httproute:
-  #   enabled: true
-  #   parentRefs:
-  #     - name: traefik-gateway
-  #       namespace: traefik
-  #   hostnames: 
-  #   - argocd.zeb17-int.duckdns.org
+    extraTls:
+      - hosts:
+          - argocd.zeb17-int.duckdns.org
   resources:
     limits:
       cpu: 250m
