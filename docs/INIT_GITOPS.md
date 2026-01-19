@@ -4,6 +4,7 @@
 
 ```bash
 kubectl apply -R -f k8s/apps/namespaces
+kubectl apply -k k8s/apps/cilium # removed from kubespray install
 kubectl create -f k8s/apps/sealed-secrets/secret.yaml
 kubectl apply -k k8s/apps/sealed-secrets
 kubectl apply -k k8s/apps/argocd
