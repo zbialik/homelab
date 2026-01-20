@@ -5,8 +5,8 @@ labels:
     pairs:
       app: rook-ceph
 
-resources: []
-# - generated.yaml
+resources:
+- generated.yaml
 # - ceph-cluster.yaml
 # - ceph-block-pool.yaml
 
