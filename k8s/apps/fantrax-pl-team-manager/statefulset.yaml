@@ -18,6 +18,8 @@ spec:
     spec:
       containers:
       - image: zach17/fantrax-pl-team-manager:placeholder
+        args:
+        - --persist-odds-data
         name: fantrax-pl-team-manager
         imagePullPolicy: IfNotPresent
         env:
