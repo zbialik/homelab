@@ -20,9 +20,8 @@ spec:
       - image: zach17/fantrax-pl-team-manager:placeholder
         command:
         - python
-        args:
         - -m
-        - fanstax_pl_team_manager
+        - fantrax_pl_team_manager
         - --persist-odds-data
         name: fantrax-pl-team-manager
         imagePullPolicy: IfNotPresent
