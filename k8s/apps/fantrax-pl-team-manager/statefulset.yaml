@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app.kubernetes.io/name: fantrax-pl-team-manager
   name: fantrax-pl-team-manager
   namespace: fantrax-pl-team-manager
 spec:
+  serviceName: fantrax-pl-team-manager
   replicas: 1
   selector:
     matchLabels:
@@ -35,7 +36,17 @@ spec:
         - name: cookie-secret
           mountPath: /app/deploy
           readOnly: true
+        - name: data
+          mountPath: /app/data
       volumes:
       - name: cookie-secret
         secret:
           secretName: fantrax-cookie
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi

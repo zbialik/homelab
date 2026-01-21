@@ -6,7 +6,7 @@ labels:
     app: fantrax-pl-team-manager
 
 resources:
-- deploy.yaml
+- statefulset.yaml
 - sealed-fantrax-cookie.yaml
 - sealed-odds-api-key.yaml
 
